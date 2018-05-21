@@ -1,0 +1,12 @@
+{
+  "name": "Car Repair Shop App",
+  "description": "공업소 고객관리앱",
+  "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/master/public/node.svg",
+  "keywords": ["node", "express", "static"],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-nodejs"
+    }
+  ]
+}
+
