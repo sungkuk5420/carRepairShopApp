@@ -1,4 +1,4 @@
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/sungkuk5420/CarRepairShopApp/tree/이슈_5_헤로쿠_서버_셋팅/)
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/sungkuk5420/CarRepairShopApp/)
 
 # CarRepairShopApp
 
