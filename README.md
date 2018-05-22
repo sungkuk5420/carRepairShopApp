@@ -8,7 +8,6 @@
 
 | Directory / File               | Description      |
 | ----------------------- | ---------------- |
-| frontend/                 | Workation Web Application |
 | .gitignore                  | Git저장소추적대상에서 제외하는 파일을 지정 |
 | README.md                 | README |
 | app.json                  | Heroku 업로드 버튼의 설정 |
