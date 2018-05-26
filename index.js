@@ -1,6 +1,11 @@
-const express = require('express')
-const path = require('path')
-const PORT = process.env.PORT || 5000
-const app = express()
-app.use(express.static(__dirname + '/statics/index.html'))
-app.listen(PORT, () => console.log(`server started ${ PORT }`))
+var express = require('express')
+var app = express()
+
+app.get('/', function(req, res) {
+    res.sendFile(__dirname+'/statics/');
+})
+app.use(express.static(__dirname + '/statics/'))
+
+app.listen((process.env.PORT || 5000), function() {
+    console.log("Node app is running at localhost:" + (process.env.PORT || 5000))
+})
