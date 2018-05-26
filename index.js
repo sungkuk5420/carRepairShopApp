@@ -7,7 +7,7 @@ app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
     // res.sendFile(__dirname+'/statics/');
-    res.render('index', { title: 'Express' });
+    res.render('template', { title: 'Express' });
 })
 // app.use(express.static(__dirname + '/statics/'))
 
