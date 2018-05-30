@@ -15,7 +15,7 @@
 | Procfile                  | 응용 프로그램에서 처리 유형의 목록 |
 | README.md                 | README |
 | app.js                  | 노드 프로세스 실행 파일 (로컬개발시 사용) |
-| index.js                  | heroku App에서 노드 프로세스 실행 파일 (로컬개발시 사용) |
 | app.json                  | Heroku 업로드 버튼의 설정 |
+| index.js                  | heroku App에서 노드 프로세스 실행 파일 (리뷰용 앱에 사용) |
 | app.js                  | Node Express의 서버 |
 | package.json                  | Node Express의 npm설정 정보 |
