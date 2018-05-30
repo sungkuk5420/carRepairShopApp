@@ -19,6 +19,33 @@
       border-radius: 5px;
     }
 
+    .fb-login-button-div{
+      display: table;
+      position: relative;
+      width:215px;
+      height: 40px;
+      background: #4267b2;
+      border-radius: 5px;
+    }
+
+    .fb-login-button{
+      max-width: 215px;
+      overflow: hidden;
+      display: table-cell !important;
+      border-radius: 5px;
+      margin-right: 285px;
+    }
+    
+    .fb-layer{
+      height: 40px;
+      position: absolute;
+      background: #4267b2;
+      width: 20px;
+      z-index: 1;
+      right: 0;
+      border-radius: 5px;
+    }
+
     .kakao-login-button{
       height: 40px;
       width: 215px;
@@ -66,11 +93,15 @@
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>
+    
     <br>
-    <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
+    <div class="fb-login-button-div">
+      <div class="fb-layer"></div>
+      <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
+    </div>
     <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
     </fb:login-button> -->
-    <br><br>
+    <br>
     <div id="naverIdLogin"><a id="naverIdLogin_loginButton" href="#" role="button"><div class="naver-login-button"></div></a></div>
     <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
 
