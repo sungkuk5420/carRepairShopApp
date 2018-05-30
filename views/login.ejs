@@ -5,13 +5,40 @@
   <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
   <title>Login Demo - Kakao JavaScript SDK</title>
   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+  <script src="/javascripts/naveridlogin_js_sdk_2.0.0.js"></script>
+  <style>
+    .naver-login-button{
+      height: 40px;
+      width: 215px;
+      background-image: url("https://static.nid.naver.com/oauth/big_g.PNG");
+      background-size: cover;
+      background-position-y: -3px;
+      border: none;
+      background-repeat: no-repeat;
+      background-color: #1ec802;
+      border-radius: 5px;
+    }
+
+    .kakao-login-button{
+      height: 40px;
+      width: 215px;
+      background-image: url("http://k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg");
+      background-size: cover;
+      background-position: -5px 1px;
+      border: none;
+      background-repeat: no-repeat;
+      background-color: #ffeb00;
+      border-radius: 5px;
+    }
+
+    
+  </style>
   </head>
   <body>
     <a id="custom-login-btn" href="javascript:loginWithKakao()">
-      <img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
+      <div class="kakao-login-button"></div>
+      <!-- <img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/> -->
     </a>
-    </div>
-    </div>
     <script type='text/javascript'>
       //<![CDATA[
         // Set JavaScript Key of current app.
@@ -43,5 +70,53 @@
     <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
     <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
     </fb:login-button> -->
+    <br><br>
+    <div id="naverIdLogin"><a id="naverIdLogin_loginButton" href="#" role="button"><div class="naver-login-button"></div></a></div>
+    <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+
+	<!-- (2) LoginWithNaverId Javscript SDK -->
+	<!-- <script src="http://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"></script> -->
+
+	<!-- (3) LoginWithNaverId Javscript 설정 정보 및 초기화 -->
+	<script>
+		
+		var naverLogin = new naver.LoginWithNaverId(
+			{
+				clientId: "FdmHBNBhrdnDUMWPw4hB",
+				callbackUrl: "http://" + window.location.hostname + ((location.port==""||location.port==undefined)?"":":" + location.port) + "/oauth/sample/callback.html",
+				isPopup: false,
+				loginButton: {color: "green", type: 3, height: 60}
+			}
+		);
+		/* (4) 네아로 로그인 정보를 초기화하기 위하여 init을 호출 */
+		naverLogin.init();
+		
+		/* (4-1) 임의의 링크를 설정해줄 필요가 있는 경우 */
+		$("#gnbLogin").attr("href", naverLogin.generateAuthorizeUrl());
+
+		/* (5) 현재 로그인 상태를 확인 */
+		window.addEventListener('load', function () {
+			naverLogin.getLoginStatus(function (status) {
+				if (status) {
+					/* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
+					setLoginStatus();
+				}
+			});
+		});
+
+		/* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
+		function setLoginStatus() {
+			var profileImage = naverLogin.user.getProfileImage();
+			var nickName = naverLogin.user.getNickName();
+			$("#naverIdLogin_loginButton").html('<br><br><img src="' + profileImage + '" height=50 /> <p>' + nickName + '님 반갑습니다.</p>');
+			$("#gnbLogin").html("Logout");
+			$("#gnbLogin").attr("href", "#");
+			/* (7) 로그아웃 버튼을 설정하고 동작을 정의합니다. */
+			$("#gnbLogin").click(function () {
+				naverLogin.logout();
+				location.reload();
+			});
+		}
+	</script>
   </body>
   </html>
