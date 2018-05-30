@@ -7,35 +7,37 @@
   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
   </head>
   <body>
-  <a id="kakao-login-btn"></a>
-  <a href="http://alpha-developers.kakao.com/logout"></a>
-  <script type='text/javascript'>
-  //<![CDATA[
-   // Set JavaScript Key of current app.
-   Kakao.init('971eb3f212fa20a23fc422b414936a0f');
-   // Create Kakao Login button.
-   Kakao.Auth.createLoginButton({
-     container: '#kakao-login-btn',
-     success: function(authObj) {
-       alert(JSON.stringify(authObj));
-     },
-     fail: function(err) {
-        alert(JSON.stringify(err));
-     }
-   });
-  //]]>
-  </script>
-  <div id="fb-root"></div>
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'kakaolink://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.0&appId=616139275399558&autoLogAppEvents=1';
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
-<br>
-<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
-<!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button> -->
+    <a id="kakao-login-btn"></a>
+    <a href="http://alpha-developers.kakao.com/logout"></a>
+    <script type='text/javascript'>
+    //<![CDATA[
+      // Set JavaScript Key of current app.
+      Kakao.init('971eb3f212fa20a23fc422b414936a0f');
+      // Create Kakao Login button.
+      Kakao.Auth.createLoginButton({
+        container: '#kakao-login-btn',
+        success: function(authObj) {
+          alert(JSON.stringify(authObj));
+        },
+        fail: function(err) {
+          alert(JSON.stringify(err));
+        }
+      });
+    //]]>
+    </script>
+    <div id="fb-root"></div>
+    <script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.0&appId=616139275399558&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <br>
+    <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
+    <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+    </fb:login-button> -->
   </body>
   </html>
