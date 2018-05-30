@@ -6,10 +6,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
-   res.sendFile(__dirname+'/statics/');
-   // res.sendFile(__dirname+'/statics/');
-   res.render('login', { title: 'Express' });
+    res.sendFile(__dirname+'/statics/');
+    // res.sendFile(__dirname+'/statics/');
+    res.render('login', { title: 'Express' });
 })
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + '/statics/'))
 
 app.listen((process.env.PORT || 5000), function() {
