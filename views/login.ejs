@@ -70,94 +70,94 @@
 
     
   </style>
+  <style>
+    a {
+      margin: 0;
+      padding: 0;
+      color: #454545;
+      font-size: 100%;
+      vertical-align: baseline;
+      text-decoration: none;
+      background: transparent;
+    }
+    .btn_sns_list i {
+      display: inline-block;
+      position: relative;
+      width: 88px;
+      height: 15px;
+      background: url(/images/sub/member/sns_mbtn_set.png) no-repeat 0 0;
+      background-size: 80px 64px;
+      font-size: 0;
+      text-indent: -9999em;
+      vertical-align: middle;
+    }
+    .btn_sns_list a {
+      width: 199px;
+      margin: 0 0 5px 5px;
+    }
+    .btn_sns_list > a {
+      display: block;
+      padding: 6px 0;
+      height: 22px;
+      border: 1px solid #e0e0e0;
+      line-height: 22px;
+      font-size: 14px;
+      color: #454545;
+      font-weight: 600;
+      text-align: center;
+    }
+    .btn_sns_list i {
+      height: 12px;
+      background: url("https://ssl.tourbaksa.com/images/sub/member/sns_pcbtn_set.png") no-repeat 0 0;
+      background-size: inherit;
+      vertical-align: top;
+      top: 2px;
+    }
+    .login-facebook i {
+      width: 86px;
+      height: 15px;
+      background-position: 0 -29px;
+    }
+    .login-naver i {
+      width: 76px;
+      background-position: 0 0;
+      top: 5px;
+    }
+    .login-kakao i {
+      width: 66px;
+      height: 17px;
+      background-position: 0 -12px;
+    }
+
+    .btn_sns_list > a.login-facebook {
+      top: -3px;
+      width: 167px !important;
+      padding-left: 32px;
+      text-align: left;
+    }
+    .login-kakao {
+      top: -3px;
+    }
+    .login-facebook {
+      top: -3px;
+      width: 167px !important;
+      padding-left: 32px;
+      text-align: left;
+    }
+
+    .hide{
+      display:none;
+    }
+    
+  </style>
   </head>
   <body>
-    <a id="custom-login-btn" href="javascript:loginWithKakao()">
-      <div class="kakao-login-button"></div>
-      <!-- <img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/> -->
-    </a>
-    <script type='text/javascript'>
-      //<![CDATA[
-        // Set JavaScript Key of current app.
-        Kakao.init('971eb3f212fa20a23fc422b414936a0f');
-        function loginWithKakao() {
-          // Open login popup.
-          Kakao.Auth.login({
-            success: function(authObj) {
-              alert(JSON.stringify(authObj));
-            },
-            fail: function(err) {
-              alert(JSON.stringify(err));
-            }
-          });
-        };
-      //]]>
-    </script>
-    <div id="fb-root"></div>
-    <script>
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.0&appId=616139275399558&autoLogAppEvents=1';
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
-    
-    <br>
-    <div class="fb-login-button-div">
-      <div class="fb-layer"></div>
-      <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
+
+    <div class="btn_sns_list">
+      <a href="javascript:loginWithKakao()" class="login-kakao" id="login-kakao"><i>카카오</i>로그인</a>
+      <a href="javascript:loginWithFacebook()" class="login-facebook" id="login-facebook"><i>페이스북</i>로그인</a>
+      <a href="javascript:loginWithNaver()" class="login-naver" id="naverIdLogin_loginButton"><i>네이버</i>로그인</a>
     </div>
-    <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-    </fb:login-button> -->
-    <br>
-    <div id="naverIdLogin"><a id="naverIdLogin_loginButton" href="#" role="button"><div class="naver-login-button"></div></a></div>
-    <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
-
-	<!-- (2) LoginWithNaverId Javscript SDK -->
-	<script src="/javascripts/naveridlogin_js_sdk_2.0.0.js"></script>
-
-	<!-- (3) LoginWithNaverId Javscript 설정 정보 및 초기화 -->
-	<script>
-		
-		var naverLogin = new naver.LoginWithNaverId(
-			{
-				clientId: "FdmHBNBhrdnDUMWPw4hB",
-				callbackUrl: "http://" + window.location.hostname + ((location.port==""||location.port==undefined)?"":":" + location.port) + "/oauth/sample/callback.html",
-				isPopup: false,
-				loginButton: {color: "green", type: 3, height: 60}
-			}
-		);
-		/* (4) 네아로 로그인 정보를 초기화하기 위하여 init을 호출 */
-		naverLogin.init();
-		
-		/* (4-1) 임의의 링크를 설정해줄 필요가 있는 경우 */
-		$("#gnbLogin").attr("href", naverLogin.generateAuthorizeUrl());
-
-		/* (5) 현재 로그인 상태를 확인 */
-		window.addEventListener('load', function () {
-			naverLogin.getLoginStatus(function (status) {
-				if (status) {
-					/* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
-					setLoginStatus();
-				}
-			});
-		});
-
-		/* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
-		function setLoginStatus() {
-			var profileImage = naverLogin.user.getProfileImage();
-			var nickName = naverLogin.user.getNickName();
-			$("#naverIdLogin_loginButton").html('<br><br><img src="' + profileImage + '" height=50 /> <p>' + nickName + '님 반갑습니다.</p>');
-			$("#gnbLogin").html("Logout");
-			$("#gnbLogin").attr("href", "#");
-			/* (7) 로그아웃 버튼을 설정하고 동작을 정의합니다. */
-			$("#gnbLogin").click(function () {
-				naverLogin.logout();
-				location.reload();
-			});
-		}
-	</script>
+    <% include ./login_footer.ejs %>
   </body>
   </html>
