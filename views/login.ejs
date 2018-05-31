@@ -80,6 +80,11 @@
       text-decoration: none;
       background: transparent;
     }
+    .btn_sns_list{
+      width: auto;
+      margin: auto;
+      display: inline-block;
+    }
     .btn_sns_list i {
       display: inline-block;
       position: relative;
@@ -148,16 +153,54 @@
     .hide{
       display:none;
     }
-    
+    .outer {
+      display: table;
+      width: 100%;
+      height: 100%;
+    }
+    .inner {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    .container {
+      width: 70%;
+      height: 70%;
+      margin: 40px auto;
+    }
+
+    .text_block{
+      padding:20px 0px;
+    }
   </style>
   </head>
   <body>
-
-    <div class="btn_sns_list">
-      <a href="javascript:loginWithKakao()" class="login-kakao" id="login-kakao"><i>카카오</i>로그인</a>
-      <a href="javascript:loginWithFacebook()" class="login-facebook" id="login-facebook"><i>페이스북</i>로그인</a>
-      <a href="javascript:loginWithNaver()" class="login-naver" id="naverIdLogin_loginButton"><i>네이버</i>로그인</a>
+    <div class="container">
+      <div class="outer">
+        <div class="inner">
+          <div class="text_block">
+            인증된 업체들을 통해 믿을 수 있는 확실한 서비스를 제공받으세요.
+          </div>
+          <div class="btn_sns_list">
+            <a href="javascript:loginWithKakao()" class="login-kakao" id="login-kakao"><i>카카오</i>로그인</a>
+            <a href="javascript:loginWithFacebook()" class="login-facebook" id="login-facebook"><i>페이스북</i>로그인</a>
+            <a href="javascript:loginWithNaver()" class="login-naver" id="naverIdLogin_loginButton"><i>네이버</i>로그인</a>
+          </div>
+          <div>
+            Copyright ⓒ 2018 착한자동차공업사. All rights reserved.<br>
+            <br>
+            고객센터 1234-5678 (평일 10:00 ~ 18:00)<br>
+            이메일 : sample@naver.com <br>
+            (주) 착한자동차공업사|대표 : 홍길동|사업자번호 : 144-81-21245<br>
+            경기도 부천시 원미구 신흥로59번길 44-7<br>
+            <br>
+            사용자 이용약관|개인정보 취급방침|위치정보 서비스 이용약관
+          </div>
+        </div>
+      </div>
     </div>
+    
     <% include ./login_footer.ejs %>
   </body>
   </html>
