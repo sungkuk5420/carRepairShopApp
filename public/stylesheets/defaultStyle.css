@@ -28,6 +28,9 @@ body{
   width: 100%;
   font-size:3rem;
 }
+.yourPageName_wrap {
+  height: 100%;
+}
 #main_container{
   padding:4rem 4rem 100px;
   height: 100%;
@@ -40,6 +43,7 @@ body{
   position: relative;
   height: 50px;
   border-bottom: 1px solid #ccc;
+  display: none;
 }
 .header_wrap h1, .header_wrap button{
   position: absolute;
