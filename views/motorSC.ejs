@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style type="text/scc">
+      .motorInformation{
+        border-color: gold;
+        border-radius: 100px;
+        -moz-border-radius: 100px;
+        -khtml-border-radius: 100px;
+        -webkit-border-radius: 100px;
+      }
+    </style>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8c90b134b9cc783b8d8cebc646a4d195"></script>
+  </head>
+  <body>
+    <!--공업사 메인 이미지-->
+    <div>
+      <div>
+        <img src="/images/screen01.png">
+      </div>
+    </div>
+    
+    <!--견적요청 버튼-->
+    <div style="width:100%">
+      <div>
+        <a href="/motor" style="background-color:gray;color:black">견적요청</a>
+      </div>
+    </div>
+    
+    <!--공업사 text 정보-->
+    <div>
+      <table>
+        <tr>
+          <td><b>정비소 정보</b></td>
+        </tr>
+        <tr>
+          <td><b>주소</b></td>
+          <td>경기도 부천시 원미구 심곡동 777-30</td>
+        </tr>
+        <tr>
+          <td><b>연락처</b></td>
+          <td>070-1010-1010</td>
+        </tr>
+        <tr>
+          <td><b>영업시간</b></td>
+          <td>평일 09:00~19:00 / 토 09:00~16:00</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>[일, 공휴일 휴무]</td>
+        </tr>
+        <tr>
+          <td><b>평점</b></td>
+          <td>10점</td>
+        </tr>
+      </table>
+    </div>
+    
+    <!--정비소 위치-->
+    <div>
+      <div id="map" style="width:500px;height:400px;"></div>
+    </div>
+    
+    <!--기본정보-->
+    <div>
+      <table>
+        <tr>
+          <td><b>정비소 정보</b></td>
+        </tr>
+        <tr>
+            <td><a href="/motor"><img class="motorInformation" src="/images/a.png" /></a></td>
+            <td><a href="/motor"><img class="motorInformation" src="/images/a.png" /></a></td>
+            <td><a href="/motor"><img class="motorInformation" src="/images/a.png" /></a></td>
+            <td><a href="/motor"><img class="motorInformation" src="/images/a.png" /></a></td>
+        <tr>
+          <td>엔진오일교환</td>
+          <td>타이어교환</td>
+          <td>외부수리</td>
+          <td>차량튜닝</td>
+        </tr>
+        <tr>
+          <td><a href="/motor"><img class="motorInformation" src="/images/a.png" /></a></td>
+          <td><a href="/motor"><img class="motorInformation" src="/images/a.png" /></a></td>
+          <td><a href="/motor"><img class="motorInformation" src="/images/a.png" /></a></td>
+          <td><a href="/motor"><img class="motorInformation" src="/images/a.png" /></a></td>
+        </tr>
+        <tr>
+          <td>엔진오일교환</td>
+          <td>타이어교환</td>
+          <td>외부수리</td>
+          <td>차량튜닝</td>
+        </tr>
+      </table>
+    </div>
+    
+    <!--리뷰-->
+    <div>
+      <table>
+        <tr>
+          <td><b>리뷰</b></td>
+          <td><b>리뷰쓰기</b></td>
+        </tr>
+        <tr>
+          <td>KIA K5 30**님</td>
+          <td>1일전</td>
+        </tr>
+        <tr>
+          <td>10/10점</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>엔진오일 교환했어요 너무 좋아염</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>HyunDai NF SONATA ak0**님</td>
+          <td>7일전</td>
+        </tr>
+        <tr>
+          <td>10/10점</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>월급은 통장을 스쳐지나갈뿐</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Lamborghini Aventador 5915**님</td>
+          <td>2018-05-26</td>
+        </tr>
+        <tr>
+          <td>10/10점</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>넘나 행복한것</td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+
+  <script>
+    var container = document.getElementById('map');
+    var options = {
+      center: new daum.maps.LatLng(37.487697, 126.788740),
+      level: 3
+    };
+
+    var map = new daum.maps.Map(container, options);
+
+    // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+    if (navigator.geolocation) {
+        
+        // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var locPosition = new daum.maps.LatLng(37.487697, 126.788740), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+                message = '<div style="padding:5px;"><b>부천 착한 공업사</b><br>부천시 원미구 심곡동 777-30</div>'; // 인포윈도우에 표시될 내용입니다
+            
+            // 마커와 인포윈도우를 표시합니다
+            displayMarker(locPosition, message);
+                
+          });
+        
+    } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+        
+        var locPosition = new daum.maps.LatLng(37.487697, 126.788740),    
+            message = 'geolocation을 사용할수 없어요..'
+            
+        displayMarker(locPosition, message);
+    }
+
+    // 지도에 마커와 인포윈도우를 표시하는 함수입니다
+    function displayMarker(locPosition, message) {
+
+        // 마커를 생성합니다
+        var marker = new daum.maps.Marker({  
+            map: map, 
+            position: locPosition
+        }); 
+        
+        var iwContent = message, // 인포윈도우에 표시할 내용
+            iwRemoveable = true;
+
+        // 인포윈도우를 생성합니다
+        var infowindow = new daum.maps.InfoWindow({
+            content : iwContent,
+            removable : iwRemoveable
+        });
+        
+        // 인포윈도우를 마커위에 표시합니다 
+        infowindow.open(map, marker);
+        
+        // 지도 중심좌표를 접속위치로 변경합니다
+        map.setCenter(locPosition);      
+    }    
+  </script>
+</html>
+  
