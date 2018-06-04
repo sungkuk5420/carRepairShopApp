@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <% include ./header.ejs %>
+  </head>
+  <body>
+    <div class="yourPageName_wrap">
+      <div class="row header_wrap">
+        <h1><a href="#"><img src="logo.png" alt="공업사로고"></a></h1>
+        <button type="button" class="login_btn">로그인</button>
+      </div>
+      <div id="main_container">
+        <div class="main_inner_wrap">
+          <div class="row">
+            <h1><%= title %></h1>
+            <p>Welcome to <%= title %></p>
+          </div>
+        </div>
+      </div>
+      <div id="footer">
+        <div class="row">
+            <ul>
+              <li>메인</li>
+              <li>채팅</li>
+              <li>설정</li>
+            </ul>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
