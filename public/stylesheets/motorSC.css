@@ -1,0 +1,51 @@
+.basicImgInformation {
+    border-color: gold;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -khtml-border-radius: 100px;
+    -webkit-border-radius: 100px;
+}
+
+.basicInformation {
+    width:25%;
+    text-align:center;
+}
+
+.estimate {
+    width:100%;
+    height:35px;
+    line-height:30px;
+    text-align:center;
+    background-color:gray;
+    color:black;
+}
+
+.motorLocation {
+    width:100%;height:400px;
+}
+
+.motorLeftInformation {
+    text-align:right;
+}
+
+.motorRightInformation {
+    padding-left:30px;
+}
+
+.reviewDivide {
+    padding-bottom:15px;
+}
+
+.reviewRight {
+    text-align:right;
+}
+
+.title {
+    padding:20px 0px 10px 0px;
+}
+
+.width100 {
+    width: 100%;
+}
+
+.motor_wrap .table1

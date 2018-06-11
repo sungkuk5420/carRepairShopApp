@@ -1,186 +1,152 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8c90b134b9cc783b8d8cebc646a4d195"></script>
-    <style type="text/css">
-      .basicImgInformation {
-        border-color: gold;
-        border-radius: 100px;
-        -moz-border-radius: 100px;
-        -khtml-border-radius: 100px;
-        -webkit-border-radius: 100px;
-      }
-
-      .basicInformation {
-        width:25%;
-        text-align:center;
-      }
-
-      .estimate {
-        width:100%;
-        height:35px;
-        line-height:30px;
-        text-align:center;
-        background-color:gray;
-        color:black;
-      }
-
-      .motorLocation {
-        width:100%;height:400px;
-      }
-
-      .motorLeftInformation {
-        text-align:right;
-      }
-
-      .motorRightInformation {
-        padding-left:30px;
-      }
-
-      .reviewDivide {
-        padding-bottom:15px;
-      }
-
-      .reviewRight {
-        text-align:right;
-      }
-
-      .title {
-        padding:20px 0px 10px 0px;
-      }
-
-      .width100 {
-        width: 100%;
-      }
-    </style>
+    <% include ./header.ejs %>
   </head>
 
   <body>
-    <!--공업사 메인 이미지-->
-    <div>
-      <img class="width100" src="/images/motorservicecenter.PNG">
+    <div class="motor_wrap">
+      <div class="row header_wrap">
+        <h1><a href="#"><img src="logo.png" alt="공업사로고"></a></h1>
+        <button type="button" class="login_btn">로그인</button>
+      </div>
+      <div id="main_container">
+        <div class="main_inner_wrap">
+          <!--공업사 메인 이미지-->
+          <div>
+            <img class="width100" src="/images/motorservicecenter.PNG">
+          </div>
+          
+          <!--견적요청 버튼-->
+          <a href="/motor">
+          <div class="estimate">
+              견적요청
+          </div></a>
+          
+          <!--공업사 text 정보-->
+          <div>
+            <table>
+              <tr>
+                <td class="title"><b>정비소 정보</b></td>
+              </tr>
+              <tr>
+                <td class="motorLeftInformation"><b>주소</b></td>
+                <td class="motorRightInformation">경기도 부천시 원미구 심곡동 777-30</td>
+              </tr>
+              <tr>
+                <td class="motorLeftInformation"><b>연락처</b></td>
+                <td class="motorRightInformation">070-1010-1010</td>
+              </tr>
+              <tr>
+                <td class="motorLeftInformation"><b>영업시간</b></td>
+                <td class="motorRightInformation">평일 09:00~19:00 / 토 09:00~16:00</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td class="motorRightInformation">(일, 공휴일 휴무)</td>
+              </tr>
+              <tr>
+                <td class="motorLeftInformation"><b>평점</b></td>
+                <td class="motorRightInformation">10점</td>
+              </tr>
+            </table>
+          </div>
+          
+          <!--정비소 위치-->
+          <div class="title"><b>정비소 위치</b></div>
+          <div id="map" class="motorLocation"></div>
+          
+          <!--기본정보-->
+          <div>
+            <table class="width100">
+              <tr>
+                <td class="title"><b>기본 정보</b></td>
+              </tr>
+              <tr>
+                  <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
+                  <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
+                  <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
+                  <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
+              <tr>
+                <td class="basicInformation">엔진오일교환</td>
+                <td class="basicInformation">타이어교환</td>
+                <td class="basicInformation">외부수리</td>
+                <td class="basicInformation">차량튜닝</td>
+              </tr>
+              <tr>
+                <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
+                <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
+                <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
+                <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
+              </tr>
+              <tr>
+                <td class="basicInformation">엔진오일교환</td>
+                <td class="basicInformation">타이어교환</td>
+                <td class="basicInformation">외부수리</td>
+                <td class="basicInformation">차량튜닝</td>
+              </tr>
+            </table>
+          </div>
+          
+          <!--리뷰-->
+          <div>
+            <table class="width100">
+              <tr>
+                <td class="title"><b>리뷰</b></td>
+                <td class="reviewRight"><b>리뷰쓰기</b></td>
+              </tr>
+              <tr>
+                <td>KIA K5 30**님</td>
+                <td class="reviewRight">1일전</td>
+              </tr>
+              <tr>
+                <td>10/10점</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="reviewDivide">엔진오일 교환했어요 너무 좋아염</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>HyunDai NF SONATA ak0**님</td>
+                <td class="reviewRight">7일전</td>
+              </tr>
+              <tr>
+                <td>10/10점</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="reviewDivide">월급은 통장을 스쳐지나갈뿐</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Lamborghini Aventador 5915**님</td>
+                <td class="reviewRight">2018-05-26</td>
+              </tr>
+              <tr>
+                <td>10/10점</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>넘나 행복한것</td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div id="footer">
+        <div class="row">
+            <ul>
+              <li>메인</li>
+              <li>채팅</li>
+              <li>설정</li>
+            </ul>
+          </div>
+      </div>
     </div>
-    
-    <!--견적요청 버튼-->
-    <a href="/motor">
-    <div class="estimate">
-        견적요청
-    </div></a>
-    
-    <!--공업사 text 정보-->
-    <div>
-      <table>
-        <tr>
-          <td class="title"><b>정비소 정보</b></td>
-        </tr>
-        <tr>
-          <td class="motorLeftInformation"><b>주소</b></td>
-          <td class="motorRightInformation">경기도 부천시 원미구 심곡동 777-30</td>
-        </tr>
-        <tr>
-          <td class="motorLeftInformation"><b>연락처</b></td>
-          <td class="motorRightInformation">070-1010-1010</td>
-        </tr>
-        <tr>
-          <td class="motorLeftInformation"><b>영업시간</b></td>
-          <td class="motorRightInformation">평일 09:00~19:00 / 토 09:00~16:00</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="motorRightInformation">(일, 공휴일 휴무)</td>
-        </tr>
-        <tr>
-          <td class="motorLeftInformation"><b>평점</b></td>
-          <td class="motorRightInformation">10점</td>
-        </tr>
-      </table>
-    </div>
-    
-    <!--정비소 위치-->
-    <div class="title"><b>정비소 위치</b></div>
-    <div id="map" class="motorLocation"></div>
-    
-    <!--기본정보-->
-    <div>
-      <table class="width100">
-        <tr>
-          <td class="title"><b>기본 정보</b></td>
-        </tr>
-        <tr>
-            <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
-            <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
-            <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
-            <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
-        <tr>
-          <td class="basicInformation">엔진오일교환</td>
-          <td class="basicInformation">타이어교환</td>
-          <td class="basicInformation">외부수리</td>
-          <td class="basicInformation">차량튜닝</td>
-        </tr>
-        <tr>
-          <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
-          <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
-          <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
-          <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
-        </tr>
-        <tr>
-          <td class="basicInformation">엔진오일교환</td>
-          <td class="basicInformation">타이어교환</td>
-          <td class="basicInformation">외부수리</td>
-          <td class="basicInformation">차량튜닝</td>
-        </tr>
-      </table>
-    </div>
-    
-    <!--리뷰-->
-    <div>
-      <table class="width100">
-        <tr>
-          <td class="title"><b>리뷰</b></td>
-          <td class="reviewRight"><b>리뷰쓰기</b></td>
-        </tr>
-        <tr>
-          <td>KIA K5 30**님</td>
-          <td class="reviewRight">1일전</td>
-        </tr>
-        <tr>
-          <td>10/10점</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="reviewDivide">엔진오일 교환했어요 너무 좋아염</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>HyunDai NF SONATA ak0**님</td>
-          <td class="reviewRight">7일전</td>
-        </tr>
-        <tr>
-          <td>10/10점</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="reviewDivide">월급은 통장을 스쳐지나갈뿐</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Lamborghini Aventador 5915**님</td>
-          <td class="reviewRight">2018-05-26</td>
-        </tr>
-        <tr>
-          <td>10/10점</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>넘나 행복한것</td>
-          <td></td>
-        </tr>
-      </table>
-    </div>
-  </body>
 
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8c90b134b9cc783b8d8cebc646a4d195"></script>
   <script>
     var container = document.getElementById('map');
     var options = {
@@ -236,5 +202,6 @@
         map.setCenter(locPosition);      
     }    
   </script>
+  </body>
 </html>
   
