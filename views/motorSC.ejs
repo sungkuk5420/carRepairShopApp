@@ -13,8 +13,8 @@
       <div id="main_container">
         <div class="main_inner_wrap">
           <!--공업사 메인 이미지-->
-          <div>
-            <img class="width100" src="/images/motorservicecenter.PNG">
+          <div class="width100">
+            <img src="/images/motorservicecenter.PNG">
           </div>
           
           <!--견적요청 버튼-->
@@ -28,6 +28,7 @@
             <table>
               <tr>
                 <td class="title"><b>정비소 정보</b></td>
+                <td></td>
               </tr>
               <tr>
                 <td class="motorLeftInformation"><b>주소</b></td>
@@ -42,7 +43,7 @@
                 <td class="motorRightInformation">평일 09:00~19:00 / 토 09:00~16:00</td>
               </tr>
               <tr>
-                <td></td>
+                <td class="motorLeftInformation">&nbsp;</td>
                 <td class="motorRightInformation">(일, 공휴일 휴무)</td>
               </tr>
               <tr>
@@ -96,40 +97,40 @@
                 <td class="reviewRight"><b>리뷰쓰기</b></td>
               </tr>
               <tr>
-                <td>KIA K5 30**님</td>
+                <td class="reviewLeft">KIA K5 30**님</td>
                 <td class="reviewRight">1일전</td>
               </tr>
               <tr>
-                <td>10/10점</td>
-                <td></td>
+                <td class="reviewLeft">10/10점</td>
+                <td class="reviewRight">&nbsp;</td>
               </tr>
               <tr>
-                <td class="reviewDivide">엔진오일 교환했어요 너무 좋아염</td>
-                <td></td>
+                <td class="reviewDivide reviewLeft">엔진오일 교환했어요 너무 좋아염</td>
+                <td class="reviewDivide reviewRight">&nbsp;</td>
               </tr>
               <tr>
-                <td>HyunDai NF SONATA ak0**님</td>
+                <td class="reviewLeft">HyunDai NF SONATA ak0**님</td>
                 <td class="reviewRight">7일전</td>
               </tr>
               <tr>
-                <td>10/10점</td>
-                <td></td>
+                <td class="reviewLeft">10/10점</td>
+                <td class="reviewRight">&nbsp;</td>
               </tr>
               <tr>
-                <td class="reviewDivide">월급은 통장을 스쳐지나갈뿐</td>
-                <td></td>
+                <td class="reviewLeft reviewDivide">월급은 통장을 스쳐지나갈뿐</td>
+                <td class="reviewRight reviewDivide">&nbsp;</td>
               </tr>
               <tr>
-                <td>Lamborghini Aventador 5915**님</td>
+                <td class="reviewLeft">Lamborghini Aventador 5915**님</td>
                 <td class="reviewRight">2018-05-26</td>
               </tr>
               <tr>
-                <td>10/10점</td>
-                <td></td>
+                <td class="reviewLeft">10/10점</td>
+                <td class="reviewRight">&nbsp;</td>
               </tr>
               <tr>
-                <td>넘나 행복한것</td>
-                <td></td>
+                <td class="reviewDivide reviewLeft">넘나 행복한것</td>
+                <td class="reviewDivide reviewRight">&nbsp;</td>
               </tr>
             </table>
           </div>
@@ -162,7 +163,7 @@
         // GeoLocation을 이용해서 접속 위치를 얻어옵니다
         navigator.geolocation.getCurrentPosition(function(position) {
             var locPosition = new daum.maps.LatLng(37.487697, 126.788740), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-                message = '<div style="padding:5px;"><b>부천 착한 공업사</b><br>부천시 원미구 심곡동 777-30</div>'; // 인포윈도우에 표시될 내용입니다
+                message = '<div style="font-size:1rem;padding:5px;"><b>부천 착한 공업사</b><br>부천시 원미구 심곡동 777-30</div>'; // 인포윈도우에 표시될 내용입니다
             
             // 마커와 인포윈도우를 표시합니다
             displayMarker(locPosition, message);

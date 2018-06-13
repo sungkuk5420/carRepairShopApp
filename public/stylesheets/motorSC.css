@@ -7,8 +7,10 @@
 }
 
 .basicInformation {
-    width:25%;
+    font-size:1.3rem;
+    padding-bottom:10px;
     text-align:center;
+    width:25%;
 }
 
 .estimate {
@@ -17,6 +19,7 @@
     line-height:30px;
     text-align:center;
     background-color:gray;
+    font-size:1.3rem;
     color:black;
 }
 
@@ -25,22 +28,33 @@
 }
 
 .motorLeftInformation {
+    font-size:1.5rem;
+    padding-bottom:15px;
     text-align:right;
 }
 
 .motorRightInformation {
+    font-size:1.5rem;
     padding-left:30px;
 }
 
 .reviewDivide {
-    padding-bottom:15px;
+    padding-bottom:30px;
+}
+
+.reviewLeft {
+    font-size:1.5rem;
+    padding-bottom:12px;
 }
 
 .reviewRight {
+    font-size:1.5rem;
+    padding-bottom:12px;
     text-align:right;
 }
 
 .title {
+    font-size:1.5rem;
     padding:20px 0px 10px 0px;
 }
 
@@ -48,4 +62,6 @@
     width: 100%;
 }
 
+/*
 .motor_wrap .table1
+*/
