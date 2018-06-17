@@ -7,62 +7,69 @@
 }
 
 .basicInformation {
-    font-size:1.3rem;
-    padding-bottom:10px;
-    text-align:center;
-    width:25%;
+    font-size: 45%;
+    padding-bottom: 10px;
+    text-align: center;
+    width: 25%;
 }
 
 .estimate {
-    background-color:gray;
-    color:black;
-    font-size:1.3rem;
-    height:35px;
-    line-height:30px;
-    text-align:center;
-    width:100%;
+    background-color: gray;
+    color: black;
+    font-size: 45%;
+    line-height: 300%;
+    text-align: center;
+    width: 100%;
 }
 
 .mainImg {
-    height:100%;
-    width:100%;
-    display:table;
+    height: 100%;
+    width: 100%;
+    display: table;
 }
 
 .motorLocation {
-    height:400px;
-    width:100%;
+    height: 20%;
+    width: 100%;
 }
 
 .motorLeftInformation {
-    font-size:1.5rem;
-    padding-bottom:15px;
-    text-align:right;
+    font-size: 45%;
+    line-height: 200%;
+    text-align: right;
+    vertical-align: bottom;
 }
 
 .motorRightInformation {
-    font-size:1.5rem;
-    padding-left:30px;
+    font-size: 45%;
+    line-height: 200%;
+    padding-left: 30px;
+    text-align: left;
+    vertical-align: bottom;
 }
 
 .reviewDivide {
-    padding-bottom:30px;
+    padding-bottom: 10px;
 }
 
 .reviewLeft {
-    font-size:1.5rem;
-    padding-bottom:12px;
+    font-size: 45%;
+    line-height: 200%;
+    text-align: left;
+    vertical-align: bottom;
 }
 
 .reviewRight {
-    font-size:1.5rem;
-    padding-bottom:12px;
-    text-align:right;
+    font-size:45%;
+    line-height: 200%;
+    text-align: right;
+    vertical-align: bottom;
 }
 
 .title {
-    font-size:1.5rem;
-    padding:50px 0px 10px 0px;
+    font-size:45%;
+    padding-bottom: 10px;
+    padding-top: 50px;
 }
 
 .width100 {
