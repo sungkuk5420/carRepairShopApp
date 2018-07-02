@@ -27,6 +27,7 @@ body{
   bottom: 0;
   width: 100%;
   font-size:3rem;
+  background: white;
 }
 .yourPageName_wrap {
   height: 100%;
@@ -38,6 +39,7 @@ body{
 .main_inner_wrap {
   height: 100%;
   overflow-y: auto;
+  padding: 0rem 0rem 8rem 0rem;
 }
 .header_wrap {
   position: relative;
