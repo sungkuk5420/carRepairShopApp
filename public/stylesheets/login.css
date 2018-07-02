@@ -72,6 +72,7 @@
     width: auto;
     margin: auto;
     display: inline-block;
+    width: 65%;
   }
   .btn_sns_list i {
     display: inline-block;
@@ -84,21 +85,17 @@
     text-indent: -9999em;
     vertical-align: middle;
   }
-  .btn_sns_list a {
-    width: 199px;
-    margin: 0 0 5px 5px;
-    box-sizing: content-box;
-  }
   .btn_sns_list > a {
     display: block;
-    padding: 6px 0;
-    height: 22px;
+    padding: 0.8rem 0rem 0.6rem 0rem;
+    line-height: 200%;
     border: 1px solid #e0e0e0;
-    line-height: 22px;
-    font-size: 14px;
+    font-size: 35%;
     color: #454545;
     font-weight: 600;
     text-align: center;
+    width: 100%;
+    margin: 0 0 5px 5px;
   }
   .btn_sns_list i {
     height: 12px;
@@ -111,34 +108,21 @@
     width: 86px;
     height: 15px;
     background-position: 0 -29px;
+    top:4px;
   }
   .login-naver i {
     width: 76px;
     background-position: 0 0;
-    top: 5px;
+    top: 6px;
   }
   .login-kakao i {
     width: 66px;
     height: 17px;
     background-position: 0 -12px;
   }
-
-  .btn_sns_list > a.login-facebook {
-    top: -3px;
-    width: 167px !important;
-    padding-left: 32px;
-    text-align: left;
-  }
   .login-kakao {
     top: -3px;
   }
-  .login-facebook {
-    top: -3px;
-    width: 167px !important;
-    padding-left: 32px;
-    text-align: left;
-  }
-
   .hide{
     display:none;
   }
