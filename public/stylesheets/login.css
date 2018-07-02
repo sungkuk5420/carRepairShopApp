@@ -87,10 +87,10 @@
   }
   .btn_sns_list > a {
     display: block;
-    padding: 0.8rem 0rem 0.6rem 0rem;
+    padding: 0.9rem 0rem 0.6rem 0rem;
     line-height: 200%;
     border: 1px solid #e0e0e0;
-    font-size: 35%;
+    font-size: 50%;
     color: #454545;
     font-weight: 600;
     text-align: center;
@@ -102,7 +102,7 @@
     background: url("https://ssl.tourbaksa.com/images/sub/member/sns_pcbtn_set.png") no-repeat 0 0;
     background-size: inherit;
     vertical-align: top;
-    top: 2px;
+    top: 1px;
   }
   .login-facebook i {
     width: 86px;
@@ -113,15 +113,12 @@
   .login-naver i {
     width: 76px;
     background-position: 0 0;
-    top: 6px;
+    top: 7px;
   }
   .login-kakao i {
     width: 66px;
     height: 17px;
     background-position: 0 -12px;
-  }
-  .login-kakao {
-    top: -3px;
   }
   .hide{
     display:none;
@@ -137,6 +134,8 @@
     text-align: center;
   }
 
+
+
   .login_page_wrap {
     width: 70%;
     height: 70%;
@@ -146,4 +145,9 @@
   .text_block{
     padding:20px 0px;
     font-size: 35%;
+  }
+
+  .login_page_wrap .top_text_block{
+    padding:20px 0px;
+    font-size: 80%;
   }

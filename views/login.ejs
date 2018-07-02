@@ -2,7 +2,6 @@
 <head>
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
   <title>Login Demo - Kakao JavaScript SDK</title>
   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
     
@@ -18,7 +17,7 @@
             <div class="main_inner_wrap">
               <div class="outer">
                   <div class="inner">
-                    <div class="text_block">
+                    <div class="text_block top_text_block" >
                       인증된 업체들을 통해 믿을 수 있는 확실한 서비스를 제공받으세요.
                     </div>
                     <div class="btn_sns_list">
@@ -28,27 +27,19 @@
                     </div>
                     <div class="text_block">
                       Copyright ⓒ 2018 착한자동차공업사. All rights reserved.<br>
-                      <br>
-                      고객센터 1234-5678 (평일 10:00 ~ 18:00)<br>
-                      이메일 : sample@naver.com <br>
-                      (주) 착한자동차공업사|대표 : 홍길동|사업자번호 : 144-81-21245<br>
-                      경기도 부천시 원미구 신흥로59번길 44-7<br>
-                      <br>
+                      <br><br>
+                      고객센터 1234-5678 (평일 10:00 ~ 18:00)<br><br>
+                      이메일 : sample@naver.com <br><br>
+                      (주) 착한자동차공업사|대표 : 홍길동|사업자번호 : 144-81-21245<br><br>
+                      경기도 부천시 원미구 신흥로59번길 44-7<br><br>
+                      <br><br>
                       사용자 이용약관|개인정보 취급방침|위치정보 서비스 이용약관
                     </div>
                   </div>
               </div>
             </div>
           </div>
-          <div id="footer">
-            <div class="row">
-                <ul>
-                  <li>메인</li>
-                  <li>채팅</li>
-                  <li>설정</li>
-                </ul>
-              </div>
-          </div>
+          <% include ./footer.ejs %>
         </div>
     <% include ./login_footer.ejs %>
   </body>
