@@ -9,9 +9,14 @@
     };
     firebase.initializeApp(config);
 
-    DATABASE = firebase.database();
-    console.log(DATABASE);
+    const DATABASE = firebase.database();
+    var DB_USERS_DATA = undefined;
+    
+    getDataBase(function(){
+        console.log(DB_USERS_DATA);
+    });
 
+    // console.log(DB_USERS_DATA);
     // firebase.database().ref('user/').push({
     //     phoneNumber: "cc",
     //     password: "aa"
