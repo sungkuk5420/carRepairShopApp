@@ -1,0 +1,114 @@
+<script type='text/javascript'>
+//<![CDATA[
+    // Set JavaScript Key of current app.
+    Kakao.init('971eb3f212fa20a23fc422b414936a0f');
+    function loginWithKakao() {
+    // Open login popup.
+    Kakao.Auth.login({
+        success: function(authObj) {
+        alert(JSON.stringify(authObj));
+        },
+        fail: function(err) {
+        alert(JSON.stringify(err));
+        }
+    });
+    };
+//]]>
+</script>
+
+<script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+<script src="/javascripts/naveridlogin_js_sdk_2.0.0.js"></script>
+<script>
+
+//페이스북 로그인 버튼 스크립트
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.0&appId=616139275399558&autoLogAppEvents=1';
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+    });
+};
+function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    if (response.status === 'connected') {
+        console.log('login!!')
+    } else if (response.status === 'not_authorized') {
+        document.getElementById('status').innerHTML = 'Please log ' +
+            'into this app.';
+    } else {
+        document.getElementById('status').innerHTML = 'Please log ' +
+            'into Facebook.';
+    }
+};
+    
+var naverLogin = new naver.LoginWithNaverId(
+    {
+    clientId: "FdmHBNBhrdnDUMWPw4hB",
+    callbackUrl: "http://" + window.location.hostname + ((location.port==""||location.port==undefined)?"":":" + location.port) + "/oauth/sample/callback.html",
+    isPopup: false,
+    loginButton: {color: "green", type: 3, height: 60}
+    }
+);
+/* (4) 네아로 로그인 정보를 초기화하기 위하여 init을 호출 */
+naverLogin.init();
+
+/* (4-1) 임의의 링크를 설정해줄 필요가 있는 경우 */
+$("#gnbLogin").attr("href", naverLogin.generateAuthorizeUrl());
+
+/* (5) 현재 로그인 상태를 확인 */
+window.addEventListener('load', function () {
+    naverLogin.getLoginStatus(function (status) {
+    if (status) {
+        /* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
+        setLoginStatus();
+    }
+    });
+});
+
+/* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
+function setLoginStatus() {
+    var profileImage = naverLogin.user.getProfileImage();
+    var nickName = naverLogin.user.getNickName();
+    $("#naverIdLogin_loginButton").html('<br><br><img src="' + profileImage + '" height=50 /> <p>' + nickName + '님 반갑습니다.</p>');
+    $("#gnbLogin").html("Logout");
+    $("#gnbLogin").attr("href", "#");
+    /* (7) 로그아웃 버튼을 설정하고 동작을 정의합니다. */
+    $("#gnbLogin").click(function () {
+    naverLogin.logout();
+    location.reload();
+    });
+}
+
+function loginWithFacebook(){
+    FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+           setField();
+        } else if (response.status === 'not_authorized') {
+          // the user is logged in to Facebook, 
+          // but has not authenticated your app
+          login();
+        } else {
+          // the user isn't logged in to Facebook.
+          login();
+        }
+     });
+}
+ 
+ function login()
+ {
+     FB.login(function(response) {
+        if (response.authResponse) {
+           setField();
+         } else {
+           console.log('User cancelled login or did not fully authorize.');
+         }
+     }, {scope: 'email,user_birthday'});
+ }
+</script>

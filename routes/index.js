@@ -10,4 +10,12 @@ router.get('/insertMember', function(req, res, next) {
   res.render('insertMember', { title: 'Express' });
 });
 
+/* GET Motor service center page. */
+router.get('/motor', function(req, res, next) {
+  res.render('motorSC', { title: 'Express' });
+});
+router.get('/login', function(req, res, next) {
+  res.render('login', { title: 'Express' });
+});
+
 module.exports = router;

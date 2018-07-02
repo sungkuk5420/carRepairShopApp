@@ -1,0 +1,153 @@
+.naver-login-button{
+    height: 40px;
+    width: 240px;
+    background-image: url("https://static.nid.naver.com/oauth/big_g.PNG");
+    background-size: cover;
+    background-position-y: -5px;
+    border: none;
+    background-repeat: no-repeat;
+    background-color: #1ec802;
+    border-radius: 5px;
+    display: table-cell;
+  }
+
+  .fb-login-button span{
+    margin: auto;
+    right: 0;
+    left: 0;
+    display: block !important;
+  }
+
+  .fb-login-button-div{
+    display: table;
+    position: relative;
+    width:240px;
+    height: 40px;
+    background: #4267b2;
+    border-radius: 5px;
+  }
+
+  .fb-login-button{
+    max-width: 240px;
+    overflow: hidden;
+    display: table-cell !important;
+    border-radius: 5px;
+    margin-right: 285px;
+  }
+  
+  .fb-layer{
+    height: 40px;
+    position: absolute;
+    background: #4267b2;
+    width: 0px;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    border-radius: 5px;
+  }
+
+  .kakao-login-button{
+    height: 40px;
+    width: 240px;
+    background-image: url("http://k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg");
+    background-size: cover;
+    background-position: -5px 1px;
+    border: none;
+    background-repeat: no-repeat;
+    background-color: #ffeb00;
+    border-radius: 5px;
+    display: table-cell;
+  }
+
+  a {
+    margin: 0;
+    padding: 0;
+    color: #454545;
+    font-size: 100%;
+    vertical-align: baseline;
+    text-decoration: none;
+    background: transparent;
+  }
+  .btn_sns_list{
+    width: auto;
+    margin: auto;
+    display: inline-block;
+    width: 65%;
+  }
+  .btn_sns_list i {
+    display: inline-block;
+    position: relative;
+    width: 88px;
+    height: 15px;
+    background: url(/images/sub/member/sns_mbtn_set.png) no-repeat 0 0;
+    background-size: 80px 64px;
+    font-size: 0;
+    text-indent: -9999em;
+    vertical-align: middle;
+  }
+  .btn_sns_list > a {
+    display: block;
+    padding: 0.9rem 0rem 0.6rem 0rem;
+    line-height: 200%;
+    border: 1px solid #e0e0e0;
+    font-size: 50%;
+    color: #454545;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    margin: 0 0 5px 5px;
+  }
+  .btn_sns_list i {
+    height: 12px;
+    background: url("https://ssl.tourbaksa.com/images/sub/member/sns_pcbtn_set.png") no-repeat 0 0;
+    background-size: inherit;
+    vertical-align: top;
+    top: 1px;
+  }
+  .login-facebook i {
+    width: 86px;
+    height: 15px;
+    background-position: 0 -29px;
+    top:4px;
+  }
+  .login-naver i {
+    width: 76px;
+    background-position: 0 0;
+    top: 7px;
+  }
+  .login-kakao i {
+    width: 66px;
+    height: 17px;
+    background-position: 0 -12px;
+  }
+  .hide{
+    display:none;
+  }
+  .outer {
+    display: table;
+    width: 100%;
+    height: 100%;
+  }
+  .inner {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+
+
+  .login_page_wrap {
+    width: 70%;
+    height: 70%;
+    margin: 40px auto;
+  }
+
+  .text_block{
+    padding:20px 0px;
+    font-size: 35%;
+  }
+
+  .login_page_wrap .top_text_block{
+    padding:20px 0px;
+    font-size: 80%;
+  }
