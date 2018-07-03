@@ -15,8 +15,8 @@ router.get('/', function(req, res, next) {
   res.render('login', { title: 'Express' });
 });
 
-router.get('/template', function(req, res, next) {
-  res.render('template', { title: 'Express' });
+router.get('/insertUser', function(req, res, next) {
+  res.render('insertUser', { title: 'Express' });
 });
 
 /* GET Motor service center page. */
