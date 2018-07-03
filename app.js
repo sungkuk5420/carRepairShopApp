@@ -12,9 +12,20 @@ var usersRouter = require('./routes/users');
 var passport = require('passport') //passport module add
   , LocalStrategy = require('passport-local').Strategy;
 var cookieSession = require('cookie-session');
+
 var flash = require('connect-flash');
 
 var app = express();
+app.use(cookieSession({
+  keys: ['node_yun'],
+  cookie: {
+    maxAge: 1000 * 60 * 60 // 유효기간 1시간
+  }
+}));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+
 // CORS 설정
 app.use(cors());
 
@@ -58,16 +69,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-app.use(cookieSession({
-  keys: ['node_yun'],
-  cookie: {
-    maxAge: 1000 * 60 * 60 // 유효기간 1시간
-  }
-}));
-app.use(flash());
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
