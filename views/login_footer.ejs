@@ -1,52 +1,7 @@
-<script type='text/javascript'>
-//<![CDATA[
-    // Set JavaScript Key of current app.
-    Kakao.init('971eb3f212fa20a23fc422b414936a0f');
-    function loginWithKakao() {
-    // Open login popup.
-    Kakao.Auth.login({
-        success: function(authObj) {
-        alert(JSON.stringify(authObj));
-        },
-        fail: function(err) {
-        alert(JSON.stringify(err));
-        }
-    });
-    };
-//]]>
-</script>
 
-<script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
 <script src="/javascripts/naveridlogin_js_sdk_2.0.0.js"></script>
+<script src="/javascripts/login.js"></script>
 <script>
-
-//페이스북 로그인 버튼 스크립트
-(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.0&appId=616139275399558&autoLogAppEvents=1';
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-
-function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
-    });
-};
-function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    if (response.status === 'connected') {
-        console.log('login!!')
-    } else if (response.status === 'not_authorized') {
-        document.getElementById('status').innerHTML = 'Please log ' +
-            'into this app.';
-    } else {
-        document.getElementById('status').innerHTML = 'Please log ' +
-            'into Facebook.';
-    }
-};
     
 var naverLogin = new naver.LoginWithNaverId(
     {
@@ -86,6 +41,35 @@ function setLoginStatus() {
     });
 }
 
+
+//페이스북 로그인 버튼 스크립트
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.0&appId=616139275399558&autoLogAppEvents=1';
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+    });
+};
+function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    if (response.status === 'connected') {
+        console.log('login!!')
+    } else if (response.status === 'not_authorized') {
+        document.getElementById('status').innerHTML = 'Please log ' +
+            'into this app.';
+    } else {
+        document.getElementById('status').innerHTML = 'Please log ' +
+            'into Facebook.';
+    }
+};
+
 function loginWithFacebook(){
     FB.getLoginStatus(function(response) {
         if (response.status === 'connected') {
@@ -93,15 +77,15 @@ function loginWithFacebook(){
         } else if (response.status === 'not_authorized') {
           // the user is logged in to Facebook, 
           // but has not authenticated your app
-          login();
+          fbLogin();
         } else {
           // the user isn't logged in to Facebook.
-          login();
+          fbLogin();
         }
      });
 }
  
- function login()
+ function fbLogin()
  {
      FB.login(function(response) {
         if (response.authResponse) {
