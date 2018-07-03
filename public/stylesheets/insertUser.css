@@ -2,7 +2,7 @@
     font-size:70%;
 }
 
-.chkBox {
+.btnChk {
     height: 25px;
     line-height: 300%;
     width: 25px;
@@ -58,12 +58,7 @@
 .view__more:hover {
     background: #717eae;
 }
-/*
-body {
-    background: #3A4366;
-    font-family: 'Lato', sans-serif;
-}
-*/
+
 a {
     text-decoration: none;
     color: inherit;

@@ -6,8 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('event', { title: 'Express' });
 });
 
-router.get('/insertMember', function(req, res, next) {
-  res.render('insertMember', { title: 'Express' });
+router.get('/insertUser', function(req, res, next) {
+  res.render('insertUser', { title: 'Express' });
 });
 
 /* GET Motor service center page. */
