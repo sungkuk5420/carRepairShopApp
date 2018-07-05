@@ -33,9 +33,22 @@ function getDataBase(cb){
     });
 }
 
+
+
 function insertUser(phone, passwd) {
+    var arr = new Array();
+    for(var i=0; i<DB_USERS_DATA.length; i++) {
+        var info = DB_USERS_DATA[i].info.filter(function(phoneNumber){
+            return element == phone;
+        });
+        arr.push(info);
+    }
+    console.log(arr.length);
+
+/*
     firebase.database().ref('user/').push({
         phoneNumber: phone,
         password: passwd
     });
+*/
 }
