@@ -45,7 +45,8 @@ router.post('/upload', (req, res) => {
   async.waterfall(tasks, (err, result) => {
     if (!err) {
       console.log(result);
-      res.json({success: true, msg: '업로드 성공'})
+      res.render('uploadResult', { title: '업로드 성공', image: result });
+      // res.json({success: true, msg: '업로드 성공'})
     } else {
       res.json({success: false, msg: '업로드 실패'})
     }

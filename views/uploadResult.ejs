@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <div>ETag: <%= image.ETag %></div>
+    <div>Location: <%= image.Location %></div>
+    <div>key: <%= image.key %></div>
+    <div>Bucket: <%= image.Bucket %></div>
+    <img src="<%= image.Location %>" />
+  </body>
+</html>
