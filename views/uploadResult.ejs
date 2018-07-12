@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <% include ./header.ejs %>
   </head>
   <body>
     <h1><%= title %></h1>
@@ -11,5 +13,44 @@
     <div>key: <%= image.key %></div>
     <div>Bucket: <%= image.Bucket %></div>
     <img src="<%= image.Location %>" />
+
+  <!-- <div class="yourPageName_wrap">
+    <div class="row header_wrap">
+        <h1>
+            <a href="#">
+                <img src="logo.png" alt="공업사로고">
+            </a>
+        </h1>
+        <button type="button" class="login_btn">로그인</button>
+    </div>
+    <div id="main_container">
+        <div class="main_inner_wrap">
+            <div class="estimate_result">
+                <div class="result">
+                    <h1>견적서 요청</h1>
+                    <h1>완료되었습니다.</h1>
+                </div>
+                <div class="contents">
+                    <h2>차종</h2>
+                    <p id="carType">null</p>
+                    <h2>요청사항</h2>
+                    <p id="requestType">null</p>
+                    <h2>요구사항</h2>
+                    <p id="requirements">null</p>
+                    <h2>프로모션코드</h2>
+                    <p id="eventCode">null</p>
+                </div>
+                <div class="check_div" >
+                    <button id="checkBtn">확인</button>
+                </div>
+            </div>
+
+            <div class="notice">
+                
+            </div>
+        </div>
+    </div>
+    <% include ./footer.ejs %>
+    </div> -->
   </body>
 </html>

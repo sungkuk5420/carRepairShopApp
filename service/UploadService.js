@@ -4,18 +4,20 @@ const AWS = require('aws-sdk');
 const imagemin = require('imagemin');
 const imageminPngquant = require('imagemin-pngquant');
 
-
+/*
 AWS.config.update({
   accessKeyId: "",
   secretAccessKey: "",
   "region": "ap-northeast-2"
 });
-/*S3 버킷 설정*/
+
 let params = {
   Bucket: '',
   ACL: 'public-read',
   Body: null
 };
+*/
+/*S3 버킷 설정*/
 
 const S3 = new S3Instance();
 const ROOT_PATH = process.cwd();
