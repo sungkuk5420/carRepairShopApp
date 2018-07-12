@@ -24,6 +24,10 @@ router.get('/main', function(req, res, next) {
   res.render('main_title', { title: 'Express' });
 });
 
+router.get('/estResult', function(req, res, next) {
+  res.render('estimateResult', { title: 'Express' });
+});
+
 router.post('/upload', (req, res) => {
   const tasks = [
     (callback) => {
