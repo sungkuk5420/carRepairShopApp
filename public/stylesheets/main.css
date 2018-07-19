@@ -15,7 +15,7 @@
 
 .carInfo .carImage{
     position: absolute;
-    top: 150px;
+    top: -80px;
     left: 0;
     right: 0;
     margin: auto;
@@ -28,6 +28,16 @@
     width: 100%;
     font-size: 0.5em;
     font-weight: bold;
+}
+
+.carInfo .inner{
+    position: relative;
+    left:0;
+    right:0;
+    margin:auto;
+    width: 100%;
+    display: block;
+    height: 10px;
 }
 
 
