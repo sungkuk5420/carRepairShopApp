@@ -14,6 +14,7 @@
 .required_section .required_h2 {margin: 0 0 15px 0;}
 .checkbox_wrap {margin-bottom: 10px;}
 .required_section input {display: none;}
+.required_section input.file_upload {display: block; margin-bottom: 20px;}
 .required_section label {display: block; position: relative; width: 100%;margin-bottom: 20px}
 .required_section label:before {content: ''; position: absolute; border: 1px solid #ccc; top:0; right: 0; width: 15px; height: 15px; box-sizing: border-box;cursor: pointer;}
 .required_section input:checked + label:before {content: '✔';}
