@@ -14,7 +14,11 @@
                 <h1>공업사 타이틀</h1>
                 <p>경기도 부천시</p>
             </section>
-            <form  action="/upload" enctype="multipart/form-data"  method="post">
+            <form  action="/upload" enctype="multipart/form-data" id="imageUploadForm" method="post">
+                <input type="file" class="file_upload" name="img_files[]" accept="image/*">
+                <button type="submit" class="re_btn" >견적요청</button>
+            </form>
+            <form  action="/uploadResult" enctype="application/x-www-form-urlencoded"  method="get">
                 <section class="info_section">
                     <div class="inner_section">
                         <h2 class="info_h2">차종</h2>
@@ -47,7 +51,6 @@
                         
                         <input type="checkbox" id="chk4" name="chk4">
                         <label for="chk4">개인정보 및 서비스 이용 약관 동의합니다.</label>
-                        <input  type="file" class="file_upload" name="img_files[]" accept="image/*">
                         
                         <button type="submit" class="re_btn">견적요청</button>
                     </div>
@@ -55,5 +58,19 @@
             </form>
             <% include ./footer.ejs %>
         </div>
+        <script>
+            var apiUrl = 'http://localhost:3000/';
+            $("#imageUploadForm").submit(function(event) {
+                $.ajax({
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    url: apiUrl,
+                    success: function(data) {
+                        console.log('success');
+                    }
+                });
+            });
+        </script>
     </body>
 </html>

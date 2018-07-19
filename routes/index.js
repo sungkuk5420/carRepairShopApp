@@ -3,10 +3,15 @@ var router = express.Router();
 const async = require('async');
 const Upload = require('../service/UploadService');
 var bodyParser = require('body-parser');
-
+ 
+// create application/json parser
+var jsonParser = bodyParser.json()
+ 
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('upload', { title: 'Express' });
+  res.render('motor_es', { title: 'Express' });
 });
 
 router.get('/template', function(req, res, next) {
@@ -25,8 +30,12 @@ router.get('/motores', function(req, res, next) {
   res.render('motor_es', { title: 'Express' });
 });
 
-router.post('/upload', bodyParser , (req, res) => {
+router.get('/uploadResult',urlencodedParser, function(req, res, next) {
   console.log('car_list ' + JSON.stringify(req.body));
+  res.render('uploadResult', { title: 'Express' });
+});
+
+router.post('/upload',  (req, res) => {
   const tasks = [
     (callback) => {
       console.log('start formidable');
@@ -46,8 +55,12 @@ router.post('/upload', bodyParser , (req, res) => {
       console.log('callback');
       Upload.s3(files, 'test/', (err, result) => {
         console.log('result' + result);
-        var result2 = {
-          ETag : result.ETag
+        var result2 = {};
+
+        if(result !== undefined){
+          result2 = {
+            ETag : result.ETag
+          };
         }
         callback(err, result2)
       });
