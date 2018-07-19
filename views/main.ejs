@@ -1,41 +1,77 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <% include ./header.ejs %>
-  </head>
-  <body>
-    <div class="main_page_wrap">
-      <div class="row header_wrap">
-        <h1><a href="#"><img src="logo.png" alt="공업사로고"></a></h1>
-        <button type="button" class="login_btn">로그인</button>
-      </div>
-      <div id="main_container">
-        <div class="main_inner_wrap">
-          <div class="carInfo">
-            <div class="row">
-              <div>모델</div>
-              <div>Meroedes</div>
-            </div>
 
-            <div class="row">
-              <div>연식</div>
-              <div>2018/05/05</div>
-            </div>
+<head>
+  <% include ./header.ejs %>
+</head>
 
-            <div class="row">
-              <div>키로수</div>
-              <div>2000km</div>
-            </div>
+<body>
+  <div class="main_page_wrap">
+    <div class="row header_wrap">
+      <h1>
+        <a href="#">
+          <img src="logo.png" alt="공업사로고">
+        </a>
+      </h1>
+      <button type="button" class="login_btn">로그인</button>
+    </div>
+    <div id="main_container">
+      <div class="main_inner_wrap">
+        <div class="carInfo">
+          <img class="carImage" src="/images/car_image_sample.PNG">
+          <div class="empty"></div>
+          <div class="changeInfo">정보수정</div>
+          <div class="row">
+            <div class="inline_block" id="item1">모델</div>
+            <div class="inline_block">Meroedes</div>
+          </div>
 
-            <div class="row">
-              <div>등급</div>
-              <div>스타일</div>
-            </div>
+          <div class="row">
+            <div class="inline_block" id="item2">연식</div>
+            <div class="inline_block">2018/05/05</div>
+          </div>
+
+          <div class="row">
+            <div class="inline_block" id="item3">키로수</div>
+            <div class="inline_block">2000km</div>
+          </div>
+
+          <div class="row">
+            <div class="inline_block" id="item4">등급</div>
+            <div class="inline_block">스타일</div>
+          </div>
+        </div>
+
+        <div class="estimate">
+          <button class="button">실시간견적</button>
+        </div>
+
+        <div class="reservation">
+          <h1>예약현황</h1>
+          <div class="image">
+          </div>
+        </div>
+
+        <div class="event">
+          <h1>이벤트</h1>
+          <div class="coupon">
+          </div>
+        </div>
+
+        <div class="tip">
+          <h1>차량관리팁</h1>
+          <div class="tip-inner">
+              <div class="item1">1111</div>
+              <div class="item2">222</div>
+              <div class="item3">333</div>
+
           </div>
         </div>
       </div>
-      <% include ./footer.ejs %>
+
     </div>
-  </body>
+    <% include ./footer.ejs %>
+  </div>
+</body>
+
 </html>
-  

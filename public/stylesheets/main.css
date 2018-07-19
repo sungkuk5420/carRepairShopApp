@@ -2,6 +2,7 @@
 .main_inner_wrap{
     padding-left: 50px;
     padding-right: 50px;
+
 }
 
 .carInfo{
@@ -9,8 +10,93 @@
     padding:20px 20px;
     border: 1px solid black;
     margin-top: 200px;
+    margin-bottom: 10px; 
 }
 
-.row div{
+.carInfo .carImage{
+    position: absolute;
+    top: 150px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 200px;
+    height: auto;
+}
+
+.carInfo .changeInfo{
+    text-align: center;
+    width: 100%;
+    font-size: 0.5em;
+    font-weight: bold;
+}
+
+
+.carInfo .empty{
+    width: 100%;
+    height: 25px;
+}
+
+.carInfo #item1,
+.carInfo #item2,
+.carInfo #item3,
+.carInfo #item4{
+    width: 30%;
+    font-size: 0.5em;
+    font-weight: bold;
+}
+
+.inline_block{
+    font-size: 0.5em;
     display:inline-block;
+}
+
+.estimate, .reservation, .event, .tip{
+    margin-bottom: 15px
+}
+
+.estimate .button{
+    width: 100%;
+    height: 50px;
+    background-color: white;
+}
+
+.reservation h1, .event h1, .tip h1{
+    font-size: 10px;
+    margin-bottom: 5px;
+}
+
+.reservation .image{
+    border: 1px solid black;
+    width: 100%;
+    height: 200px;
+}
+
+.event .coupon{
+    border: 1px solid black;
+    width: 100%;
+    height: 100px;
+}
+
+.tip-inner{
+    overflow-x: scroll;
+    position: relative;
+    width: 100%;
+    height: 100px;
+}
+
+.tip-inner .item1,.tip-inner .item2,.tip-inner .item3{
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid black;
+    height: 100%;
+    width: 120px;
+}
+
+.tip-inner .item2{
+    left: 130px;
+}
+
+.tip-inner .item3{
+    left: 260px;
 }
