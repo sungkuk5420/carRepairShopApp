@@ -1,8 +1,34 @@
 
 .main_inner_wrap{
+    padding-left: 0px;
+    padding-right: 0px;
+
+}
+
+.main_content{
     padding-left: 50px;
     padding-right: 50px;
+}
 
+
+.main_page_wrap .main_inner_wrap{
+
+}
+
+.back_image{
+    position: relative;
+    z-index: -1;
+}
+
+.back_image .img1{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    z-index: -1;
+}
+
+.carInfo, .reservation .image, .event .coupon{
+    background-color: white;
 }
 
 .carInfo{
