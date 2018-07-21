@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function(req, res) {
     res.sendFile(__dirname+'/statics/');
     // res.sendFile(__dirname+'/statics/');
-    res.render('main_title', { title: 'Express' });
+    res.render('motor_es', { title: 'Express' });
 })
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + '/statics/'))
