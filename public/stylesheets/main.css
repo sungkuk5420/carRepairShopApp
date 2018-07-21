@@ -136,3 +136,13 @@
 .tip-inner .item3{
     left: 260px;
 }
+
+.main_inner_wrap .copyright{
+    position: relative;
+    padding-top: 5px;
+    padding-bottom: 5px; 
+    top: 40px;
+    border-top:solid black 1px;
+    text-align: center;
+    font-size: 20%;
+}
