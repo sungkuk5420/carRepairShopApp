@@ -30,9 +30,9 @@ router.get('/motores', function(req, res, next) {
   res.render('motor_es', { title: 'Express' });
 });
 
-router.get('/uploadResult',urlencodedParser, function(req, res, next) {
+router.post('/uploadResult', urlencodedParser, function(req, res, next) {
   console.log('car_list ' + JSON.stringify(req.body));
-  res.render('uploadResult', { title: 'Express' });
+  // res.render('uploadResult', { title: 'Express' });
 });
 
 router.post('/upload',  (req, res) => {
@@ -54,12 +54,13 @@ router.post('/upload',  (req, res) => {
       console.log('start s3');
       console.log('callback');
       Upload.s3(files, 'test/', (err, result) => {
-        console.log('result' + result);
+        console.log('result' + JSON.stringify(result));
         var result2 = {};
 
         if(result !== undefined){
           result2 = {
-            ETag : result.ETag
+            ETag : result.ETag,
+            Location : result.Location
           };
         }
         callback(err, result2)
@@ -69,7 +70,9 @@ router.post('/upload',  (req, res) => {
   async.waterfall(tasks, (err, result) => {
     if (!err) {
       console.log(result);
-      res.render('uploadResult', { title: '업로드 성공', image: result });
+      res.json(result);
+      res.end();
+      // res.render('uploadResult', { title: '업로드 성공', image: result });
       // res.json({success: true, msg: '업로드 성공'})
     } else {
       res.json({success: false, msg: '업로드 실패'})

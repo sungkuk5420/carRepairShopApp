@@ -4,19 +4,18 @@ const AWS = require('aws-sdk');
 const imagemin = require('imagemin');
 const imageminPngquant = require('imagemin-pngquant');
 
-/*
-AWS.config.update({
-  accessKeyId: "",
-  secretAccessKey: "",
-  "region": "ap-northeast-2"
-});
-
 let params = {
-  Bucket: '',
+  Bucket: 'car-repair',
+  Key: 'AKIAJLGF4R6ST7U5BI3Q',
   ACL: 'public-read',
   Body: null
 };
-*/
+  
+AWS.config.update({
+  accessKeyId: "AKIAJLGF4R6ST7U5BI3Q",
+  secretAccessKey: "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",
+  "region": "ap-northeast-2"
+});
 /*S3 버킷 설정*/
 
 const S3 = new S3Instance();
