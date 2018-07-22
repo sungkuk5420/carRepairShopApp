@@ -1,11 +1,11 @@
 
-.main_inner_wrap{
+.main_page_wrap .main_inner_wrap{
     padding-left: 0px;
     padding-right: 0px;
 
 }
 
-.main_content{
+.main_page_wrap .main_content{
     padding-left: 50px;
     padding-right: 50px;
 }
@@ -15,23 +15,25 @@
 
 }
 
-.back_image{
+.main_page_wrap .back_image{
     position: relative;
     z-index: -1;
 }
 
-.back_image .img1{
+.main_page_wrap .back_image .img1{
     position: absolute;
     width: 100%;
     height: auto;
     z-index: -1;
 }
 
-.carInfo, .reservation .image, .event .coupon{
+.main_page_wrap .carInfo, 
+.main_page_wrap .reservation .image, 
+.main_page_wrap .event .coupon{
     background-color: white;
 }
 
-.carInfo{
+.main_page_wrap .carInfo{
     width: 100%;
     padding:20px 20px;
     border: 1px solid black;
@@ -39,7 +41,7 @@
     margin-bottom: 10px; 
 }
 
-.carInfo .carImage{
+.main_page_wrap .carInfo .carImage{
     position: absolute;
     top: -80px;
     left: 0;
@@ -49,14 +51,14 @@
     height: auto;
 }
 
-.carInfo .changeInfo{
+.main_page_wrap .carInfo .changeInfo{
     text-align: center;
     width: 100%;
     font-size: 0.5em;
     font-weight: bold;
 }
 
-.carInfo .inner{
+.main_page_wrap .carInfo .inner{
     position: relative;
     left:0;
     right:0;
@@ -67,60 +69,66 @@
 }
 
 
-.carInfo .empty{
+.main_page_wrap .carInfo .empty{
     width: 100%;
     height: 25px;
 }
 
-.carInfo #item1,
-.carInfo #item2,
-.carInfo #item3,
-.carInfo #item4{
+.main_page_wrap .carInfo #item1,
+.main_page_wrap .carInfo #item2,
+.main_page_wrap .carInfo #item3,
+.main_page_wrap .carInfo #item4{
     width: 30%;
     font-size: 0.5em;
     font-weight: bold;
 }
 
-.inline_block{
+.main_page_wrap .inline_block{
     font-size: 0.5em;
     display:inline-block;
 }
 
-.estimate, .reservation, .event, .tip{
+.main_page_wrap .estimate, 
+.main_page_wrap .reservation, 
+.main_page_wrap .event, .tip{
     margin-bottom: 15px
 }
 
-.estimate .button{
+.main_page_wrap .estimate .button{
     width: 100%;
     height: 50px;
     background-color: white;
 }
 
-.reservation h1, .event h1, .tip h1{
+.main_page_wrap .reservation h1, 
+.main_page_wrap .event h1, 
+.main_page_wrap .tip h1{
     font-size: 10px;
     margin-bottom: 5px;
 }
 
-.reservation .image{
+.main_page_wrap .reservation .image{
     border: 1px solid black;
     width: 100%;
     height: 200px;
 }
 
-.event .coupon{
+.main_page_wrap .event .coupon{
     border: 1px solid black;
     width: 100%;
     height: 100px;
 }
 
-.tip-inner{
+.main_page_wrap .tip-inner{
     overflow-x: scroll;
     position: relative;
     width: 100%;
     height: 100px;
 }
 
-.tip-inner .item1,.tip-inner .item2,.tip-inner .item3{
+.main_page_wrap .tip-inner .item1,
+.main_page_wrap .tip-inner .item2,
+.main_page_wrap .tip-inner .item3{
     position: absolute;
     top: 0;
     left: 0;
@@ -129,15 +137,15 @@
     width: 120px;
 }
 
-.tip-inner .item2{
+.main_page_wrap .tip-inner .item2{
     left: 130px;
 }
 
-.tip-inner .item3{
+.main_page_wrap .tip-inner .item3{
     left: 260px;
 }
 
-.main_inner_wrap .copyright{
+.main_page_wrap .main_inner_wrap .copyright{
     position: relative;
     padding-top: 5px;
     padding-bottom: 5px; 
