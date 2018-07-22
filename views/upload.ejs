@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>아마존 s3 파일 업로드 예제</p>
+    <form  action="/upload" enctype="multipart/form-data"  method="post">
+      <input  type="file" name="img_files[]" accept="image/*">
+      <button type="submit">Submit</button>
+  </form>
+  </body>
+</html>
