@@ -123,26 +123,18 @@
     overflow-x: scroll;
     position: relative;
     width: 100%;
+    white-space: nowrap;
     height: 100px;
 }
 
-.main_page_wrap .tip-inner .item1,
-.main_page_wrap .tip-inner .item2,
-.main_page_wrap .tip-inner .item3{
-    position: absolute;
+.main_page_wrap .tip-inner .item{
+    display:inline-block;
+    position: relative;
     top: 0;
     left: 0;
     border: 1px solid black;
     height: 100%;
     width: 120px;
-}
-
-.main_page_wrap .tip-inner .item2{
-    left: 130px;
-}
-
-.main_page_wrap .tip-inner .item3{
-    left: 260px;
 }
 
 .main_page_wrap .main_inner_wrap .copyright{
