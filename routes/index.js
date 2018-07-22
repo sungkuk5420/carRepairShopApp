@@ -11,7 +11,7 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('motor_es', { title: 'Express' });
+  res.render('main', { title: 'Express' });
 });
 
 router.get('/template', function(req, res, next) {
@@ -24,6 +24,10 @@ router.get('/motor', function(req, res, next) {
 });
 router.get('/login', function(req, res, next) {
   res.render('login', { title: 'Express' });
+});
+
+router.get('/main', function(req, res, next) {
+  res.render('main', { title: 'Express' });
 });
 
 router.get('/motores', function(req, res, next) {
