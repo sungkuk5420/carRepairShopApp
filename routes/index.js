@@ -30,12 +30,12 @@ router.get('/motores', function(req, res, next) {
   res.render('motor_es', { title: 'Express' });
 });
 
-router.post('uploadResult', urlencodedParser, function(req, res, next) {
-  // console.log('car_list ' + JSON.stringify(req.body));
-  // let EstimateData = req.body;
-  res.render('uploadResult', { title: 'Express', EstimateData: EstimateData});
-  
-  res.end();
+router.post('/uploadResult', urlencodedParser, function(req, res, next) {
+  console.log('car_list ' + JSON.stringify(req.body));
+  let EstimateData = req.body;
+  res.render('uploadResult', { title: 'Express', EstimateData: EstimateData, len:Object.keys(req.body).length});
+    // res.json(EstimateData);
+  // res.end();
 });
 
 router.post('/upload',  (req, res) => {

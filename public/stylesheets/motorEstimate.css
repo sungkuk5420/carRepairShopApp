@@ -22,7 +22,4 @@
 .required_section textarea#area2 {margin-bottom: 20px;}
 .required_section .re_p {line-height: 20px;}
 .re_btn {width: 100%;background: #ccc;height: 50px;border: 1px solid #ccc;}
-
-.imagePreViewList img{
-    height:150px;
-}
+.imagePreViewList img{height:150px;}

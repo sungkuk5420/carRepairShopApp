@@ -31,6 +31,11 @@
     font-size: 12px;
 }
 
+.contents p span{
+    display:block;
+    font-size: 12px;
+}
+
 #checkBtn{
     width: 100%;
     height: 40px;
@@ -44,4 +49,8 @@
     width: 100%;
     height: 50px;
     border: 1px solid black;
+}
+
+.imagePreViewList img{
+    height:150px;
 }
