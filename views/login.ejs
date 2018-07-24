@@ -3,8 +3,7 @@
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <title>Login Demo - Kakao JavaScript SDK</title>
-  <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-    
+  <!-- <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script> -->
     <% include ./header.ejs %>
   </head>
   <body>
@@ -21,7 +20,7 @@
                       인증된 업체들을 통해 믿을 수 있는 확실한 서비스를 제공받으세요.
                     </div>
                     <div class="btn_sns_list">
-                      <a href="javascript:loginWithKakao()" class="login-kakao" id="login-kakao"><i>카카오</i>로그인</a>
+                      <a href="/auth/login/kakao" class="login-kakao" id="login-kakao"><i>카카오</i>로그인</a>
                       <a href="javascript:loginWithFacebook()" class="login-facebook" id="login-facebook"><i>페이스북</i>로그인</a>
                       <a href="javascript:loginWithNaver()" class="login-naver" id="naverIdLogin_loginButton"><i>네이버</i>로그인</a>
                     </div>
