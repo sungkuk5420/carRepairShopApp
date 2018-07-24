@@ -6,6 +6,8 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "async": "^2.6.1",
+    "aws-sdk": "^2.269.1",
     "basic-auth": "^2.0.0",
     "bcrypt": "^2.0.1",
     "connect-flash": "^0.1.1",
@@ -14,7 +16,10 @@
     "debug": "~2.6.9",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
+    "formidable": "^1.2.1",
     "http-errors": "~1.6.2",
+    "imagemin": "^5.3.1",
+    "imagemin-pngquant": "^5.1.0",
     "morgan": "^1.9.0",
     "nodemon": "^1.17.5",
     "on-headers": "^1.0.1",
@@ -23,7 +28,9 @@
     "passport-kakao": "0.0.5",
     "passport-local": "^1.0.0",
     "passport-naver": "^1.0.6",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "nodemon": "^1.18.1",
+    "on-headers": "^1.0.1"
   },
   "devDependencies": {
     "cookie-parser": "^1.4.3"

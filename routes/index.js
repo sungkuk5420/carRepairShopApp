@@ -2,15 +2,16 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
-
 var bcrypt = require('bcrypt');
 var secret_config = require('../secret');
-
 var NaverStrategy = require('passport-naver').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var KakaoStrategy = require('passport-kakao').Strategy;
-/**
- * */
+const async = require('async');
+const Upload = require('../service/UploadService');
+var bodyParser = require('body-parser'); 
+var jsonParser = bodyParser.json();
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 /*로그인 성공시 사용자 정보를 Session에 저장한다*/
 passport.serializeUser(function (user, done) {
@@ -28,7 +29,6 @@ var isAuthenticated = function (req, res, next) {
     return next();
   res.redirect('/login');
 };
-
 
 passport.use(new LocalStrategy({
   usernameField: 'username',
@@ -104,11 +104,6 @@ router.get('/login', function(req, res, next) {
   }
 });
 
-router.post('/login', passport.authenticate('local', {failureRedirect: '/login', failureFlash: true}), // 인증 실패 시 401 리턴, {} -> 인증 스트레티지
-  function (req, res) {
-    res.redirect('/motor');
-  });
-
 // kakao 로그인
 router.get('/auth/login/kakao',
   passport.authenticate('kakao')
@@ -119,6 +114,20 @@ router.get('/auth/login/kakao/callback',
     successRedirect: '/motor',
     failureRedirect: '/login'
   })
+);
+
+router.get('/main', function(req, res, next) {
+  res.render('main', { title: 'Express' });
+});
+
+router.get('/motores', function(req, res, next) {
+  res.render('motor_es', { title: 'Express' });
+});
+
+router.post('/login', passport.authenticate('local', {failureRedirect: '/login', failureFlash: true}), // 인증 실패 시 401 리턴, {} -> 인증 스트레티지
+  function (req, res) {
+    res.redirect('/motor');
+  }
 );
 
 
@@ -146,6 +155,49 @@ function loginByThirdparty(info, done) {
   });
 }
 
+router.post('/uploadResult', urlencodedParser, function(req, res, next) {
+  console.log('car_list ' + JSON.stringify(req.body));
+  let EstimateData = req.body;
+  res.render('uploadResult', { title: 'Express', EstimateData: EstimateData, len:Object.keys(req.body).length});
+    // res.json(EstimateData);
+  // res.end();
+});
 
+router.post('/upload',  (req, res) => {
+  const tasks = [
+    (callback) => {
+      console.log('start formidable');
+      Upload.formidable(req, (err, files, fields) => {
+
+        callback(err, files, fields);
+      });
+    },
+    (files, fields, callback) => {
+      console.log('start optimize');
+      Upload.optimize(files, (err) => {
+        callback(err, files, fields);
+      });
+    },
+    (files, fields, callback) => {
+      console.log('start s3');
+      console.log('callback');
+      Upload.s3(files, 'test/', (err, result) => {
+        console.log('result' + JSON.stringify(result));
+        callback(err, result)
+      });
+    }
+  ];
+  async.waterfall(tasks, (err, result) => {
+    if (!err) {
+      console.log(result);
+      res.json(result);
+      res.end();
+      // res.render('uploadResult', { title: '업로드 성공', image: result });
+      // res.json({success: true, msg: '업로드 성공'})
+    } else {
+      res.json({success: false, msg: '업로드 실패'})
+    }
+  });
+});
 
 module.exports = router;
