@@ -4,21 +4,22 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
-var cors = require('cors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var passport = require('passport') //passport module add
   , LocalStrategy = require('passport-local').Strategy;
 var cookieSession = require('cookie-session');
 var flash = require('connect-flash');
-var jsonParser = bodyParser.json()
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var jsonParser = bodyParser.json();
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+var cors = require('cors');
+
+var app = express();
  
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json({ type: 'application/*+json' }))
 
-var app = express();
 app.use(cookieSession({
   keys: ['node_yun'],
   cookie: {
