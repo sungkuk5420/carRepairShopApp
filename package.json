@@ -28,7 +28,7 @@
     "passport-kakao": "0.0.5",
     "passport-local": "^1.0.0",
     "passport-naver": "^1.0.6",
-    "serve-favicon": "^2.5.0,
+    "serve-favicon": "^2.5.0",
     "nodemon": "^1.18.1",
     "on-headers": "^1.0.1"
   },
