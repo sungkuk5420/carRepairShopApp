@@ -1,4 +1,4 @@
-.naver-login-button{
+.login_page_wrap .naver-login-button{
     height: 40px;
     width: 240px;
     background-image: url("https://static.nid.naver.com/oauth/big_g.PNG");
@@ -11,14 +11,14 @@
     display: table-cell;
   }
 
-  .fb-login-button span{
+  .login_page_wrap .fb-login-button span{
     margin: auto;
     right: 0;
     left: 0;
     display: block !important;
   }
 
-  .fb-login-button-div{
+  .login_page_wrap .fb-login-button-div{
     display: table;
     position: relative;
     width:240px;
@@ -27,7 +27,7 @@
     border-radius: 5px;
   }
 
-  .fb-login-button{
+  .login_page_wrap .fb-login-button{
     max-width: 240px;
     overflow: hidden;
     display: table-cell !important;
@@ -35,7 +35,7 @@
     margin-right: 285px;
   }
   
-  .fb-layer{
+  .login_page_wrap .fb-layer{
     height: 40px;
     position: absolute;
     background: #4267b2;
@@ -46,7 +46,7 @@
     border-radius: 5px;
   }
 
-  .kakao-login-button{
+  .login_page_wrap .kakao-login-button{
     height: 40px;
     width: 240px;
     background-image: url("http://k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg");
@@ -59,7 +59,7 @@
     display: table-cell;
   }
 
-  a {
+  .login_page_wrap a {
     margin: 0;
     padding: 0;
     color: #454545;
@@ -68,13 +68,13 @@
     text-decoration: none;
     background: transparent;
   }
-  .btn_sns_list{
+  .login_page_wrap .btn_sns_list{
     width: auto;
     margin: auto;
     display: inline-block;
     width: 65%;
   }
-  .btn_sns_list i {
+  .login_page_wrap .btn_sns_list i {
     display: inline-block;
     position: relative;
     width: 88px;
@@ -85,7 +85,7 @@
     text-indent: -9999em;
     vertical-align: middle;
   }
-  .btn_sns_list > a {
+  .login_page_wrap .btn_sns_list > a {
     display: block;
     padding: 0.9rem 0rem 0.6rem 0rem;
     line-height: 200%;
@@ -97,38 +97,38 @@
     width: 100%;
     margin: 0 0 5px 5px;
   }
-  .btn_sns_list i {
+  .login_page_wrap .btn_sns_list i {
     height: 12px;
     background: url("https://ssl.tourbaksa.com/images/sub/member/sns_pcbtn_set.png") no-repeat 0 0;
     background-size: inherit;
     vertical-align: top;
     top: 1px;
   }
-  .login-facebook i {
+  .login_page_wrap .login-facebook i {
     width: 86px;
     height: 15px;
     background-position: 0 -29px;
     top:4px;
   }
-  .login-naver i {
+  .login_page_wrap .login-naver i {
     width: 76px;
     background-position: 0 0;
     top: 7px;
   }
-  .login-kakao i {
+  .login_page_wrap .login-kakao i {
     width: 66px;
     height: 17px;
     background-position: 0 -12px;
   }
-  .hide{
+  .login_page_wrap .hide{
     display:none;
   }
-  .outer {
+  .login_page_wrap .outer {
     display: table;
     width: 100%;
     height: 100%;
   }
-  .inner {
+  .login_page_wrap .inner {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
@@ -136,13 +136,13 @@
 
 
 
-  .login_page_wrap {
+  .login_page_wrap .login_page_wrap {
     width: 70%;
     height: 70%;
     margin: 40px auto;
   }
 
-  .text_block{
+  .login_page_wrap .text_block{
     padding:20px 0px;
     font-size: 35%;
   }
@@ -150,4 +150,7 @@
   .login_page_wrap .top_text_block{
     padding:20px 0px;
     font-size: 80%;
+  }
+  .login_page_wrap #footer{
+    display:none;
   }
