@@ -21,8 +21,9 @@
                     </div>
                     <div class="btn_sns_list">
                       <a href="/auth/login/kakao" class="login-kakao" id="login-kakao"><i>카카오</i>로그인</a>
-                      <a href="javascript:loginWithFacebook()" class="login-facebook" id="login-facebook"><i>페이스북</i>로그인</a>
-                      <a href="javascript:loginWithNaver()" class="login-naver" id="naverIdLogin_loginButton"><i>네이버</i>로그인</a>
+                      <a href="/auth/login/facebook" class="login-facebook" id="login-facebook"><i>페이스북</i>로그인</a>
+                      <a href="/auth/login/naver" class="login-naver" id="naverIdLogin_loginButton"><i>네이버</i>로그인</a>
+                      <a href="#" class="login-naver" id="native_login">일반로그인</a>
                     </div>
                     <div class="text_block">
                       Copyright ⓒ 2018 착한자동차공업사. All rights reserved.<br>
@@ -40,6 +41,5 @@
           </div>
           <% include ./footer.ejs %>
         </div>
-    <% include ./login_footer.ejs %>
   </body>
   </html>

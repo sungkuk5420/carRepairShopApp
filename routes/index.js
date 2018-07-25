@@ -81,9 +81,59 @@ passport.use(new KakaoStrategy({
   }
 ));
 
+// 페이스북으로 로그인 처리
+passport.use(new FacebookStrategy({
+  clientID: secret_config.federation.facebook.client_id,
+  clientSecret: secret_config.federation.facebook.secret_id,
+  callbackURL: secret_config.federation.facebook.callback_url,
+  profileFields: ['id', 'email', 'gender', 'link', 'locale', 'name', 'timezone',
+    'updated_time', 'verified', 'displayName']
+}, function (accessToken, refreshToken, profile, done) {
+  const _profile = profile._json;
+  
+  console.log('Facebook login info');
+  console.info(_profile);
+  
+  loginByThirdparty({
+    'auth_type': 'facebook',
+    'auth_id': _profile.id,
+    'auth_name': _profile.name,
+    'auth_email': _profile.id
+  }, done);
+}
+));
+
+// naver login
+passport.use(new NaverStrategy({
+  clientID: secret_config.federation.naver.client_id,
+  clientSecret: secret_config.federation.naver.secret_id,
+  callbackURL: secret_config.federation.naver.callback_url // ?? 이것이 어떤 역할을 하는가?
+},
+function (accessToken, refreshToken, profile, done) {
+  const _profile = profile._json;
+  
+  console.log('Naver login info');
+  console.info(_profile);
+  
+  loginByThirdparty({
+    'auth_type': 'naver',
+    'auth_id': _profile.id,
+    'auth_name': _profile.nickname,
+    'auth_email': _profile.email
+  }, done);
+  
+}
+));
+
 /* GET home page. */
 router.get('/',isAuthenticated, function(req, res, next) {
-  res.render('insertUser', { title: 'Express' });
+  if (req.user !== undefined) {
+    res.redirect('/main')
+  } else {
+    res.render('login', {
+      title: 'login'
+    })
+  }
 });
 
 router.get('/insertUser', function(req, res, next) {
@@ -111,7 +161,31 @@ router.get('/auth/login/kakao',
 // kakao 로그인 연동 콜백
 router.get('/auth/login/kakao/callback',
   passport.authenticate('kakao', {
-    successRedirect: '/motor',
+    successRedirect: '/',
+    failureRedirect: '/login'
+  })
+);
+
+// facebook 로그인
+router.get('/auth/login/facebook',
+  passport.authenticate('facebook')
+);
+// facebook 로그인 연동 콜백
+router.get('/auth/login/facebook/callback',
+  passport.authenticate('facebook', {
+    successRedirect: '/',
+    failureRedirect: '/login'
+  })
+);
+
+// naver 로그인
+router.get('/auth/login/naver',
+  passport.authenticate('naver')
+);
+// naver 로그인 연동 콜백
+router.get('/auth/login/naver/callback',
+  passport.authenticate('naver', {
+    successRedirect: '/',
     failureRedirect: '/login'
   })
 );
