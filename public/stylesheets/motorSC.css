@@ -1,19 +1,20 @@
-.basicImgInformation {
+.motor_wrap .basicImgInformation {
     border-color: gold;
     border-radius: 100px;
     -moz-border-radius: 100px;
     -khtml-border-radius: 100px;
     -webkit-border-radius: 100px;
+    width: 25%;
 }
 
-.basicInformation {
+.motor_wrap .basicInformation {
     font-size: 45%;
     padding-bottom: 10px;
     text-align: center;
     width: 25%;
 }
 
-.estimate {
+.motor_wrap .estimate {
     background-color: gray;
     color: black;
     font-size: 45%;
@@ -22,56 +23,61 @@
     width: 100%;
 }
 
-.mainImg {
+.motor_wrap .mainImg {
     height: 100%;
     width: 100%;
     display: table;
 }
 
-.motorLocation {
+.motor_wrap .motorLocation {
     height: 25%;
     width: 100%;
 }
 
-.motorLeftInformation {
-    font-size: 45%;
+.motor_wrap .motorLeftInformation {
+    font-size: 35%;
     line-height: 200%;
-    text-align: right;
-    vertical-align: bottom;
+    text-align: left;
+    vertical-align: top;
 }
 
-.motorRightInformation {
+.motor_wrap .motorRightInformation {
     font-size: 45%;
     line-height: 200%;
     padding-left: 30px;
     text-align: left;
-    vertical-align: bottom;
+    vertical-align: top;
 }
 
-.reviewDivide {
+.motor_wrap .reviewDivide {
     padding-bottom: 10px;
 }
 
-.reviewLeft {
+.motor_wrap .reviewLeft {
     font-size: 45%;
     line-height: 200%;
     text-align: left;
     vertical-align: bottom;
 }
 
-.reviewRight {
+.motor_wrap .reviewRight {
     font-size:45%;
     line-height: 200%;
     text-align: right;
     vertical-align: bottom;
 }
 
-.title {
+.motor_wrap .title {
     font-size:45%;
     padding-bottom: 10px;
     padding-top: 50px;
 }
 
-.width100 {
+.motor_wrap .infoTable{
+    display: block;
+    widows: 100%;
+}
+
+.motor_wrap .width100 {
     width: 100%;
 }
