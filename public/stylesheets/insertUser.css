@@ -1,8 +1,21 @@
-.basicInformation {
-    font-size:70%;
+* {
+    box-sizing: border-box;
 }
 
-.btnChk {
+.main_inner_wrap{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.basicInformation{
+    margin-top: 30px;    
+}
+
+.basicInformation b{
+    font-size: 150%;
+}
+
+.btnChk b{
     height: 25px;
     line-height: 300%;
     width: 25px;
@@ -21,6 +34,10 @@
     color: red;
 }
 
+.black {
+    color: black;
+}
+
 .termsCheck {
     line-height: 300%;
     font-size:50%;
@@ -37,13 +54,6 @@
     width: 100%;
 }
 
-
-
-
-
-* {
-    box-sizing: border-box;
-}
 
 .view__more {
     position: absolute;
@@ -210,3 +220,16 @@ a {
     border-radius: 30px;
     color: #fff;
 }
+
+.insertBnt{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size:1rem;
+    background: white;
+
+    border: 1px solid #ddd;
+    display: inline-block;
+    text-align: center;
+  }
