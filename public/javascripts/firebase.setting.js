@@ -31,9 +31,13 @@ function getDataBase(cb){
     });
 }
 
-function insertUser(phone, passwd) {
-    firebase.database().ref('user/').push({
+function insertUser(phone, passwd,carType,carYear,carKm,carRate) {
+    DATABASE.ref('user/').push({
         phoneNumber: phone,
-        password: passwd
+        password: passwd,
+        carType: carType,
+        carYear: carYear,
+        carKm: carKm,
+        carRate: carRate
     });
 }
