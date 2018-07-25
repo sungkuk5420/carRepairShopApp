@@ -83,7 +83,7 @@ passport.use(new KakaoStrategy({
 
 /* GET home page. */
 router.get('/',isAuthenticated, function(req, res, next) {
-  res.render('login', { title: 'Express' });
+  res.render('insertUser', { title: 'Express' });
 });
 
 router.get('/insertUser', function(req, res, next) {
