@@ -1,0 +1,81 @@
+.insertUser_wrap .main_inner_wrap{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.insertUser_wrap .basicInformation{
+    margin-top: 30px;
+    width: 100%;    
+}
+
+.insertUser_wrap .basicInformation b{
+    font-size: 150%;
+}
+
+.insertUser_wrap .btnChk b{
+    height: 25px;
+    line-height: 300%;
+    width: 25px;
+}
+
+.insertUser_wrap .insertBnt {
+    background-color:gray;
+    color:black;
+    font-size: 40%;
+    line-height: 300%;
+    text-align: center;
+    width: 100%;
+}
+
+.insertUser_wrap .red {
+    color: red;
+}
+
+.insertUser_wrap .black {
+    color: black;
+}
+
+.insertUser_wrap .termsCheck {
+    line-height: 300%;
+    font-size:50%;
+}
+
+.insertUser_wrap .thema {
+    display: inline-block;
+    font-size:50%;
+}
+
+.insertUser_wrap .themaInput {
+    margin-top: 5px;
+    font-size:40%;
+    line-height: 150%;
+    width: 100%;
+}
+
+.insertUser_wrap .car_list{
+    display: block;
+    font-size: 0.7em;
+    line-height: 150%;
+    width: 100%;
+}
+
+.insertUser_wrap .car_list option{
+    font-size: 0.5em;
+}
+
+.insertUser_wrap .insertBnt{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size:1rem;
+    background: white;
+
+    border: 1px solid #ddd;
+    display: inline-block;
+    text-align: center;
+  }
+
+.insertUser_wrap #footer{
+    display: none;
+ }
