@@ -14,7 +14,7 @@
         <div class="main_inner_wrap">
           <!--기본정보 입력-->
           <div class="basicInformation">
-            <!--<b>기본정보 입력</b>-->
+            <b>기본정보 입력</b>
           </div>
 
           <!--폰번호-->
@@ -31,20 +31,48 @@
             <input class="themaInput" type="password" id="passwd">
           </div>
 
+          <!--차종-->
+          <div>
+            <div class="thema"><b>차종</b></div>
+            <div class="thema red">(필수)</div>
+            <input class="themaInput" type="text" id="carType">
+          </div>
+
+          <!--연식-->
+          <div>
+            <div class="thema"><b>연식</b></div>
+            <div class="thema red">(필수)</div>
+            <input class="themaInput" type="text" id="carYear">
+          </div>
+
+          <!--키로수-->
+          <div>
+            <div class="thema"><b>키로수</b></div>
+            <div class="thema red">(필수)</div>
+            <input class="themaInput" type="text" id="carType">
+          </div>
+
+          <!--등급-->
+          <div>
+            <div class="thema"><b>등급</b></div>
+            <div class="thema black">(선택)</div>
+            <input class="themaInput" type="text" id="carRate">
+          </div>
+
           <!--동의 체크박스-->
           <div class="termsCheck">
             <b>개인정보</b> 및 <b>서비스 이용약관</b> 동의합니다.
             <input class="btnChk" type="checkbox" id="btnChk" onclick="chkClick();">
           </div>
   
-          <!--가입버튼-->
-          <div class="insertBnt" id="insertBnt" onclick="click();">
-            <a>가입하기</a>
-          </div>
+          
 
         </div>
       </div>
-      <% include ./footer.ejs %>
+      <!--가입버튼-->
+      <div class="insertBnt" id="insertBnt" onclick="click();">
+        <a>가입하기</a>
+      </div>
     </div>
 
 <script>
