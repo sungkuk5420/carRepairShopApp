@@ -4,18 +4,22 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
-var cors = require('cors');
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
 var passport = require('passport') //passport module add
   , LocalStrategy = require('passport-local').Strategy;
 var cookieSession = require('cookie-session');
-
 var flash = require('connect-flash');
+var jsonParser = bodyParser.json();
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+var cors = require('cors');
 
 var app = express();
+ 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json({ type: 'application/*+json' }))
+
 app.use(cookieSession({
   keys: ['node_yun'],
   cookie: {
@@ -30,17 +34,16 @@ app.use(passport.session());
 app.use(cors());
 
 app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Credentials', true);
-  res.header('Access-Control-Allow-Origin', req.headers.origin);
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
-  if ('OPTIONS' == req.method) {
-       res.send(200);
-   } else {
-       next();
-   }
-  });
-
+res.header('Access-Control-Allow-Credentials', true);
+res.header('Access-Control-Allow-Origin', req.headers.origin);
+res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+if ('OPTIONS' == req.method) {
+      res.send(200);
+  } else {
+      next();
+  }
+});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -64,7 +67,7 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  console.log(err);
   // render the error page
   res.status(err.status || 500);
   res.render('error');
