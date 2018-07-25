@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ./header.ejs %>
+  </head>
+
+  <body>
+    <div class="local-login_page_wrap">
+      <div class="row header_wrap">
+          <h1><a href="#"><img src="logo.png" alt="공업사로고"></a></h1>
+          <button type="button" class="login_btn">로그인</button>
+      </div>
+      <div id="main_container">
+        <div class="main_inner_wrap">
+            <div class="outer">
+              <div class="inner">
+                <div>
+                  <div class="backBtn" onclick="goToLoginPage()">⇦</div>
+                  <!--기본정보 입력-->
+                  <div class="basicInformation">
+                    <b>로그인</b>
+                  </div>
+        
+                  <!--폰번호-->
+                  <div style="text-align: left;">
+                    <div class="thema"><b>폰번호</b></div>
+                    <!-- <div class="thema red">(필수)</div> -->
+                    <input class="themaInput" type="text" id="phone">
+                  </div>
+        
+                  <!--비밀번호-->
+                  <div style="text-align: left;">
+                    <div class="thema"><b>비밀번호</b></div>
+                    <!-- <div class="thema red">(필수)</div> -->
+                    <input class="themaInput" type="password" id="passwd">
+                  </div>
+                  <div class="insertBnt" id="insertBnt" onclick="click();">
+                    <a>가입하기</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    <% include ./footer.ejs %>
+    </div>
+
+<script>
+  function goToLoginPage(){
+    location.href="/login";
+  }
+</script>
+  </body>
+</html>
+  

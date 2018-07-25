@@ -1,0 +1,86 @@
+.local-login_page_wrap .main_inner_wrap{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.local-login_page_wrap .basicInformation{
+    margin-top: 30px;
+    width: 100%;    
+}
+
+.local-login_page_wrap .basicInformation b{
+    font-size: 150%;
+}
+
+.local-login_page_wrap .btnChk b{
+    height: 25px;
+    line-height: 300%;
+    width: 25px;
+}
+
+.local-login_page_wrap .insertBnt {
+    background-color:gray;
+    color:black;
+    font-size: 40%;
+    line-height: 250%;
+    text-align: center;
+    width: 100%;
+}
+
+.local-login_page_wrap .red {
+    color: red;
+}
+
+.local-login_page_wrap .black {
+    color: black;
+}
+
+.local-login_page_wrap .termsCheck {
+    line-height: 300%;
+    font-size:50%;
+}
+
+.local-login_page_wrap .thema {
+    display: inline-block;
+    font-size:50%;
+}
+
+.local-login_page_wrap .themaInput {
+    padding:0px 10px;
+    margin-top: 5px;
+    font-size:40%;
+    line-height: 250%;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+.local-login_page_wrap .car_list{
+    display: block;
+    font-size: 0.7em;
+    line-height: 150%;
+    width: 100%;
+}
+
+.local-login_page_wrap .car_list option{
+    font-size: 0.5em;
+}
+
+.local-login_page_wrap .insertBnt{
+    width: 100%;
+    font-size:1rem;
+    background: white;
+    border: 1px solid #ddd;
+    display: block;
+    text-align: center;
+    margin-top:20px;
+  }
+
+.local-login_page_wrap #footer{
+    display: none;
+}
+
+.local-login_page_wrap .backBtn{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}

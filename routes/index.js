@@ -146,12 +146,24 @@ router.get('/motor', function(req, res, next) {
 });
 router.get('/login', function(req, res, next) {
   if (req.user !== undefined) {
-    res.redirect('/motor')
+    res.redirect('/main')
   } else {
     res.render('login', {
       title: 'login'
     })
   }
+});
+
+router.get('/main', function(req, res, next) {
+  res.render('main', { title: 'Express' });
+});
+
+router.get('/motores', function(req, res, next) {
+  res.render('motor_es', { title: 'Express' });
+});
+
+router.get('/localLogin', function(req, res, next) {
+  res.render('localLogin', { title: 'Express' });
 });
 
 // kakao 로그인
@@ -189,14 +201,6 @@ router.get('/auth/login/naver/callback',
     failureRedirect: '/login'
   })
 );
-
-router.get('/main', function(req, res, next) {
-  res.render('main', { title: 'Express' });
-});
-
-router.get('/motores', function(req, res, next) {
-  res.render('motor_es', { title: 'Express' });
-});
 
 router.post('/login', passport.authenticate('local', {failureRedirect: '/login', failureFlash: true}), // 인증 실패 시 401 리턴, {} -> 인증 스트레티지
   function (req, res) {
