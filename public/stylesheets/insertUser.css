@@ -2,13 +2,14 @@
     box-sizing: border-box;
 }
 
-.main_inner_wrap{
+.insertUser_wrap .main_inner_wrap{
     padding-left: 30px;
     padding-right: 30px;
 }
 
 .basicInformation{
-    margin-top: 30px;    
+    margin-top: 30px;
+    width: 100%;    
 }
 
 .basicInformation b{
@@ -49,6 +50,7 @@
 }
 
 .themaInput {
+    margin-top: 5px;
     font-size:40%;
     line-height: 150%;
     width: 100%;
@@ -221,6 +223,17 @@ a {
     color: #fff;
 }
 
+.insertUser_wrap .car_list{
+    display: block;
+    font-size: 0.7em;
+    line-height: 150%;
+    width: 100%;
+}
+
+.car_list option{
+    font-size: 0.5em;
+}
+
 .insertBnt{
     position: fixed;
     left: 0;
@@ -232,4 +245,8 @@ a {
     border: 1px solid #ddd;
     display: inline-block;
     text-align: center;
+  }
+
+  .insertUser_wrap #footer{
+      display: none;
   }
