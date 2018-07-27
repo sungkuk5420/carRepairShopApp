@@ -9,13 +9,14 @@ let params = {
   Key: '',
   ACL: 'public-read',
   Body: null
-};
+  };
   
-AWS.config.update({
+  
+  AWS.config.update({
   accessKeyId: "",
   secretAccessKey: "",
   "region": "ap-northeast-2"
-});
+  });
 /*S3 버킷 설정*/
 
 const S3 = new S3Instance();
@@ -84,10 +85,16 @@ Upload.optimize = (files, callback) => {
 
 Upload.s3 = (files, key, callback) => {
   async.each(files, (file, cb) => {
+    console.log(file.size);
     params.Key = key + file.name;
+    params.originalSize = file.size;
+    params.fileName = file.name;
     params.Body = require('fs').createReadStream(file.path);
   
     S3.upload(params, (err, result) => {
+      console.log('S3.upload result : ',result);
+      result.originalSize = params.originalSize;
+      result.fileName = params.fileName;
       callback(err, result);
     });
   }, (err, result) => {
