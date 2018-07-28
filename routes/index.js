@@ -140,6 +140,14 @@ router.get('/insertUser', function(req, res, next) {
   res.render('insertUser', { title: 'Express' });
 });
 
+router.get('/event', function(req, res, next) {
+  res.render('event', { title: 'Express' });
+});
+
+router.get('/event_detail', function(req, res, next) {
+  res.render('event_detail', { title: 'Express' });
+});
+
 /* GET Motor service center page. */
 router.get('/motor', function(req, res, next) {
   res.render('motorSC', { title: 'Express' });
