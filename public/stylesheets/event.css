@@ -1,0 +1,145 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.event_wrap .inner_section{
+    padding: 50px;
+}
+.event_content {
+    position: relative;
+}
+.event_content div.event1, .event_content div.event2, .event_content .event_detail{
+    position: relative;
+    width: 100%;
+    height: 570px;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 40px;
+}
+.coupon_seach {
+    margin-bottom: 40px;
+}
+.coupon_seach input {
+    width: 86%;
+    height: 75px;
+    font-size: 35px;
+}
+.coupon_seach button {
+    width: 110px;
+    height: 75px;
+    border: 0;
+    background: #431dad;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 35px;
+}
+.event1 {
+    background: url('../images/back_img1.jpg') no-repeat;
+    background-size: 100% 100%;
+}
+.event2 {
+    background: url('../images/back_img2.jpg') no-repeat;
+    background-size: 100% 100%;
+}
+.event_detail {
+    background: url('../images/back_img1.jpg') no-repeat;
+    background-size: 100% 100%;
+}
+.event_img_wrap {
+    width: 750px;
+    height: 400px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.event_img_wrap img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    height: 100%;
+}
+.event_img_wrap > div {
+    position: relative;
+    width: 85%;
+    height: 100%;
+}
+.event_img_wrap h2 {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  color: #ad0c0c;
+  font-weight: 700;
+}
+.event_img_wrap .dis_type {
+    position: absolute;
+    top: 37%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    font-size: 80px;
+    font-weight: 800;
+}
+.event_img_wrap .dis_content {
+    position: absolute;
+    top: 63%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    font-size: 25px;
+    color: #9b9fa0;
+}
+.coupon_btn {
+    position: absolute;
+    left: 0;
+    bottom: 130px;
+    width: 100%;
+    height: 140px;
+    border: 0;
+    background: #431dad;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 50px;
+}
+.event_detail_2 {
+    position: absolute;
+    left: 50%;
+    top: 550px;
+    transform: translateX(-50%);
+    width: 90%;
+    padding: 65px 30px;
+    font-size: 45px;
+    background: #fff;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+}
+.event_detail_2 p {
+    text-align: right;
+    margin-top: 30px;
+    font-size: 35px;
+}
+.event_detail_2 p strong {
+    font-size: 45px;
+}
+.event_detail_3 {
+    position: absolute;
+    left: 50%;
+    top: 830px;
+    transform: translateX(-50%);
+    width: 90%;
+    padding: 65px 30px;
+    font-size: 45px;
+    background: #fff;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+}
+.event_detail_3 h2 {margin-bottom: 30px;}
+.event_detail_3 li {
+    font-size: 31px;
+    line-height: 50px;
+}
