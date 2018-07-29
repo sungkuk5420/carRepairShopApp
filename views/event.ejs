@@ -23,26 +23,39 @@
         </div>
         <hr>
         <div class="event_content">
-          <div class="event1">
-            <a class="event_img_wrap" href="event_detail">
-              <img src="/images/auto.png" alt="auto 이미지">
-              <div>
-                <h2>무상점검</h2>
-                <p class="dis_type">100% 할인</p>
-                <p class="dis_content">오일류,패드류, 등 기본 정비 10개 항목</p>
-              </div>
-            </a>
-          </div>
-          <div class="event2">
-            <a class="event_img_wrap" href="event_detail">
-              <img src="/images/auto.png" alt="auto 이미지">
-              <div>
-                <h2>엔진오일 할인권</h2>
-                <p class="dis_type">20,00원</p>
-                <p class="dis_content">ZIC 및 동급 엔진오일기준</p>
-              </div>
-            </a>
-          </div>
+          <form action="/event_detail" method="post">
+            <div class="event1">
+              <button class="event_img_wrap">
+                <img src="/images/auto.png" alt="auto 이미지">
+                <div>
+                  <h2>무상점검</h2>
+                  <p class="dis_type">100% 할인</p>
+                  <p class="dis_content">오일류,패드류, 등 기본 정비 10개 항목</p>
+                </div>
+              </button>
+            </div>
+            <input type="hidden" name="img" value="/images/back_img1.jpg">
+            <input type="hidden" name="dis_title" value="무상점검">
+            <input type="hidden" name="dis_type" value="100% 할인">
+            <input type="hidden" name="dis_content" value="오일류,패드류, 등 기본 정비 10개 항목">
+          </form>
+          <form action="/event_detail" method="post">
+            <div class="event2">
+              <button class="event_img_wrap">
+                <img src="/images/auto.png" alt="auto 이미지">
+                <div>
+                  <h2>엔진오일 할인권</h2>
+                  <p class="dis_type">200,00원</p>
+                  <p class="dis_content">ZIC 및 동급 엔진오일기준</p>
+                </div>
+                <input type="hidden" name="dis_title" value="엔진오일 할인권">
+                <input type="hidden" name="img" value="/images/back_img2.jpg">
+                <input type="hidden" name="dis_type" value="200,00원">
+                <input type="hidden" name="dis_content" value="ZIC 및 동급 엔진오일기준">
+              
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -50,7 +63,7 @@
   </div>
 
   <script>
-  
+  console.log(document.getElementsByTagName('input')[2].value);
   </script>
 </body>
 
