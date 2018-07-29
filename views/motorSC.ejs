@@ -153,8 +153,8 @@
         
         // GeoLocation을 이용해서 접속 위치를 얻어옵니다
         navigator.geolocation.getCurrentPosition(function(position) {
-            var locPosition = new daum.maps.LatLng(37.487697, 126.788740), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-                message = '<div style="width:200px;font-size:1rem;padding:5px;"><b>부천 착한 공업사</b><br>부천시 원미구 심곡동 777-30</div>'; // 인포윈도우에 표시될 내용입니다
+            var locPosition = new daum.maps.LatLng(37.487697, 126.788740); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+            var message = '<div style="width:200px;font-size:1rem;padding:5px;"><b>부천 착한 공업사</b><br>부천시 원미구 심곡동 777-30</div>'; // 인포윈도우에 표시될 내용입니다
             
             // 마커와 인포윈도우를 표시합니다
             displayMarker(locPosition, message);
