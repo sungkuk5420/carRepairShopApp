@@ -244,7 +244,14 @@ router.post('/uploadResult', urlencodedParser, function(req, res, next) {
     // res.json(EstimateData);
   // res.end();
 });
-
+router.post('/event_detail', urlencodedParser, function(req, res, next) {
+  console.log('event_detail ' + JSON.stringify(req.body));
+  let eventData = req.body;
+  console.log(eventData);
+  res.render('event_detail', { title: 'Express', eventData: eventData, len:Object.keys(req.body).length});
+    // res.json(EstimateData);
+  // res.end();
+});
 router.post('/upload',  (req, res) => {
   const tasks = [
     (callback) => {
