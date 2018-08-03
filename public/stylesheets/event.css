@@ -153,3 +153,12 @@
     font-size: 12px;
     line-height: 19px;
 }
+@media (max-width: 360px) {
+    .event_content div.event1, .event_content div.event2, .event_content .event_detail{
+        height: 178px;
+    }
+    .event_img_wrap {width: 255px;}
+    .event_img_wrap h2 {font-size: 18px;}
+    .event_img_wrap .dis_type {font-size: 28px;}
+    .event_img_wrap .dis_content {font-size: 11px;}
+}
