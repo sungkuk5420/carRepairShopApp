@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
 }
-.event_wrap hr {margin: 0 0 20px 0;}
+.event_wrap hr, .event_detail_wrap hr {margin: 0 0 20px 0;}
 .event_wrap .inner_section, .event_detail_wrap .inner_section{
     padding: 15px;
 }
@@ -13,7 +13,6 @@
     position: relative;
     width: 100%;
     height: 200px;
-    border: 1px solid black;
     text-align: center;
     margin-bottom: 20px
 }
@@ -157,8 +156,13 @@
     .event_content div.event1, .event_content div.event2, .event_content .event_detail{
         height: 178px;
     }
-    .event_img_wrap {width: 255px;}
-    .event_img_wrap h2 {font-size: 18px;}
-    .event_img_wrap .dis_type {font-size: 28px;}
-    .event_img_wrap .dis_content {font-size: 11px;}
+    .event_img_wrap {width: 255px;height: 120px;}
+    .event_img_wrap h2 {top: 21%;font-size: 18px;}
+    .event_img_wrap .dis_type {top: 37%; font-size: 26px;}
+    .event_img_wrap .dis_content {top: 69%;font-size: 11px;}
+    .event_detail_wrap .dis_type {top: 47%;}
+    .event_detail_2 {top: 162px;width: 96%;padding: 10px;font-size: 15px;}
+    .event_detail_3 li {font-size: 11px;}
+    .event_detail_3 {top: 231px;width: 96%;padding: 10px;font-size: 15px;}
+    .coupon_btn {bottom: 78px;width: 87%;height: 40px; font-size: 17px;}
 }
