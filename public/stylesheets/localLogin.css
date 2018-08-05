@@ -18,13 +18,17 @@
     width: 25px;
 }
 
-.local-login_page_wrap .insertBnt {
-    background-color:gray;
+.local-login_page_wrap .bottomBtn {
+    display:inline-block;
+    border:1px solid #ddd;
     color:black;
     font-size: 40%;
     line-height: 250%;
     text-align: center;
-    width: 100%;
+    width: 50%;
+    margin: 1px 0;
+    box-sizing: border-box;
+    font-size:14px;
 }
 
 .local-login_page_wrap .red {

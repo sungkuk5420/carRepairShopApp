@@ -15,28 +15,35 @@
             <div class="outer">
               <div class="inner">
                 <div>
-                  <div class="backBtn" onclick="goToLoginPage()">⇦</div>
-                  <!--기본정보 입력-->
-                  <div class="basicInformation">
-                    <b>로그인</b>
-                  </div>
-        
-                  <!--폰번호-->
-                  <div style="text-align: left;">
-                    <div class="thema"><b>폰번호</b></div>
-                    <!-- <div class="thema red">(필수)</div> -->
-                    <input class="themaInput" type="text" id="phone">
-                  </div>
-        
-                  <!--비밀번호-->
-                  <div style="text-align: left;">
-                    <div class="thema"><b>비밀번호</b></div>
-                    <!-- <div class="thema red">(필수)</div> -->
-                    <input class="themaInput" type="password" id="passwd">
-                  </div>
-                  <div class="insertBnt" id="insertBnt" onclick="click();">
-                    <a>가입하기</a>
-                  </div>
+                  <form action="/localLogin" enctype="application/x-www-form-urlencoded"  method="post">
+                    <div class="backBtn" onclick="goToLoginPage()">⇦</div>
+                    <!--기본정보 입력-->
+                    <div class="basicInformation">
+                      <b>로그인</b>
+                    </div>
+          
+                    <!--폰번호-->
+                    <div style="text-align: left;">
+                      <div class="thema"><b>폰번호</b></div>
+                      <!-- <div class="thema red">(필수)</div> -->
+                      <input class="themaInput" type="text" id="phone" name="username">
+                    </div>
+          
+                    <!--비밀번호-->
+                    <div style="text-align: left;">
+                      <div class="thema"><b>비밀번호</b></div>
+                      <!-- <div class="thema red">(필수)</div> -->
+                      <input class="themaInput" type="password" id="passwd" name="password">
+                    </div>
+                    <div style="width:100%; font-size:0;">
+                      <div class="bottomBtn" id="">
+                          <button type="submit" class="re_btn">로그인</button>
+                      </div>
+                      <div class="bottomBtn" id=""onclick="goToJoinPage();" >
+                        <a>회원가입</a>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -46,8 +53,24 @@
     </div>
 
 <script>
-  function goToLoginPage(){
-    location.href="/login";
+  function login(){
+    var apiUrl = 'http://localhost:3000/';
+    $.ajax({
+        type: 'POST',
+        data: {
+          'username' : 'abc',
+          'password' : '123'
+        },
+        contentType: false,
+        processData: false,
+        url: apiUrl+'localLogin',
+        success: function(data) {
+            console.log('success', data);            
+        }
+    });
+  }
+  function goToJoinPage(){
+    location.href="/insertUser";
   }
 </script>
   </body>
