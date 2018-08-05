@@ -35,9 +35,17 @@ function uploadEs(form){
     var chk3 = document.getElementById('chk3').checked;
     var reqText = document.getElementById('req_text').value;
     var eventCode = document.getElementById('event_code').value;
+    var termsOfService = document.getElementById('chk4').checked;
+
+    if(termsOfService == false){
+        alert('약관에 동의해주세요.');
+        return false;
+    }else{
+        insertEs(carType,infoName,infoNumber,chk1,chk2  ,chk3,reqText,eventCode   );
+        alert('견적서요청이 완료 되었습니다.');
+    }
     
-    insertEs(carType,infoName,infoNumber,chk1,chk2  ,chk3,reqText,eventCode   );
-    alert('견적서요청이 완료 되었습니다.');
+    
 }
 
 // $("form").submit(function(e){
