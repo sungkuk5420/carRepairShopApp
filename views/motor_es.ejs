@@ -17,20 +17,20 @@
             <form  action="/upload" enctype="multipart/form-data" id="imageUploadForm" method="post">
                 <input type="file" class="file_upload" name="img_files[]" accept="image/*">
             </form>
-            <form action="/uploadResult" enctype="application/x-www-form-urlencoded"  method="post">
+            <form onsubmit="return uploadEs(this);" id="main_form" action="/uploadResult" enctype="application/x-www-form-urlencoded"  method="post">
                 <div class="imagePreViewList">
                 </div>
                 <section class="info_section">
                     <div class="inner_section">
                         <h2 class="info_h2">차종</h2>
-                        <select class="car_type" name="car_type">
+                        <select class="car_type" name="car_type" id="car_type">
                             <option value="all_new_k3" selected>all new k3</option>
                             <option value="BMW">BMW</option>
                             <option value="audi">audi</option>
                         </select>
                         <h2>정보</h2>
-                        <input type="text" class="info_name" name="info_name">
-                        <input type="text" class="info_number" name="info_number">
+                        <input type="text" class="info_name" name="info_name" id="info_name">
+                        <input type="text" class="info_number" name="info_number" id="info_number">
                     </div>
                 </section>
                 <section class="required_section">

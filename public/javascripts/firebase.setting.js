@@ -41,3 +41,16 @@ function insertUser(phone, passwd,carType,carYear,carKm,carRate) {
         carRate: carRate
     });
 }
+
+function insertEs(carType,infoName,infoNumber,chk1,chk2,chk3,reqText,eventCode){
+    DATABASE.ref('estimate/').push({
+        carType: carType,
+        infoName: infoName,
+        infoNumber: infoNumber,
+        reqEsimate: {insurance: chk1,
+                    carRentalService: chk2,
+                    pickupService:chk3},
+        reqText: reqText,
+        eventCode: eventCode
+    });
+}
