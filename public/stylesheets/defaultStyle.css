@@ -100,6 +100,12 @@ body{
 #footer ul li a span img {
   width: 60%;
 }
+#footer ul li.motores_li img {
+  width: 80%
+}
+#footer ul li.my_li img {
+  width: 90%
+}
 .outer {
   display: table;
   width: 100%;
