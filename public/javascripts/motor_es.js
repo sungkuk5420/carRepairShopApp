@@ -45,7 +45,8 @@ function uploadEs(form){
         alert('이름, 비밀번호, 전화번호는 필수 입력사항입니다.');
         return false;
     }else{
-        insertEs(carType,infoName,infoPasswd,infoNumber,chk1,chk2  ,chk3,reqText,eventCode   );
+        //이미지 url 받아서 넘기는게 필요합니다.
+        insertEs(carType,infoName,infoPasswd,infoNumber,chk1,chk2  ,chk3,reqText,eventCode,'');
         alert('견적서요청이 완료 되었습니다.');
     }
     

@@ -42,7 +42,7 @@ function insertUser(phone, passwd,carType,carYear,carKm,carRate) {
     });
 }
 
-function insertEs(carType,infoName,infoPasswd,infoNumber,chk1,chk2,chk3,reqText,eventCode){
+function insertEs(carType,infoName,infoPasswd,infoNumber,chk1,chk2,chk3,reqText,eventCode,imageUrl){
     /*
     carType 차종
     infoName 이름
@@ -53,6 +53,7 @@ function insertEs(carType,infoName,infoPasswd,infoNumber,chk1,chk2,chk3,reqText,
         chk3 픽업 서비스
     reqText 파손 정보
     eventCode 프로모션 코드
+    imageUrl 이미지 url 정보
     */
     DATABASE.ref('estimate/').push({
         carType: carType,
@@ -63,6 +64,7 @@ function insertEs(carType,infoName,infoPasswd,infoNumber,chk1,chk2,chk3,reqText,
                     carRentalService: chk2,
                     pickupService:chk3},
         reqText: reqText,
-        eventCode: eventCode
+        eventCode: eventCode,
+        imageUrl: imageUrl
     });
 }
