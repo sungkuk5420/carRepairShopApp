@@ -41,6 +41,9 @@ function uploadEs(form){
     if(termsOfService == false){
         alert('약관에 동의해주세요.');
         return false;
+    }if(infoName==""||infoPasswd==""||infoNumber==""){
+        alert('이름, 비밀번호, 전화번호는 필수 입력사항입니다.');
+        return false;
     }else{
         insertEs(carType,infoName,infoPasswd,infoNumber,chk1,chk2  ,chk3,reqText,eventCode   );
         alert('견적서요청이 완료 되었습니다.');
