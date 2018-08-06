@@ -43,6 +43,17 @@ function insertUser(phone, passwd,carType,carYear,carKm,carRate) {
 }
 
 function insertEs(carType,infoName,infoNumber,chk1,chk2,chk3,reqText,eventCode){
+    /*
+    carType 차종
+    infoName 이름
+    infoNumber 전화번호
+    선택요정사항
+        chk1 보험수리
+        chk2 렌터카 서비스
+        chk3 픽업 서비스
+    reqText 파손 정보
+    eventCode 프로모션 코드
+    */
     DATABASE.ref('estimate/').push({
         carType: carType,
         infoName: infoName,
