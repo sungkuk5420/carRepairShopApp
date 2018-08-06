@@ -42,7 +42,7 @@ function insertUser(phone, passwd,carType,carYear,carKm,carRate) {
     });
 }
 
-function insertEs(carType,infoName,infoNumber,chk1,chk2,chk3,reqText,eventCode){
+function insertEs(carType,infoName,infoPasswd,infoNumber,chk1,chk2,chk3,reqText,eventCode){
     /*
     carType 차종
     infoName 이름
@@ -57,6 +57,7 @@ function insertEs(carType,infoName,infoNumber,chk1,chk2,chk3,reqText,eventCode){
     DATABASE.ref('estimate/').push({
         carType: carType,
         infoName: infoName,
+        infoPasswd: infoPasswd,
         infoNumber: infoNumber,
         reqEsimate: {insurance: chk1,
                     carRentalService: chk2,

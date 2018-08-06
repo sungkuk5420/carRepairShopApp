@@ -29,6 +29,7 @@ $('#imageUploadForm').on("change", function(data){
 function uploadEs(form){
     var carType = document.getElementById('car_type').value;
     var infoName = document.getElementById('info_name').value;
+    var infoPasswd = document.getElementById('info_passwd').value;
     var infoNumber = document.getElementById('info_number').value;
     var chk1 = document.getElementById('chk1').checked;
     var chk2 = document.getElementById('chk2').checked;
@@ -41,7 +42,7 @@ function uploadEs(form){
         alert('약관에 동의해주세요.');
         return false;
     }else{
-        insertEs(carType,infoName,infoNumber,chk1,chk2  ,chk3,reqText,eventCode   );
+        insertEs(carType,infoName,infoPasswd,infoNumber,chk1,chk2  ,chk3,reqText,eventCode   );
         alert('견적서요청이 완료 되었습니다.');
     }
     
