@@ -6,28 +6,31 @@
 .event_wrap .inner_section, .event_detail_wrap .inner_section{
     padding: 15px;
 }
-.event_content {
+.event_wrap .event_content, .event_detail_wrap .event_content {
     position: relative;
 }
-.event_content div.event1, .event_content div.event2, .event_content .event_detail{
+.event_wrap .event_content div.event1, .event_wrap .event_content div.event2, 
+.event_wrap .event_content .event_detail, .event_detail_wrap .event_content .event_detail{
     position: relative;
     width: 100%;
     height: 200px;
     text-align: center;
     margin-bottom: 20px
 }
-.coupon_seach {
+.event_wrap .coupon_seach, .event_detail_wrap .coupon_seach {
     margin-bottom: 20px;
 }
-.coupon_seach input {
+.event_wrap .coupon_seach input, .event_detail_wrap .coupon_seach input {
     width: 80%;
     height: 40px;
     font-size: 13px;
     border: 1px solid #ccc;
     padding-left: 10px;
 }
-.coupon_seach input::placeholder {color: #ccc;}
-.coupon_seach button {
+.event_wrap .coupon_seach input::placeholder, .event_detail_wrap .coupon_seach input::placeholder {
+    color: #ccc;
+}
+.event_wrap .coupon_seach button, .event_detail_wrap .coupon_seach button {
     width: 17%;
     height: 40px;
     line-height: 40px;
@@ -38,18 +41,18 @@
     border-radius: 5px;
     background: #431dad;
 }
-.event1 {
+.event_wrap .event1 {
     background: url('../images/back_img1.jpg') no-repeat;
     background-size: 100% 100%;
 }
-.event2 {
+.event_wrap .event2 {
     background: url('../images/back_img2.jpg') no-repeat;
     background-size: 100% 100%;
 }
-.event_detail img {
+.event_detail_wrap .event_detail img {
     width: 100%;
 }
-.event_img_wrap {
+.event_wrap .event_img_wrap, .event_detail_wrap .event_img_wrap {
     width: 300px;
     height: 150px;
     position: absolute;
@@ -57,7 +60,7 @@
     top: 50%;
     transform: translate(-50%,-50%);
 }
-.event_img_wrap img {
+.event_wrap .event_img_wrap img, .event_detail_wrap .event_img_wrap img {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -65,12 +68,12 @@
     width: 100%;
     height: 100%;
 }
-.event_img_wrap > div {
+.event_wrap .event_img_wrap > div, .event_detail_wrap .event_img_wrap > div  {
     position: relative;
     width: 85%;
     height: 100%;
 }
-.event_img_wrap h2 {
+.event_wrap .event_img_wrap h2 ,.event_detail_wrap .event_img_wrap h2{
     position: absolute;
     top: 25%;
     left: 50%;
@@ -80,7 +83,7 @@
     font-weight: 700;
     font-size: 20px;
 }
-.event_img_wrap .dis_type {
+.event_wrap .event_img_wrap .dis_type, .event_detail_wrap .event_img_wrap .dis_type {
     position: absolute;
     top: 43%;
     left: 50%;
@@ -90,11 +93,11 @@
     font-weight: 800;
     color: black;
 }
-.event_detail_wrap .dis_type {
+.event_detail_wrap .event_img_wrap .dis_type {
     top: 50%;
     transform: translate(-50%,-50%);
 }
-.event_img_wrap .dis_content {
+.event_wrap .event_img_wrap .dis_content, .event_detail_wrap .event_img_wrap .dis_content {
     position: absolute;
     top: 70%;
     left: 50%;
@@ -103,7 +106,7 @@
     font-size: 12px;
     color: #9b9fa0;
 }
-.coupon_btn {
+.event_detail_wrap .coupon_btn {
     position: absolute;
     bottom: 85px;
     left: 50%;
@@ -115,7 +118,7 @@
     font-size: 20px;
     transform: translateX(-50%);
 }
-.event_detail_2 {
+.event_detail_wrap .event_detail_2 {
     position: absolute;
     left: 50%;
     top: 190px;
@@ -127,15 +130,15 @@
     box-sizing: border-box;
     border: 1px solid #ccc;
 }
-.event_detail_2 p {
+.event_detail_wrap .event_detail_2 p {
     text-align: right;
     margin-top: 10px;
     font-size: 15px;
 }
-.event_detail_2 p strong {
+.event_detail_wrap .event_detail_2 p strong {
     font-size: 15px;
 }
-.event_detail_3 {
+.event_detail_wrap .event_detail_3 {
     position: absolute;
     left: 50%;
     top: 270px;
@@ -147,12 +150,12 @@
     box-sizing: border-box;
     border: 1px solid #ccc;
 }
-.event_detail_3 h2 {margin-bottom: 10px;}
-.event_detail_3 li {
+.event_detail_wrap .event_detail_3 h2 {margin-bottom: 10px;}
+.event_detail_wrap .event_detail_3 li {
     font-size: 12px;
     line-height: 19px;
 }
-@media (max-width: 360px) {
+/* @media (max-width: 360px) {
     .event_content div.event1, .event_content div.event2, .event_content .event_detail{
         height: 178px;
     }
@@ -165,4 +168,4 @@
     .event_detail_3 li {font-size: 11px;}
     .event_detail_3 {top: 231px;width: 96%;padding: 10px;font-size: 15px;}
     .coupon_btn {bottom: 78px;width: 87%;height: 40px; font-size: 17px;}
-}
+} */
