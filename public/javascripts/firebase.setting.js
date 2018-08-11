@@ -41,3 +41,18 @@ function insertUser(phone, passwd,carType,carYear,carKm,carRate) {
         carRate: carRate
     });
 }
+
+// 유저 중복 확인
+function dupCheck(phone){
+    DATABASE.ref().on('child_added', function (data) {
+        var database = data.val();
+        DB_USERS_DATA = Object.keys(database).map(function(data) {
+            if(phone == database[data].phoneNumber){
+                return false;
+            }
+            else {
+                return true;
+            }
+        });
+    });
+}

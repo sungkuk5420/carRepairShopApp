@@ -100,18 +100,16 @@ document.getElementById("insertBnt").onclick = function () {
   var carKm = document.getElementById('carKm').value;
   var carRate = document.getElementById('carRate').value;
 
-  console.log(carType);
-  console.log(carYear);
-  console.log(carKm);
-  console.log(carRate);
-
-
   if(document.getElementById('btnChk').checked == true) {
     if(phone !== '' && passwd !== '' && carType !== '' && carYear !== '' && carKm !== '') {
-      // console.log(phone);
-      insertUser(phone, passwd,carType,carYear,carKm,carRate);
-      alert('가입되었습니다.');
-      location.href='/';
+      if(dupCheck(phone) == true) {
+        insertUser(phone, passwd,carType,carYear,carKm,carRate);
+        alert('가입되었습니다.');
+        location.href='/';
+      }
+      else {
+        alert('이미 가입되어있는 유저입니다.');
+      }
     }
     else if(phone == '' || passwd == ''){
       alert('폰번호 또는 비밀번호를 잘못 입력 하였습니다.');
