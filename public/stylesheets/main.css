@@ -10,8 +10,8 @@
 .main_page_wrap .main_content{
     position: relative;
     z-index: 2;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .main_page_wrap .back_image_wrap{
@@ -137,6 +137,7 @@
     float: right;
     height: 100%;
     width: 45%;
+    text-align: center;
 }
 
 .main_page_wrap .reservation_wrap .reservation_content .row{
@@ -171,7 +172,7 @@
 }
 
 .main_page_wrap .reservation_wrap .reservation_content .reservation_car_image{
-    width: 100%;
+    height: 100%;
 }
 
 /*예약현환 버튼 영역*/
