@@ -158,6 +158,7 @@
 .main_page_wrap .reservation_wrap .reservation_content .reservation_car_name{
     display: inline-block;
     font-weight: bold; 
+    vertical-align: bottom;
 }
 
 /*예약 방식??*/
