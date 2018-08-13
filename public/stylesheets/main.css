@@ -120,6 +120,11 @@
     height: 90px;
 }
 
+.main_page_wrap .reservation_wrap #reservation1::after{
+    content: " ";
+    display: block;
+    clear: both;
+}
 .main_page_wrap .reservation_wrap .reservation_content .left_side{
     float: left;
     height: 100%;
