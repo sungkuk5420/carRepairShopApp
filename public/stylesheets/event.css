@@ -23,7 +23,7 @@
 }
 .event_wrap .coupon_seach input, .event_detail_wrap .coupon_seach input {
     width: 80%;
-    height: 40px;
+    height: 30px;
     font-size: 13px;
     border: 1px solid #ccc;
     padding-left: 10px;
@@ -33,8 +33,8 @@
 }
 .event_wrap .coupon_seach button, .event_detail_wrap .coupon_seach button {
     width: 17%;
-    height: 40px;
-    line-height: 40px;
+    height: 30px;
+    line-height: 30px;
     color: #fff;
     border: 0;
     font-size: 15px;
