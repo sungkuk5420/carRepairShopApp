@@ -10,7 +10,10 @@
     padding: 15px;
     overflow-y: auto;
 }
-.event_wrap .event_content, .event_detail_wrap .event_content {
+.event_wrap .event_content {
+    position: relative;
+}
+.event_detail_wrap .event_content {
     position: relative;
     height:550px;
 }
@@ -56,6 +59,7 @@
 }
 .event_detail_wrap .event_detail img {
     width: 100%;
+    height:200px;
 }
 .event_wrap .event_img_wrap, .event_detail_wrap .event_img_wrap {
     width: 90%;
