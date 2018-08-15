@@ -2,13 +2,17 @@
     margin: 0;
     padding: 0;
 }
-.event_container {overflow-y:auto;}
+.event_container {height:100%; overflow-y:auto;}
+.event_detail_wrap {height:100%;}
 .event_wrap hr, .event_detail_wrap hr {margin: 0 0 1rem 0;}
 .event_wrap .inner_section, .event_detail_wrap .inner_section{
+    height:100%;
     padding: 15px;
+    overflow-y: auto;
 }
 .event_wrap .event_content, .event_detail_wrap .event_content {
     position: relative;
+    height:550px;
 }
 .event_wrap .event_content div.event1, .event_wrap .event_content div.event2, 
 .event_wrap .event_content .event_detail, .event_detail_wrap .event_content .event_detail{
@@ -107,17 +111,22 @@
     font-size: 12px;
     color: #9b9fa0;
 }
-.event_detail_wrap .coupon_btn {
-    position: fixed;
-    bottom: 85px;
+.event_detail_wrap .event_detail_btn {
+    position: absolute;
     left: 50%;
+    top: 450px;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+}
+.event_detail_wrap .coupon_btn {
+    display: inline-block;
     width: 90%;
-    height: 8%;
+    height: 40px;
     border: 0;
     background: #431dad;
     color: #fff;
     font-size: 20px;
-    transform: translateX(-50%);
 }
 .event_detail_wrap .event_detail_2 {
     position: absolute;
