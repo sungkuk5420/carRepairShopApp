@@ -17,7 +17,7 @@ getDataBase(function(){
 });
 
 function getDataBase(cb){
-    DATABASE.ref().on('child_added', function (data) {
+    DATABASE.ref('/user').on('value', function (data) {
         var database = data.val();
         DB_USERS_DATA = Object.keys(database).map(function(data) {
             return {
@@ -25,6 +25,7 @@ function getDataBase(cb){
                 info :database[data]
             };
         });
+
         if(cb){
             cb();
         }

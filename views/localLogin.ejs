@@ -15,7 +15,7 @@
             <div class="outer">
               <div class="inner">
                 <div>
-                  <form action="/localLogin" enctype="application/x-www-form-urlencoded"  method="post">
+                  <form action="/localLogin" enctype="application/x-www-form-urlencoded"  method="post" id="form">
                     <div class="backBtn" onclick="goToLoginPage()">⇦</div>
                     <!--기본정보 입력-->
                     <div class="basicInformation">
@@ -36,8 +36,8 @@
                       <input class="themaInput" type="password" id="passwd" name="password">
                     </div>
                     <div style="width:100%; font-size:0;">
-                      <div class="bottomBtn" id="">
-                          <button type="submit" class="re_btn">로그인</button>
+                      <div class="bottomBtn" id="" onClick="userCheck()">
+                        <a>로그인</a>
                       </div>
                       <div class="bottomBtn" id=""onclick="goToJoinPage();" >
                         <a>회원가입</a>
@@ -53,24 +53,25 @@
     </div>
 
 <script>
-  function login(){
-    var apiUrl = 'http://localhost:3000/';
-    $.ajax({
-        type: 'POST',
-        data: {
-          'username' : 'abc',
-          'password' : '123'
-        },
-        contentType: false,
-        processData: false,
-        url: apiUrl+'localLogin',
-        success: function(data) {
-            console.log('success', data);            
-        }
+  function userCheck(){
+    var phone = $('#phone').val();
+    var password = $('#passwd').val();
+
+    var haveUser = DB_USERS_DATA.filter(function(currentUser){
+      return currentUser.info.phoneNumber == phone;
     });
-  }
-  function goToJoinPage(){
-    location.href="/insertUser";
+
+    
+    if(haveUser.length == 0){
+      alert('ID를 확인해주세요.');
+    }else if(haveUser[0].info.password != password){
+      alert('password가 틀렸습니다.');
+    }else{
+      document.forms['form'].submit();
+    }
+    
+
+    
   }
 </script>
   </body>
