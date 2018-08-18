@@ -26,6 +26,33 @@ $('#imageUploadForm').on("change", function(data){
     });
 });
 
+function uploadEs(form){
+    var carType = document.getElementById('car_type').value;
+    var infoName = document.getElementById('info_name').value;
+    var infoPasswd = document.getElementById('info_passwd').value;
+    var infoNumber = document.getElementById('info_number').value;
+    var chk1 = document.getElementById('chk1').checked;
+    var chk2 = document.getElementById('chk2').checked;
+    var chk3 = document.getElementById('chk3').checked;
+    var reqText = document.getElementById('req_text').value;
+    var eventCode = document.getElementById('event_code').value;
+    var termsOfService = document.getElementById('chk4').checked;
+
+    if(termsOfService == false){
+        alert('약관에 동의해주세요.');
+        return false;
+    }if(infoName==""||infoPasswd==""||infoNumber==""){
+        alert('이름, 비밀번호, 전화번호는 필수 입력사항입니다.');
+        return false;
+    }else{
+        //이미지 url 받아서 넘기는게 필요합니다.
+        insertEs(carType,infoName,infoPasswd,infoNumber,chk1,chk2  ,chk3,reqText,eventCode,'');
+        alert('견적서요청이 완료 되었습니다.');
+    }
+    
+    
+}
+
 // $("form").submit(function(e){
 //     e.preventDefault();
 //     console.log(e.target);

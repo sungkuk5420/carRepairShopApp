@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% include ./header.ejs %>
+</head>
+
+<body>
+  <div class="event_detail_wrap">
+    <div class="row header_wrap">
+      <h1>
+        <a href="#">
+          <img src="/images/logo.png" alt="공업사로고">
+        </a>
+      </h1>
+      <button type="button" class="login_btn">로그인</button>
+    </div>
+    <div class="event_container">
+      <div class="inner_section">
+        <div class="coupon_seach">
+          <input type="text" placeholder="쿠폰 번호를 입력해 주세요.">
+          <button type="button">등록</button>
+        </div>
+        <hr>
+        <div class="event_content">
+            <div class="event_detail">
+              <img src="<%= eventData.img %>" alt="">
+                <div class="event_img_wrap">
+                    <img src="/images/auto.png" alt="auto 이미지">
+                    <div>
+                    <p class="dis_type"><%= eventData.dis_type %></p>
+                    <p class="dis_content"><%= eventData.dis_content %></p>
+                    </div>
+                </div>
+            </div>
+            <div class="event_detail_2">
+                <h2><%= eventData.dis_title %></h2>
+                <p>35,000원(100% OFF) <strong><%= eventData.dis_type %></strong></p>
+            </div>
+            <div class="event_detail_3">
+                <h2>이용시 주의사항</h2>
+                <ul>
+                    <li>-해당 쿠폰은 착한공업사 구매자만 사용 가능합니다.</li>
+                    <li>-기아 오토큐 서비스센터에서만 사용 가능합니다.</li>
+                    <li>-타 쿠폰 및 제휴카드의 중복할인은 불가능합니다.</li>
+                </ul>
+            </div>
+            <div class="event_detail_btn">
+              <button type="button" class="coupon_btn">쿠폰사용</button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <% include ./footer.ejs %>
+  </div>
+
+  <script>
+    </script>
+</body>
+
+</html>

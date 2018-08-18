@@ -20,11 +20,13 @@ body{
   display: block;
 }
 
-#main_container,
+#main_container {
+  font-size:2rem;
+}
 #footer{
   position: fixed;
   left: 0;
-  bottom: 0;
+  bottom: -3px;
   width: 100%;
   font-size:2rem;
   background: white;
@@ -77,14 +79,37 @@ body{
 }
 
 #footer ul li{
-  border: 1px solid #ddd;
   display: inline-block;
-  width: 33.3333%;
-  padding: 2rem 0rem;
+  vertical-align: top;
+  position: relative;
+  width: 20%;
+  padding: 1rem 0 20%;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
   text-align: center;
   font-size:50%;
+  line-height:0;
 }
-
+#footer ul li a {
+  display: inline-block;
+  height: 100%;
+}
+#footer ul li a span {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+#footer ul li a span img {
+  width: 60%;
+}
+#footer ul li.motores_li img {
+  width: 80%
+}
+#footer ul li.my_li img {
+  width: 90%
+}
 .outer {
   display: table;
   width: 100%;
