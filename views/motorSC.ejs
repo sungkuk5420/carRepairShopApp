@@ -14,125 +14,75 @@
         <div class="main_inner_wrap">
           <!--공업사 메인 이미지-->
           <div>
-            <img class="mainImg" src="/images/motorservicecenter.PNG">
+            <img class="mainImg" src="/images/motorImage.PNG">
           </div>
           
           <!--견적요청 버튼-->
           <a href="/motores">
-          <div class="estimate">
-              견적요청
-          </div></a>
-          
-          <!--공업사 text 정보-->
-          <div>
-            <table class="shopInfoTable">
-              <tr>
-                <td class="title" colspan="2"><b>정비소 정보</b></td>
-              </tr>
-              <tr>
-                <td class="motorLeftInformation"><b>주소</b></td>
-                <td class="motorRightInformation">경기도 부천시 원미구 심곡동 777-30</td>
-              </tr>
-              <tr>
-                <td class="motorLeftInformation"><b>연락처</b></td>
-                <td class="motorRightInformation">070-1010-1010</td>
-              </tr>
-              <tr>
-                <td class="motorLeftInformation"><b>영업시간</b></td>
-                <td class="motorRightInformation">평일 09:00~19:00 / 토 09:00~16:00</td>
-              </tr>
-              <tr>
-                <td class="motorLeftInformation">&nbsp;</td>
-                <td class="motorRightInformation">(일, 공휴일 휴무)</td>
-              </tr>
-              <tr>
-                <td class="motorLeftInformation"><b>평점</b></td>
-                <td class="motorRightInformation">10점</td>
-              </tr>
-            </table>
+            <div class="estimate">견적요청
+            </div>
+          </a>
+
+          <div class="shopInfo">
+            <div class="leftSide">
+              <img class="infoImage" src="/images/motorImage2.PNG">
+            </div>
+            <div class="rightSide">
+              <ul>
+                <li class="motorName">이광현 공업사</li>
+                <li class="motorAddress">부천시 원미구 원미동 777-30번지</li>
+                <li class="motorPhonNumber">070-1010-1010</li>
+              </ul>
+            </div>
           </div>
           
           <!--정비소 위치-->
-          <div class="title"><b>정비소 위치</b></div>
           <div id="map" class="motorLocation"></div>
           
-          <!--기본정보-->
-          <div>
-            <table class="infoTable">
-              <tr>
-                <td class="title"><b>기본 정보</b></td>
-              </tr>
-              <tr>
-                  <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
-                  <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
-                  <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
-                  <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
-              <tr>
-                <td class="basicInformation">엔진오일교환</td>
-                <td class="basicInformation">타이어교환</td>
-                <td class="basicInformation">외부수리</td>
-                <td class="basicInformation">차량튜닝</td>
-              </tr>
-              <tr>
-                <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
-                <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
-                <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
-                <td class="basicInformation"><a href="/motor"><img class="basicImgInformation" src="/images/a.png" /></a></td>
-              </tr>
-              <tr>
-                <td class="basicInformation">엔진오일교환</td>
-                <td class="basicInformation">타이어교환</td>
-                <td class="basicInformation">외부수리</td>
-                <td class="basicInformation">차량튜닝</td>
-              </tr>
-            </table>
+          <!--운영시간-->
+          <div class="operatingTimeWrap">
+            <div class="title">
+              운영시간
+            </div>
+            <div class="content">
+              월,화,수,목,금: 00:00~00:00<br>
+              토: 00:00~00:00<br>
+              일,공휴일:휴무
+            </div>
           </div>
           
-          <!--리뷰-->
-          <div>
-            <table class="width100">
-              <tr>
-                <td class="title"><b>리뷰</b></td>
-                <td class="reviewRight"><b>리뷰쓰기</b></td>
-              </tr>
-              <tr>
-                <td class="reviewLeft">KIA K5 30**님</td>
-                <td class="reviewRight">1일전</td>
-              </tr>
-              <tr>
-                <td class="reviewLeft">10/10점</td>
-                <td class="reviewRight">&nbsp;</td>
-              </tr>
-              <tr>
-                <td class="reviewDivide reviewLeft">엔진오일 교환했어요 너무 좋아염</td>
-                <td class="reviewDivide reviewRight">&nbsp;</td>
-              </tr>
-              <tr>
-                <td class="reviewLeft">HyunDai NF SONATA ak0**님</td>
-                <td class="reviewRight">7일전</td>
-              </tr>
-              <tr>
-                <td class="reviewLeft">10/10점</td>
-                <td class="reviewRight">&nbsp;</td>
-              </tr>
-              <tr>
-                <td class="reviewLeft reviewDivide">월급은 통장을 스쳐지나갈뿐</td>
-                <td class="reviewRight reviewDivide">&nbsp;</td>
-              </tr>
-              <tr>
-                <td class="reviewLeft">Lamborghini Aventador 5915**님</td>
-                <td class="reviewRight">2018-05-26</td>
-              </tr>
-              <tr>
-                <td class="reviewLeft">10/10점</td>
-                <td class="reviewRight">&nbsp;</td>
-              </tr>
-              <tr>
-                <td class="reviewDivide reviewLeft">넘나 행복한것</td>
-                <td class="reviewDivide reviewRight">&nbsp;</td>
-              </tr>
-            </table>
+          <!--기본정보-->
+          <div class="basicInfoWrap">
+              <div class="title">
+                기본정보
+              </div>
+              <div class="content">
+                <ul>
+                    <li>오일류 교환</li>
+                    <li>차량 튜닝</li>
+                    <li>타이어 교체</li>
+                    <li>무료세차</li>
+                    <li>외부 수리</li>
+                    <li>열처리 부스 자체 보유</li>
+                </ul>
+              </div>
           </div>
+          
+          <!--고객후기-->
+          <div class="reviewWrap">
+              <div class="title">
+                고객후기
+                <a class="reviewEdit">
+                    리뷰 작성
+                  </a>
+              </div>
+              <div class="content">
+                <div class="reviewCrad" id="item1"></div>
+                <div class="reviewCrad" id="item2"></div>
+  
+              </div>
+            </div>
+
         </div>
       </div>
       <% include ./footer.ejs %>
