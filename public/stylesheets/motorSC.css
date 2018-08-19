@@ -39,15 +39,16 @@
     width: 70%;
 }
 
-.motor_wrap .shopInfo .infoImage{
-    width: 100%;
-    max-width: 110px;
-}
-
 .motor_wrap .shopInfo::after{
     content: "";
     display: block;
     clear: both;
+}
+
+.motor_wrap .shopInfo .infoImage{
+    width: 100%;
+    min-width: 40px;
+    max-width: 110px;
 }
 
 .motor_wrap .shopInfo .rightSide ul{
@@ -132,4 +133,50 @@
     margin-right: 10px;
     float: right;
     color: #000;
+}
+
+.motor_wrap .reviewWrap .reviewCrad{
+    margin-bottom: 20px;
+}
+
+.motor_wrap .reviewWrap .reviewCrad .leftSide{
+    float: left;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.motor_wrap .reviewWrap .reviewCrad .rightSide{
+    float: left;
+    width: 75%;
+}
+
+.motor_wrap .reviewWrap .reviewCrad::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.motor_wrap .reviewWrap .reviewCrad .reviewImg{
+    width: 38px;
+}
+
+.motor_wrap .reviewWrap .reviewCrad li{
+    list-style: none;
+}
+
+.motor_wrap .reviewWrap .reviewCrad .reviewContent{
+    font-size: 1.1rem;
+    font-weight: bold;
+    line-height: 120%;
+    margin-bottom: 10px;
+}
+
+.motor_wrap .reviewWrap .reviewCrad .reviewCarType{
+    font-size: 1rem;
+    color: gray;
+}
+
+.motor_wrap .reviewWrap .reviewCrad .reviewDate{
+    font-size: 1rem;
+    color: gray;
 }
