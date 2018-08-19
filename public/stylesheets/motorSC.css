@@ -57,22 +57,22 @@
     vertical-align: middle;
 }
 .motor_wrap .shopInfo .rightSide li{
-    height: 30%;
     list-style: none;
     line-height: 100%;
 }
 
 .motor_wrap .shopInfo .rightSide .motorName{
+    font-size: 1.5rem;
     font-weight: bold;
     color: #575eb9;
-    font-size: 75%;
     margin-bottom: 10px;
 }
 
 .motor_wrap .shopInfo .rightSide .motorAddress,
 .motor_wrap .shopInfo .rightSide .motorPhonNumber{
+    font-size: 1rem;
     font-weight: 600;
-    font-size: 55%
+    margin-bottom: 5px;
 }
 
 .motor_wrap .motorLocation {
