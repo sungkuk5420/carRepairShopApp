@@ -5,7 +5,7 @@
     "scope": "/login",
     "display": "browser",
     "start_url": "http://car-repair-shop-app-pr-128.herokuapp.com/login",
-    "short_name": "carRepair",
+    "short_name": "착한 공업사",
     "theme_color": "transparent",
     "description": "Car Repair Center App located in Bucheon",
     "orientation": "any",
