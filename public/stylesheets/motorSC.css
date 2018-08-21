@@ -9,6 +9,22 @@
     display: table;
 }
 
+
+.motor_wrap .motorTitleBar{
+    position: absolute;
+}
+
+.motor_wrap .motorTitle{
+    top: 0;
+    position: relative;
+    text-align: center;
+}
+
+.motor_wrap .motorSubTitle{
+    text-align: center;
+    color: white;
+}
+
 .motor_wrap .estimate {
     background-color: #575eb9;
     color: white;
