@@ -11,18 +11,30 @@
 
 
 .motor_wrap .motorTitleBar{
-    position: absolute;
-}
-
-.motor_wrap .motorTitle{
-    top: 0;
     position: relative;
-    text-align: center;
 }
 
-.motor_wrap .motorSubTitle{
+.motor_wrap .motorTitleBarContent{
+    position: absolute;
+    width: 100%;
+    top: 35%;
+}
+
+.motor_wrap .motorTitleBarContent .Title{
     text-align: center;
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
     color: white;
+}
+
+.motor_wrap .motorTitleBarContent .SubTitle{
+    text-align: center;
+    font-size: 1rem;
+    color: white;
+}
+
+.motor_wrap .estimateBtn{
+    text-decoration: none;
 }
 
 .motor_wrap .estimate {
