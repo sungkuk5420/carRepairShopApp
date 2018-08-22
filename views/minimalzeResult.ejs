@@ -41,12 +41,14 @@
                                     <span class="outer" >
                                         <span class="inner"> 
                                             <img src="<%= Object.values(image)[i] %>" class="imagePreView" onload="checkFileSize(this);"/>
-                                            <a href="<%= Object.values(image)[i] %>" download="<%= image.fileName %>">
+                                            <a href="<%= Object.values(image)[i] %>" download="<%= image.fileName %>"></a>
                                         </span>
                                     </span>
+                                    
                                     <span class="outer" >
                                         <span class="inner"> 
-                                        <button class="checkBtn" style="width:150px; display:block; margin: auto;">다운로드</button></a>
+                                            이미지 경로 : <%= Object.values(image)[i] %>
+                                        <!-- <button class="checkBtn" style="width:150px; display:block; margin: auto;">다운로드</button></a> -->
                                     </span>
                                 </span>
                         <% 
