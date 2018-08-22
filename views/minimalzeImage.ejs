@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form  action="/minimalzeImage" enctype="multipart/form-data"  method="post">
+      <input  type="file" name="img_files[]" accept="image/*">
+      <button type="submit">Submit</button>
+  </form>
+  </body>
+</html>
