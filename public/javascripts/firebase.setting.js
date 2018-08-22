@@ -17,7 +17,7 @@ getDataBase(function(){
 });
 
 function getDataBase(cb){
-    DATABASE.ref().on('child_added', function (data) {
+    DATABASE.ref('/user').on('value', function (data) {
         var database = data.val();
         DB_USERS_DATA = Object.keys(database).map(function(data) {
             return {
@@ -25,6 +25,7 @@ function getDataBase(cb){
                 info :database[data]
             };
         });
+
         if(cb){
             cb();
         }
@@ -39,5 +40,32 @@ function insertUser(phone, passwd,carType,carYear,carKm,carRate) {
         carYear: carYear,
         carKm: carKm,
         carRate: carRate
+    });
+}
+
+function insertEs(carType,infoName,infoPasswd,infoNumber,chk1,chk2,chk3,reqText,eventCode,imageUrl){
+    /*
+    carType 차종
+    infoName 이름
+    infoNumber 전화번호
+    선택요정사항
+        chk1 보험수리
+        chk2 렌터카 서비스
+        chk3 픽업 서비스
+    reqText 파손 정보
+    eventCode 프로모션 코드
+    imageUrl 이미지 url 정보
+    */
+    DATABASE.ref('estimate/').push({
+        carType: carType,
+        infoName: infoName,
+        infoPasswd: infoPasswd,
+        infoNumber: infoNumber,
+        reqEsimate: {insurance: chk1,
+                    carRentalService: chk2,
+                    pickupService:chk3},
+        reqText: reqText,
+        eventCode: eventCode,
+        imageUrl: imageUrl
     });
 }

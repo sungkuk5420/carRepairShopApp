@@ -18,7 +18,7 @@
     width: 25px;
 }
 
-.insertUser_wrap .insertBnt {
+.insertUser_wrap .insertBtn {
     background-color:gray;
     color:black;
     font-size: 40%;
@@ -63,7 +63,7 @@
     font-size: 0.5em;
 }
 
-.insertUser_wrap .insertBnt{
+.insertUser_wrap .insertBtn{
     position: fixed;
     left: 0;
     bottom: 0;

@@ -74,7 +74,7 @@
         </div>
       </div>
       <!--가입버튼-->
-      <div class="insertBnt" id="insertBnt" onclick="click();">
+      <div class="insertBtn" id="insertBtn" onclick="click();">
         <a>가입하기</a>
       </div>
       
@@ -92,7 +92,7 @@ document.getElementById("btnChk").onclick = function () {
   }
 }
 
-document.getElementById("insertBnt").onclick = function () {
+document.getElementById("insertBtn").onclick = function () {
   var phone = document.getElementById('phone').value;
   var passwd = document.getElementById('passwd').value;
   var carType = document.getElementById('car_list').value;
@@ -107,13 +107,23 @@ document.getElementById("insertBnt").onclick = function () {
 
 
   if(document.getElementById('btnChk').checked == true) {
-    if(phone !== '' && passwd !== '') {
+    if(phone !== '' && passwd !== '' && carType !== '' && carYear !== '' && carKm !== '') {
       // console.log(phone);
       insertUser(phone, passwd,carType,carYear,carKm,carRate);
       alert('가입되었습니다.');
+      location.href='/';
     }
-    else {
-      alert('폰번호 또는 비밀번호를 잘못입력 하였습니다.');
+    else if(phone == '' || passwd == ''){
+      alert('폰번호 또는 비밀번호를 잘못 입력 하였습니다.');
+    }
+    else if(carType == ''){
+      alert('차종을 잘못 입력 하였습니다.');
+    }
+    else if(carYear == ''){
+      alert('연식을 잘못 입력 하였습니다.');
+    }
+    else if(carKm == ''){
+      alert('키로수을 잘못 입력 하였습니다.');
     }
   }
   else {
