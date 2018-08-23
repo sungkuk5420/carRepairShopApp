@@ -3,7 +3,7 @@
     "lang": "hr",
     "name": "착한공업사",
     "scope": "/login",
-    "display": "fullscreen",
+    "display": "standalone",
     "start_url": "http://car-repair-shop-app-pr-128.herokuapp.com/login",
     "short_name": "착한공업사",
     "theme_color": "black",
