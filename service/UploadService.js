@@ -3,21 +3,21 @@ const async = require('async');
 const AWS = require('aws-sdk');
 const imagemin = require('imagemin');
 const imageminPngquant = require('imagemin-pngquant');
+var secret_config = require('../secret');
 
 let params = {
-  Bucket: '',
-  Key: '',
+  Bucket: secret_config.federation.s3.Bucket,
+  Key: secret_config.federation.s3.Key,
   ACL: 'public-read',
   Body: null
-  };
+};
   
   
-  AWS.config.update({
-  accessKeyId: "",
-  secretAccessKey: "",
+AWS.config.update({
+  accessKeyId: secret_config.federation.s3.accessKeyId,
+  secretAccessKey: secret_config.federation.s3.secretAccessKey,
   "region": "ap-northeast-2"
-  });
-/*S3 버킷 설정*/
+});
 
 const S3 = new S3Instance();
 const ROOT_PATH = process.cwd();
