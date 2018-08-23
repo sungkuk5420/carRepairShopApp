@@ -4,7 +4,7 @@
     "name": "착한공업사",
     "scope": "/login",
     "display": "standalone",
-    "start_url": "http://car-repair-shop-app-pr-128.herokuapp.com/login",
+    "start_url": "http://car-repair-shop-app.herokuapp.com/login",
     "short_name": "착한공업사",
     "theme_color": "black",
     "description": "부천에 위치한 착한 공업사 고객관리앱",
