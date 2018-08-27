@@ -43,6 +43,19 @@ function insertUser(phone, passwd,carType,carYear,carKm,carRate) {
     });
 }
 
+// 유저 중복 확인
+function dupCheck(phone){
+    var haveUser = DB_USERS_DATA.filter(function(currentUser){
+        return currentUser.info.phoneNumber == phone;
+    });
+    var returnValue = false;
+    if(haveUser.length == 0){
+        returnValue = true;
+    }
+
+    return returnValue;
+}
+
 function insertEs(carType,infoName,infoPasswd,infoNumber,chk1,chk2,chk3,reqText,eventCode,imageUrl){
     /*
     carType 차종
@@ -69,3 +82,4 @@ function insertEs(carType,infoName,infoPasswd,infoNumber,chk1,chk2,chk3,reqText,
         imageUrl: imageUrl
     });
 }
+
