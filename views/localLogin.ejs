@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ./header.ejs %>
+  </head>
+
+  <body>
+    <div class="local-login_page_wrap">
+      <div class="row header_wrap">
+          <h1><a href="#"><img src="logo.png" alt="공업사로고"></a></h1>
+          <button type="button" class="login_btn">로그인</button>
+      </div>
+      <div id="main_container">
+        <div class="main_inner_wrap">
+            <div class="outer">
+              <div class="inner">
+                <div>
+                  <form action="/localLogin" enctype="application/x-www-form-urlencoded"  method="post" id="form">
+                    <div class="backBtn" onclick="goToLoginPage()">⇦</div>
+                    <!--기본정보 입력-->
+                    <div class="basicInformation">
+                      <b>로그인</b>
+                    </div>
+          
+                    <!--폰번호-->
+                    <div style="text-align: left;">
+                      <div class="thema"><b>폰번호</b></div>
+                      <!-- <div class="thema red">(필수)</div> -->
+                      <input class="themaInput" type="text" id="phone" name="username">
+                    </div>
+          
+                    <!--비밀번호-->
+                    <div style="text-align: left;">
+                      <div class="thema"><b>비밀번호</b></div>
+                      <!-- <div class="thema red">(필수)</div> -->
+                      <input class="themaInput" type="password" id="passwd" name="password">
+                    </div>
+                    <div style="width:100%; font-size:0;">
+                      <div class="bottomBtn" id="" onClick="userCheck()">
+                        <a>로그인</a>
+                      </div>
+                      <div class="bottomBtn" id=""onclick="goToJoinPage();" >
+                        <a>회원가입</a>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    <% include ./footer.ejs %>
+    </div>
+
+<script>
+  function userCheck(){
+    var phone = $('#phone').val();
+    var password = $('#passwd').val();
+
+    var haveUser = DB_USERS_DATA.filter(function(currentUser){
+      return currentUser.info.phoneNumber == phone;
+    });
+
+    
+    if(haveUser.length == 0){
+      alert('ID를 확인해주세요.');
+    }else if(haveUser[0].info.password != password){
+      alert('password가 틀렸습니다.');
+    }else{
+      document.forms['form'].submit();
+    }
+    
+  }
+
+  function goToJoinPage(){
+    location.href="/insertUser";
+  }
+
+  function goToLoginPage(){
+    location.href="/login";
+  }
+</script>
+  </body>
+</html>
+  

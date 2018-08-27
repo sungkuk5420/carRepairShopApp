@@ -1,9 +1,5 @@
 <html>
 <head>
-  <meta charset="utf-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <title>Login Demo - Kakao JavaScript SDK</title>
-  <!-- <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script> -->
     <% include ./header.ejs %>
   </head>
   <body>
@@ -23,7 +19,7 @@
                       <a href="/auth/login/kakao" class="login-kakao" id="login-kakao"><i>카카오</i>로그인</a>
                       <a href="/auth/login/facebook" class="login-facebook" id="login-facebook"><i>페이스북</i>로그인</a>
                       <a href="/auth/login/naver" class="login-naver" id="naverIdLogin_loginButton"><i>네이버</i>로그인</a>
-                      <a href="#" class="login-naver" id="native_login">일반로그인</a>
+                      <a href="/localLogin" class="login-naver" id="native_login">일반로그인</a>
                     </div>
                     <div class="text_block">
                       Copyright ⓒ 2018 착한자동차공업사. All rights reserved.<br>
@@ -41,5 +37,19 @@
           </div>
           <% include ./footer.ejs %>
         </div>
+        <script>
+          // Detects if device is on iOS 
+          const isIos = () => {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            return /iphone|ipad|ipod/.test( userAgent );
+          }
+          // Detects if device is in standalone mode
+          const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+
+          // Checks if should display install popup notification:
+          if (isIos() && !isInStandaloneMode()) {
+            alert("홈화면에 추가해주세요.")
+          }
+        </script>
   </body>
   </html>

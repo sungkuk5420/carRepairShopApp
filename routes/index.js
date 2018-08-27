@@ -35,28 +35,10 @@ passport.use(new LocalStrategy({
   passwordField: 'password',
   passReqToCallback: true //인증을 수행하는 인증 함수로 HTTP request를 그대로  전달할지 여부를 결정한다
 }, function (req, username, password, done) {
-  connection.query('select *from `user` where `user_id` = ?', username, function (err, result) {
-    if (err) {
-      console.log('err :' + err);
-      return done(false, null);
-    } else {
-      if (result.length === 0) {
-        console.log('해당 유저가 없습니다');
-        return done(false, null);
-      } else {
-        if (!bcrypt.compareSync(password, result[0].password)) {
-          console.log('패스워드가 일치하지 않습니다');
-          return done(false, null);
-        } else {
-          console.log('로그인 성공');
-          return done(null, {
-            user_id: result[0].user_id,
-            nickname: result[0].nickname
-          });
-        }
-      }
-    }
-  })
+  return done(null, {
+    user_id: username,
+    nickname: password
+  });
 }));
 
 // kakao로 로그인
@@ -140,18 +122,34 @@ router.get('/insertUser', function(req, res, next) {
   res.render('insertUser', { title: 'Express' });
 });
 
+router.get('/event', function(req, res, next) {
+  res.render('event', { title: 'Express' });
+});
+
 /* GET Motor service center page. */
 router.get('/motor', function(req, res, next) {
   res.render('motorSC', { title: 'Express' });
 });
 router.get('/login', function(req, res, next) {
   if (req.user !== undefined) {
-    res.redirect('/motor')
+    res.redirect('/main')
   } else {
     res.render('login', {
       title: 'login'
     })
   }
+});
+
+router.get('/main', function(req, res, next) {
+  res.render('main', { title: 'Express' });
+});
+
+router.get('/motores', function(req, res, next) {
+  res.render('motor_es', { title: 'Express' });
+});
+
+router.get('/localLogin', function(req, res, next) {
+  res.render('localLogin', { title: 'Express' });
 });
 
 // kakao 로그인
@@ -190,19 +188,16 @@ router.get('/auth/login/naver/callback',
   })
 );
 
-router.get('/main', function(req, res, next) {
-  res.render('main', { title: 'Express' });
-});
-
-router.get('/motores', function(req, res, next) {
-  res.render('motor_es', { title: 'Express' });
-});
-
-router.post('/login', passport.authenticate('local', {failureRedirect: '/login', failureFlash: true}), // 인증 실패 시 401 리턴, {} -> 인증 스트레티지
+router.post('/localLogin', passport.authenticate('local', {
+  failureRedirect: '/login', failureFlash: true}), // 인증 실패 시 401 리턴, {} -> 인증 스트레티지
   function (req, res) {
-    res.redirect('/motor');
+    res.redirect('/main');
   }
 );
+
+router.get('/minimalzeImage', function(req, res, next) {
+    res.render('minimalzeImage', { title: '이미지 압축 페이지' });
+});
 
 
 /**
@@ -236,7 +231,14 @@ router.post('/uploadResult', urlencodedParser, function(req, res, next) {
     // res.json(EstimateData);
   // res.end();
 });
-
+router.post('/event_detail', urlencodedParser, function(req, res, next) {
+  console.log('event_detail ' + JSON.stringify(req.body));
+  let eventData = req.body;
+  console.log(eventData);
+  res.render('event_detail', { title: 'Express', eventData: eventData, len:Object.keys(req.body).length});
+    // res.json(EstimateData);
+  // res.end();
+});
 router.post('/upload',  (req, res) => {
   const tasks = [
     (callback) => {
@@ -267,6 +269,44 @@ router.post('/upload',  (req, res) => {
       res.json(result);
       res.end();
       // res.render('uploadResult', { title: '업로드 성공', image: result });
+      // res.json({success: true, msg: '업로드 성공'})
+    } else {
+      res.json({success: false, msg: '업로드 실패'})
+    }
+  });
+});
+
+
+router.post('/minimalzeImage',  (req, res) => {
+  const tasks = [
+    (callback) => {
+      console.log('start formidable');
+      Upload.formidable(req, (err, files, fields) => {
+
+        callback(err, files, fields);
+      });
+    },
+    (files, fields, callback) => {
+      console.log('start optimize');
+      Upload.optimize(files, (err) => {
+        callback(err, files, fields);
+      });
+    },
+    (files, fields, callback) => {
+      console.log('start s3');
+      console.log('callback');
+      Upload.s3(files, 'test/', (err, result) => {
+        console.log('result' + JSON.stringify(result));
+        callback(err, result)
+      });
+    }
+  ];
+  async.waterfall(tasks, (err, result) => {
+    if (!err) {
+      console.log(result);
+      // res.json(result);
+      res.render('minimalzeResult', { title: '업로드 성공', image: result, len:Object.keys(result).length});
+      res.end();
       // res.json({success: true, msg: '업로드 성공'})
     } else {
       res.json({success: false, msg: '업로드 실패'})

@@ -3,20 +3,21 @@ const async = require('async');
 const AWS = require('aws-sdk');
 const imagemin = require('imagemin');
 const imageminPngquant = require('imagemin-pngquant');
+var secret_config = require('../secret');
 
 let params = {
-  Bucket: '',
-  Key: '',
+  Bucket: secret_config.federation.s3.Bucket,
+  Key: secret_config.federation.s3.Key,
   ACL: 'public-read',
   Body: null
 };
   
+  
 AWS.config.update({
-  accessKeyId: "",
-  secretAccessKey: "",
+  accessKeyId: secret_config.federation.s3.accessKeyId,
+  secretAccessKey: secret_config.federation.s3.secretAccessKey,
   "region": "ap-northeast-2"
 });
-/*S3 버킷 설정*/
 
 const S3 = new S3Instance();
 const ROOT_PATH = process.cwd();
@@ -84,10 +85,16 @@ Upload.optimize = (files, callback) => {
 
 Upload.s3 = (files, key, callback) => {
   async.each(files, (file, cb) => {
+    console.log(file.size);
     params.Key = key + file.name;
+    params.originalSize = file.size;
+    params.fileName = file.name;
     params.Body = require('fs').createReadStream(file.path);
   
     S3.upload(params, (err, result) => {
+      console.log('S3.upload result : ',result);
+      result.originalSize = params.originalSize;
+      result.fileName = params.fileName;
       callback(err, result);
     });
   }, (err, result) => {

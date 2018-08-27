@@ -1,13 +1,24 @@
 <div id="footer">
     <div class="row">
         <ul>
-            <li>메인</li>
-            <li>채팅</li>
-            <li>설정</li>
+            <li><a href="/main"><span><img src="/images/home_off.png" alt="home 페이지로 이동"></span></a></li>
+            <li><a href="/event"><span><img src="/images/event_off.png" alt="event 페이지로 이동"></span></a></li>
+            <li class="motores_li"><a href="/motores"><span><img src="/images/estimate_off.png" alt="견적요청 페이지로 이동"></span></a></li>
+            <li><a href="/motor"><span><img src="/images/service_center_off.png" alt="공업사 페이지로 이동"></span></a></li>
+            <li class="my_li"><a href="#"><span><img src="/images/my_off.png" alt="마이 페이지로 이동"></span></a></li>
         </ul>
     </div>
 </div>
-
+<!-- 웹 매니페스트 폴리필 -->
+<script src="/javascripts/manup.js"></script>
+<!-- 제이쿼리 -->
 <script src="/javascripts/jquery-1.11.1.min.js"></script>
+<!-- 파이어베이스 -->
 <script src="/javascripts/firebase.js"></script>
 <script src="/javascripts/firebase.setting.js"></script>
+
+<script>
+    [].forEach.call(document.links, function(link) { link.addEventListener("click", function(event) { 
+        event.preventDefault(); window.location = this.href; 
+    }) });
+</script>
