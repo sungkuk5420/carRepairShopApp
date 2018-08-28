@@ -321,6 +321,7 @@ var path = require('path');
 var router = express.Router();
 
 router.get('/', function (req, res, next) {
+  console.log(path.join(__dirname, '../pwaApp/dist/pwa-ios', 'index.html'));
   res.sendFile(path.join(__dirname, '../pwaApp/dist/pwa-ios', 'index.html'));
 });
 
