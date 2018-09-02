@@ -34,6 +34,6 @@
   },
   "devDependencies": {
     "cookie-parser": "^1.4.3",
-    "quasar-cli": "^0.17.13"
+    "quasar-cli": "^0.17.15"
   }
 }
