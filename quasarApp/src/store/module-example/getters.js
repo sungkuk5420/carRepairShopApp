@@ -1,4 +1,5 @@
-/*
-export function someGetter (state) {
+
+export function getUserDataBase (state) {
+  return state.userDataBase;
 }
-*/
+
