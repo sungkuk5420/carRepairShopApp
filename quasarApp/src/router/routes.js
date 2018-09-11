@@ -1,11 +1,13 @@
 
 const routes = [
   {
+    mode: 'history',
     path: '/',
     component: () => import('layouts/MyLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/loginPage.vue') },
-      { path: '/login', component: () => import('pages/loginPage.vue') },
+      { path: '', component: () => import('pages/LoginPage.vue') },
+      { path: '/login', component: () => import('pages/LoginPage.vue') },
+      { path: '/localLogin', component: () => import('pages/LocalLoginPage.vue') },
     ],
   },
 ];

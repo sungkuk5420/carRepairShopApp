@@ -10,10 +10,10 @@
                     인증된 업체들을 통해 믿을 수 있는 확실한 서비스를 제공받으세요.
                   </div>
                   <div class="btn_sns_list">
-                    <a href="/auth/login/kakao" class="login-kakao" id="login-kakao"><i>카카오</i>로그인</a>
-                    <a href="/auth/login/facebook" class="login-facebook" id="login-facebook"><i>페이스북</i>로그인</a>
-                    <a href="/auth/login/naver" class="login-naver" id="naverIdLogin_loginButton"><i>네이버</i>로그인</a>
-                    <a href="/localLogin" class="login-naver" id="native_login">일반로그인</a>
+                    <router-link to="/auth/login/kakao" class="login-kakao" id="login-kakao"><i>카카오</i>로그인</router-link>
+                    <router-link to="/auth/login/facebook" class="login-facebook" id="login-facebook"><i>페이스북</i>로그인</router-link>
+                    <router-link to="/auth/login/naver" class="login-naver" id="naverIdLogin_loginButton"><i>네이버</i>로그인</router-link>
+                    <router-link to="/localLogin" class="login-naver" id="native_login">일반로그인</router-link>
                   </div>
                   <div class="text_block">
                     Copyright ⓒ 2018 착한자동차공업사. All rights reserved.<br>
