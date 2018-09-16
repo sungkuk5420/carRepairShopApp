@@ -1,5 +1,5 @@
 
 export function getUserDataBase (state) {
-  return state.userDataBase;
+  console.log('getUsers!',state.users);
+  return state.users;
 }
-

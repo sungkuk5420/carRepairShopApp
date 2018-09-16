@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
+import firebase from 'firebase';
 import database from './module-example';
 
 Vue.use(Vuex);

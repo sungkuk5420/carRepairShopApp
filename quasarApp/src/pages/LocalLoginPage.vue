@@ -33,9 +33,9 @@
                         <div class="bottomBtn button" id="" @click="userCheck()">
                           <a>로그인</a>
                         </div>
-                        <div class="bottomBtn button" id="" onclick="goToJoinPage();" >
+                        <router-link to="/join" class="bottomBtn button">
                           <a>회원가입</a>
-                        </div>
+                        </router-link>
                       </div>
                     </form>
                   </div>
@@ -47,6 +47,54 @@
     </div>
   </div>
 </template>
+<script>
+
+  import { mapGetters } from 'vuex'
+  export default {
+    name: 'PageIndex',
+    components: {
+    },
+    data () {
+      return {}
+    },
+    computed: {
+      ...mapGetters({
+        userDatabase: 'getUserDataBase'
+      })
+    },
+    mounted () {
+    },
+    methods: {
+      userCheck(){
+        var phone = this.$refs.phone.value;
+        var password = this.$refs.passwd.value;
+        var users = this.$store.getters["database/getUserDataBase"];
+
+        var haveUser = users.filter(function(currentUser){
+          return currentUser.info.phoneNumber == phone;
+        });
+
+
+        if(haveUser.length == 0){
+          alert('ID를 확인해주세요.');
+        }else if(haveUser[0].info.password != password){
+          alert('password가 틀렸습니다.');
+        }else{
+          document.forms['form'].submit();
+        }
+      }
+    },
+    beforeUpdate () {
+
+    },
+    created () {
+      this.$store.dispatch('database/setUsersRef');
+    },
+  };
+
+</script>
+
+
 
 <style lang="scss" scoped>
 
@@ -151,47 +199,3 @@
       display: none;
   }
 </style>
-
-<script>
-
-  import { mapGetters } from 'vuex'
-  export default {
-    name: 'PageIndex',
-    components: {
-    },
-    data () {
-      return {}
-    },
-    computed: {
-      ...mapGetters({
-        userDatabase: 'getUserDataBase'
-      })
-    },
-    mounted () {
-    },
-    methods: {
-      userCheck(){
-        var phone = this.$refs.phone.value;
-        var password = this.$refs.passwd.value;
-        console.log(this.getters.mapGetters);
-
-        // var haveUser = DB_USERS_DATA.filter(function(currentUser){
-        //   return currentUser.info.phoneNumber == phone;
-        // });
-
-
-        // if(haveUser.length == 0){
-        //   alert('ID를 확인해주세요.');
-        // }else if(haveUser[0].info.password != password){
-        //   alert('password가 틀렸습니다.');
-        // }else{
-        //   document.forms['form'].submit();
-        // }
-      }
-    },
-    beforeUpdate () {
-
-    }
-  };
-
-</script>
