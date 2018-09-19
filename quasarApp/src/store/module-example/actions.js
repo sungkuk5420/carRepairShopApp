@@ -18,4 +18,18 @@ export function setUsersRef() {
     });
 }
 
+export function insertUser(_,pramas) {
+  var thisObj = this;
+
+  // console.log(thisObj.state.database.users);
+  db.ref('user/').push({
+    phoneNumber: pramas.phone,
+    password: pramas.password,
+    carType: pramas.carType,
+    carYear: pramas.carYear,
+    carKm: pramas.carKm,
+    carRate: pramas.carRate
+  });
+}
+
 

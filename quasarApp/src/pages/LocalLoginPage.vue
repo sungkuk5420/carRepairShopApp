@@ -63,6 +63,8 @@
       })
     },
     mounted () {
+      console.log('aa');
+      this.$refs.phone.value = this.$route.query.id;
     },
     methods: {
       userCheck(){
@@ -89,6 +91,7 @@
     },
     created () {
       this.$store.dispatch('database/setUsersRef');
+
     },
   };
 

@@ -8,6 +8,7 @@ const routes = [
       { path: '', component: () => import('pages/LoginPage.vue') },
       { path: '/login', component: () => import('pages/LoginPage.vue') },
       { path: '/localLogin', component: () => import('pages/LocalLoginPage.vue') },
+      { path: '/join', component: () => import('pages/JoinPage.vue') },
     ],
   },
 ];
