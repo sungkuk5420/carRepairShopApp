@@ -32,12 +32,10 @@
                         <q-input v-model="password" float-label="비밀번호" id="passwd" class="themaInput" ref="passwd" name="password"  />
                         <!-- :after="[{icon: 'done', condition: this.value.length >= 5, handler () {}}]" -->
                       </div>
-                      <div style="width:100%; font-size:0; margin-top:20px;">
-                        <div class="bottomBtn button" id="" @click="userCheck()">
-                          <span>로그인</span>
-                        </div>
-                        <router-link to="/join" class="bottomBtn button">
-                          <span>회원가입</span>
+                      <div class="bottom-btn-group"style="width:100%; font-size:0; margin-top:20px;">
+                        <q-btn icon="exit_to_app" label="로그인" class="bottomBtn" @click="userCheck()"/>
+                        <router-link to="/join" class="bottomBtn">
+                          <q-btn icon="person_add" label="회원가입" class="joinBtn" />
                         </router-link>
                       </div>
                     </form>
@@ -116,11 +114,26 @@
       margin: auto;
       margin-bottom: 100px;
     }
+    .bottom-btn-group{
+      width: 100%;
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-around;
+    }
     .backBtn{
       position: absolute;
       top: 20px;
       left: 20px;
       text-decoration: unset;
+    }
+
+    .joinBtn{
+      width:100%;
+      color:#000000;
+    }
+
+    .bottomBtn{
+      width:45%;
     }
   }
   .local_login_page_wrap .main_inner_wrap{
@@ -145,16 +158,6 @@
 
   .local_login_page_wrap .bottomBtn {
       display:inline-block;
-      border:1px solid #ddd;
-      color:black;
-      font-size: 40%;
-      line-height: 250%;
-      text-align: center;
-      width: 50%;
-      margin: 1px 0;
-      box-sizing: border-box;
-      font-size:14px;
-      text-decoration: unset;
   }
 
   .local_login_page_wrap .red {
