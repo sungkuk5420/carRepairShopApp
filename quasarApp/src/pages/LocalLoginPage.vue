@@ -18,23 +18,26 @@
 
                       <!--폰번호-->
                       <div style="text-align: left;">
-                        <div class="thema"><b>폰번호</b></div>
+                        <!-- <div class="thema"><b>폰번호</b></div> -->
                         <!-- <div class="thema red">(필수)</div> -->
-                        <input class="themaInput" type="text" id="phone" ref="phone" name="username">
+                        <!-- <input class="themaInput" type="text" id="phone" ref="phone" name="username"> -->
+                        <q-input v-model="phone" float-label="폰번호" id="phone" class="themaInput" ref="phone" name="username"  />
                       </div>
 
                       <!--비밀번호-->
                       <div style="text-align: left; margin-top:10px;">
-                        <div class="thema"><b>비밀번호</b></div>
+                        <!-- <div class="thema"><b>비밀번호</b></div> -->
                         <!-- <div class="thema red">(필수)</div> -->
-                        <input class="themaInput" type="password" id="passwd" ref="passwd" name="password">
+                        <!-- <q-input v-model="password" type="password" float-label="Password" /> -->
+                        <q-input v-model="password" float-label="비밀번호" id="passwd" class="themaInput" ref="passwd" name="password"  />
+                        <!-- :after="[{icon: 'done', condition: this.value.length >= 5, handler () {}}]" -->
                       </div>
                       <div style="width:100%; font-size:0; margin-top:20px;">
                         <div class="bottomBtn button" id="" @click="userCheck()">
-                          <a>로그인</a>
+                          <span>로그인</span>
                         </div>
                         <router-link to="/join" class="bottomBtn button">
-                          <a>회원가입</a>
+                          <span>회원가입</span>
                         </router-link>
                       </div>
                     </form>
@@ -55,7 +58,10 @@
     components: {
     },
     data () {
-      return {}
+      return {
+        phone:'',
+        password:'',
+      }
     },
     computed: {
       ...mapGetters({
@@ -64,7 +70,7 @@
     },
     mounted () {
       console.log('aa');
-      this.$refs.phone.value = this.$route.query.id;
+      this.phone = this.$route.query.id;
     },
     methods: {
       userCheck(){
@@ -148,6 +154,7 @@
       margin: 1px 0;
       box-sizing: border-box;
       font-size:14px;
+      text-decoration: unset;
   }
 
   .local_login_page_wrap .red {
@@ -169,12 +176,14 @@
   }
 
   .local_login_page_wrap .themaInput {
-      padding:0px 10px;
-      margin-top: 5px;
-      font-size:40%;
-      line-height: 250%;
-      width: 100%;
-      border: 1px solid #ddd;
+      // padding:0px 10px;
+      // margin-top: 5px;
+      // font-size:40%;
+      // line-height: 250%;
+      // width: 100%;
+      // border: 1px solid #ddd;
+      // background: #ffffff !important;
+      // box-shadow: none;
   }
 
   .local_login_page_wrap .car_list{
