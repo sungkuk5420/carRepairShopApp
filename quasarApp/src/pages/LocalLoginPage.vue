@@ -32,7 +32,7 @@
                         <q-input v-model="password" float-label="비밀번호" id="passwd" class="themaInput" ref="passwd" name="password"  />
                         <!-- :after="[{icon: 'done', condition: this.value.length >= 5, handler () {}}]" -->
                       </div>
-                      <div class="bottom-btn-group"style="width:100%; font-size:0; margin-top:20px;">
+                      <div class="bottom-btn-group" style="width:100%; font-size:0; margin-top:20px;">
                         <q-btn icon="exit_to_app" label="로그인" class="bottomBtn" @click="userCheck()"/>
                         <router-link to="/join" class="bottomBtn">
                           <q-btn icon="person_add" label="회원가입" class="joinBtn" />
@@ -86,7 +86,7 @@
         }else if(haveUser[0].info.password != password){
           alert('password가 틀렸습니다.');
         }else{
-          document.forms['form'].submit();
+          this.$router.push({path:'main', query: {}});
         }
       }
     },
