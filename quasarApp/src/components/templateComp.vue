@@ -5,7 +5,7 @@
 
   import { mapGetters } from 'vuex'
   export default {
-    name: 'template',
+    name: 'templateComp',
     components: {
     },
     data () {

@@ -1,6 +1,6 @@
 <template>
   <div class="main_page_wrap page_wrap">
-    <div id="main_container">
+    <div id="main_container" class="column no-wrap">
       <div class="main_inner_wrap ">
 
         <div class="back_image_wrap">
@@ -64,6 +64,7 @@
 
           <div class="event_wrap">
             <h1>이벤트</h1>
+            <event-card-comp></event-card-comp>
           </div>
         </div>
       </div>
@@ -74,11 +75,13 @@
 <script>
 
   import { mapGetters } from 'vuex'
-  import footerComp from '../components/footer.vue'
+  import footerComp from '../components/footerComp.vue'
+  import eventCardComp from '../components/eventCardComp.vue'
   export default {
     name: 'PageIndex',
     components: {
-      footerComp
+      footerComp,
+      eventCardComp
     },
     data () {
       return {
@@ -107,8 +110,6 @@
 <style lang="scss" scoped>
 .main_page_wrap {
   #main_container{
-    display:flex;
-    flex-direction:column;
     .main_inner_wrap {
       background: #eee;
       .back_image_wrap {

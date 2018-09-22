@@ -1,5 +1,5 @@
 <template>
-  <div id="footer">
+  <div id="footer" class="">
     <div class="row">
       <ul>
         <li><router-link to="/main"><span><img src="../assets/images/home_off.png" alt="home 페이지로 이동"></span></router-link></li>
@@ -15,7 +15,7 @@
 
   import { mapGetters } from 'vuex'
   export default {
-    name: 'footer',
+    name: 'footerDiv',
     components: {
     },
     data () {
