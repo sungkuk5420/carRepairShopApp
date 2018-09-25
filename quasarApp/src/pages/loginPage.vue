@@ -10,7 +10,7 @@
                     인증된 업체들을 통해 믿을 수 있는 확실한 서비스를 제공받으세요.
                   </div>
                   <div class="btn_sns_list">
-                    <router-link to="/auth/login/kakao" class="login-kakao" id="login-kakao"><i>카카오</i>로그인</router-link>
+                    <a href="http://localhost:4000/auth/login/kakao" class="login-kakao" id="login-kakao" target="_blank"><i>카카오</i>로그인</a>
                     <router-link to="/auth/login/facebook" class="login-facebook" id="login-facebook"><i>페이스북</i>로그인</router-link>
                     <router-link to="/auth/login/naver" class="login-naver" id="naverIdLogin_loginButton"><i>네이버</i>로그인</router-link>
                     <router-link to="/localLogin" class="login-naver" id="native_login">일반로그인</router-link>
@@ -200,9 +200,30 @@
 </style>
 
 <script>
-
-  export default {
-    name: 'PageIndex',
-  };
+import { mapGetters } from 'vuex'
+export default {
+  name: 'PageIndex',
+  components: {
+  },
+  data () {
+    return {
+    }
+  },
+  computed: {
+    ...mapGetters({
+    })
+  },
+  mounted () {
+  },
+  methods: {
+    kakaoLogin(){
+      this.$store.dispatch('database/kakaoLoginAjax');
+    }
+  },
+  beforeUpdate () {
+  },
+  created () {
+  },
+};
 
 </script>

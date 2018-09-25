@@ -107,16 +107,19 @@ function (accessToken, refreshToken, profile, done) {
 }
 ));
 
-/* GET home page. */
-router.get('/',isAuthenticated, function(req, res, next) {
-  if (req.user !== undefined) {
-    res.redirect('/main')
-  } else {
-    res.render('login', {
-      title: 'login'
-    })
-  }
+router.get('/', function (req, res, next) {
+  res.sendFile(path.join(__dirname, '../quasarApp/dist/pwa-ios/', 'index.html'));
 });
+/* GET home page. */
+// router.get('/',isAuthenticated, function(req, res, next) {
+//   if (req.user !== undefined) {
+//     res.redirect('/main')
+//   } else {
+//     res.render('login', {
+//       title: 'login'
+//     })
+//   }
+// });
 
 router.get('/insertUser', function(req, res, next) {
   res.render('insertUser', { title: 'Express' });

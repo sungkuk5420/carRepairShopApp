@@ -1,4 +1,6 @@
 import firebase from 'firebase';
+import ajaxActions from './ajaxActions'
+
 var config = {
   databaseURL: 'https://carrepairshop-f398e.firebaseio.com',
 }
@@ -31,5 +33,23 @@ export function insertUser(_,pramas) {
     carRate: pramas.carRate
   });
 }
+
+
+export function kakaoLoginAjax(_,pramas) {
+  var state = this.state;
+  ajaxActions().kakaoLoginAjax(
+    state,
+    (results) => {
+      console.log('action / kakaoLoginAjax / success')
+      console.log('results= ', results)
+    },
+    (res) => {
+      console.log('action / kakaoLoginAjax / error', res)
+      console.log('err= ', res)
+      // commit(M.CHANGE_SEARCH_RESULTS)
+    }
+  )
+}
+
 
 
