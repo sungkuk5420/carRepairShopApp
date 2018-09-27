@@ -10,7 +10,13 @@
                     인증된 업체들을 통해 믿을 수 있는 확실한 서비스를 제공받으세요.
                   </div>
                   <div class="btn_sns_list">
-                    <a href="http://localhost:4000/auth/login/kakao" class="login-kakao" id="login-kakao" target="_blank"><i>카카오</i>로그인</a>
+                    <KakaoLogin
+                    api-key="971eb3f212fa20a23fc422b414936a0f"
+                    image="kakao_login_btn_large"
+                    :on-success=onSuccess
+                    :on-failure=onFailure
+                    />
+                    <a href="/auth/login/kakao" id="login-kakao" class="login-kakao" target="_blank"><i>카카오</i>로그인</a>
                     <router-link to="/auth/login/facebook" class="login-facebook" id="login-facebook"><i>페이스북</i>로그인</router-link>
                     <router-link to="/auth/login/naver" class="login-naver" id="naverIdLogin_loginButton"><i>네이버</i>로그인</router-link>
                     <router-link to="/localLogin" class="login-naver" id="native_login">일반로그인</router-link>
@@ -33,6 +39,51 @@
     </div>
   </div>
 </template>
+
+<script>
+import { mapGetters } from 'vuex'
+import KakaoLogin from 'vue-kakao-login'
+
+let onSuccess = (data) => {
+  console.log(data)
+  console.log("success")
+}
+let onFailure = (data) => {
+  console.log(data)
+  console.log("failure")
+}
+
+export default {
+  name: 'PageIndex',
+  components: {
+    KakaoLogin
+  },
+  data () {
+    return {
+    }
+  },
+  computed: {
+    ...mapGetters({
+    })
+  },
+  mounted () {
+  },
+  methods: {
+    kakaoLogin(){
+      this.$store.dispatch('database/kakaoLoginAjax');
+    },
+    onSuccess,
+    onFailure
+  },
+  beforeUpdate () {
+  },
+  created () {
+  },
+};
+
+</script>
+
+
 
 <style>
 
@@ -198,32 +249,3 @@
     display:none;
   }
 </style>
-
-<script>
-import { mapGetters } from 'vuex'
-export default {
-  name: 'PageIndex',
-  components: {
-  },
-  data () {
-    return {
-    }
-  },
-  computed: {
-    ...mapGetters({
-    })
-  },
-  mounted () {
-  },
-  methods: {
-    kakaoLogin(){
-      this.$store.dispatch('database/kakaoLoginAjax');
-    }
-  },
-  beforeUpdate () {
-  },
-  created () {
-  },
-};
-
-</script>

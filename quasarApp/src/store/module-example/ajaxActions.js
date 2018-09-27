@@ -8,7 +8,7 @@ export default () => {
         url () {
           let apiURL = ''
           // apiURL = `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=${state.loadingNum}&key=${options.apikey}`
-          apiURL = `http://localhost:4000/auth/login/kakao`
+          apiURL = `http://13.125.125.39:7000/auth/login/kakao`
           console.log(apiURL)
           return apiURL
         }
