@@ -1,53 +1,55 @@
 <template>
-  <div class="login_page_wrap">
-    <div class="outer">
-      <div class="inner">
-        <div id="main_container">
-          <div class="main_inner_wrap">
-            <div class="outer">
-                <div class="inner">
-                  <div class="text_block top_text_block" >
-                    인증된 업체들을 통해 믿을 수 있는 확실한 서비스를 제공받으세요.
-                  </div>
-                  <div class="btn_sns_list">
-                    <KakaoLogin
-                    api-key="971eb3f212fa20a23fc422b414936a0f"
-                    image="kakao_login_btn_large"
-                    :on-success=onSuccess
-                    :on-failure=onFailure
-                    />
-                    <a href="/auth/login/kakao" id="login-kakao" class="login-kakao" target="_blank"><i>카카오</i>로그인</a>
-                    <router-link to="/auth/login/facebook" class="login-facebook" id="login-facebook"><i>페이스북</i>로그인</router-link>
-                    <router-link to="/auth/login/naver" class="login-naver" id="naverIdLogin_loginButton"><i>네이버</i>로그인</router-link>
-                    <router-link to="/localLogin" class="login-naver" id="native_login">일반로그인</router-link>
-                  </div>
-                  <div class="text_block">
-                    Copyright ⓒ 2018 착한자동차공업사. All rights reserved.<br>
-                    <br><br>
-                    고객센터 1234-5678 (평일 10:00 ~ 18:00)<br><br>
-                    이메일 : sample@naver.com <br><br>
-                    (주) 착한자동차공업사|대표 : 홍길동|사업자번호 : 144-81-21245<br><br>
-                    경기도 부천시 원미구 신흥로59번길 44-7<br><br>
-                    <br><br>
-                    사용자 이용약관|개인정보 취급방침|위치정보 서비스 이용약관
-                  </div>
-                </div>
+  <div class="login_page_wrap page_wrap">
+    <div id="main_container" class="column no-wrap">
+      <div class="main_inner_wrap">
+        <div class="outer">
+          <div class="inner">
+            <div class="un-login-div ">
+              <div class="text_block top_text_block" >
+                인증된 업체들을 통해 믿을 수 있는 확실한 서비스를 제공받으세요.
+              </div>
+              <div class="btn_sns_list">
+                <KakaoLogin
+                api-key="971eb3f212fa20a23fc422b414936a0f"
+                image="kakao_login_btn_large"
+                :on-success=onSuccess
+                :on-failure=onFailure
+                />
+                <a href="#" id="login-kakao" class="login-kakao" onclick="$('#kakao-login-btn').click();"><i>카카오</i>로그인</a>
+                <a href="#" class="login-facebook" id="login-facebook" onclick="alert('개발중입니다.');"><i>페이스북</i>로그인</a>
+                <a href="#" class="login-naver" id="naverIdLogin_loginButton" onclick="alert('개발중입니다.');"><i>네이버</i>로그인</a>
+                <router-link to="/localLogin" class="login-naver" id="native_login">일반로그인</router-link>
+              </div>
+              <div class="text_block">
+                Copyright ⓒ 2018 착한자동차공업사. All rights reserved.<br>
+                <br><br>
+                고객센터 1234-5678 (평일 10:00 ~ 18:00)<br><br>
+                이메일 : sample@naver.com <br><br>
+                (주) 착한자동차공업사|대표 : 홍길동|사업자번호 : 144-81-21245<br><br>
+                경기도 부천시 원미구 신흥로59번길 44-7<br><br>
+                <br><br>
+                사용자 이용약관|개인정보 취급방침|위치정보 서비스 이용약관
+              </div>
+            </div>
+            <div class="login-div hide">
+              <div class="profile-div">
+                <img v-bind:src="thumbnailImage" alt="">
+                <div>{{userName}}</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <footer-comp></footer-comp>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import footerComp from '../components/footerComp.vue'
 import KakaoLogin from 'vue-kakao-login'
 
-let onSuccess = (data) => {
-  console.log(data)
-  console.log("success")
-}
 let onFailure = (data) => {
   console.log(data)
   console.log("failure")
@@ -56,10 +58,13 @@ let onFailure = (data) => {
 export default {
   name: 'PageIndex',
   components: {
-    KakaoLogin
+    KakaoLogin,
+    footerComp
   },
   data () {
     return {
+      thumbnailImage : '',
+      userName : ''
     }
   },
   computed: {
@@ -70,9 +75,24 @@ export default {
   },
   methods: {
     kakaoLogin(){
-      this.$store.dispatch('database/kakaoLoginAjax');
     },
-    onSuccess,
+    onSuccess(data){
+      var vueObj = this;
+      console.log(data)
+      console.log("success")
+      Kakao.Auth.getStatus(function(statusObj) {
+        console.log(statusObj);
+        $('.un-login-div').toggleClass('hide');
+        $('.login-div').toggleClass('hide');
+        console.log(vueObj);
+
+        vueObj.thumbnailImage = statusObj.user.properties.thumbnail_image;
+        vueObj.userName = statusObj.user.properties.nickname;
+
+
+      });
+
+    },
     onFailure
   },
   beforeUpdate () {
@@ -85,12 +105,15 @@ export default {
 
 
 
-<style>
-
+<style lang="scss" scoped>
 .login_page_wrap{
   position: fixed;
   width: 100%;
   height:100%;
+
+  #kakao-login-btn{
+    display:none;
+  }
 }
 .login_page_wrap .naver-login-button{
     height: 40px;
@@ -246,6 +269,6 @@ export default {
     font-size: 80%;
   }
   .login_page_wrap #footer{
-    display:none;
+    /* display:none; */
   }
 </style>
