@@ -63,7 +63,7 @@
     },
     computed: {
       ...mapGetters({
-        userDatabase: 'getUserDataBase'
+        userDatabase: 'database/getUserDataBase'
       })
     },
     mounted () {

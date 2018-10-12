@@ -3,7 +3,7 @@
     <div id="main_container" class="column no-wrap">
       <header-comp v-bind:title="title" v-bind:header-back-btn="headerBackBtn"></header-comp>
       <div class="main_inner_wrap">
-        <div class="no-login-div ">
+        <div class="no-login-div " v-if="loginInfo.loginState == false">
           <div class="outer">
             <div class="inner">
               <div class="text_block top_text_block" >
@@ -36,16 +36,16 @@
             </div>
           </div>
         </div>
-        <div class="login-div hide">
+        <div class="login-div"  v-if="loginInfo.loginState == true">
           <div class="row justify-center">
             <div class="profile-img-div ">
-              <img v-bind:src="thumbnailImage" alt="profile-image" class="shadow-1 profile-img">
+              <img v-bind:src="loginInfo.thumbnailImage" alt="profile-image" class="shadow-1 profile-img">
             </div>
           </div>
           <div class="row user-name-div">
             <div class="outer">
               <div class="inner">
-                <div class="user-name">{{userName}}</div>
+                <div class="user-name">{{loginInfo.userName}}</div>
               </div>
             </div>
           </div>
@@ -87,10 +87,6 @@
           </div>
           <div class="margin-div"></div>
           <div class="margin-div"></div>
-
-
-
-
         </div>
       </div>
       <footer-comp></footer-comp>
@@ -104,11 +100,6 @@ import footerComp from '../components/footerComp.vue'
 import headerComp from '../components/headerComp.vue'
 import KakaoLogin from 'vue-kakao-login'
 
-let onFailure = (data) => {
-  console.log(data)
-  console.log("failure")
-}
-
 export default {
   name: 'PageIndex',
   components: {
@@ -118,14 +109,13 @@ export default {
   },
   data () {
     return {
-      thumbnailImage : '',
-      userName : '',
       title : '로그인',
       headerBackBtn : false
     }
   },
   computed: {
     ...mapGetters({
+        loginInfo: 'database/getLoginInfo'
     })
   },
   mounted () {
@@ -156,9 +146,9 @@ export default {
   },
   methods: {
     kakaoLogout(){
-      Kakao.Auth.logout();
-      $('.no-login-div').toggleClass('hide');
-      $('.login-div').toggleClass('hide');
+      this.$store.dispatch('database/logout');
+      // $('.no-login-div').toggleClass('hide');
+      // $('.login-div').toggleClass('hide');
     },
     onSuccess(data){
       var vueObj = this;
@@ -167,11 +157,14 @@ export default {
       // Kakao.init(data.access_token);
       Kakao.Auth.getStatusInfo((statusObj)=>{
         console.log(statusObj);
-        $('.no-login-div').toggleClass('hide');
-        $('.login-div').toggleClass('hide');
-        vueObj.thumbnailImage = statusObj.user.properties.thumbnail_image;
-        vueObj.userName = statusObj.user.properties.nickname;
-        vueObj.title = '프로필 설정';
+        // $('.no-login-div').toggleClass('hide');
+        // $('.login-div').toggleClass('hide');
+        vueObj.$store.dispatch('database/setUsersInfo',{
+          thumbnailImage : statusObj.user.properties.thumbnail_image,
+          profileImage : statusObj.user.properties.profile_image,
+          userName : statusObj.user.properties.nickname,
+          loginState : true
+        });
       });
     },
     onFailure(data){

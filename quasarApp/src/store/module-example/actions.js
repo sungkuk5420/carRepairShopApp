@@ -51,5 +51,17 @@ export function kakaoLoginAjax(_,pramas) {
   )
 }
 
+export function setUsersInfo(_,pramas) {
+  console.log('setUsersInfo',pramas);
+  var thisObj = this;
+  thisObj.state.database.loginInfo = pramas;
+  thisObj.state.database.loginInfo.loginState = true;
+}
+
+export function logout() {
+  var thisObj = this;
+  Kakao.Auth.logout();
+  thisObj.state.database.loginInfo.loginState = false;
+}
 
 
