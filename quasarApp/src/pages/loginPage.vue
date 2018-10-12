@@ -10,8 +10,15 @@
                 인증된 업체들을 통해 믿을 수 있는 확실한 서비스를 제공받으세요.
               </div>
               <div class="btn_sns_list">
-                <div class="hide-area"></div>
-                <a href="#" id="login-kakao" class="login-kakao"><i>카카오</i></a>
+                <div class="hide-area">
+                  <KakaoLogin
+                  api-key="38e6c13fd2fe123d3b39f44ea70926f2"
+                  image="kakao_login_btn_large"
+                  :on-success=onSuccess
+                  :on-failure=onFailure
+                  />
+                </div>
+                <a href="#" id="login-kakao" class="login-kakao" onclick="$('#kakao-login-btn').click();"><i>카카오</i></a>
                 <a href="#" class="login-facebook" id="login-facebook" onclick="alert('개발중입니다.');"><i>페이스북</i></a>
                 <a href="#" class="login-naver" id="naverIdLogin_loginButton" onclick="alert('개발중입니다.');"><i>네이버</i></a>
                 <router-link to="/localLogin" class="login-naver" id="native_login">일반로그인</router-link>
@@ -122,30 +129,30 @@ export default {
     })
   },
   mounted () {
-    var vueObj = this;
-    Kakao.init('38e6c13fd2fe123d3b39f44ea70926f2');
-    Kakao.Auth.createLoginButton({
-      container: '.hide-area',
-      size: 'large',
-      persistAccessToken: true,
-      success: function (authObj) {
-        console.log(authObj)
-        console.log("success")
-        Kakao.Auth.getStatus(function(statusObj) {
-          console.log(statusObj);
-          $('.no-login-div').toggleClass('hide');
-          $('.login-div').toggleClass('hide');
-          console.log(vueObj);
+    // var vueObj = this;
+    // Kakao.init('38e6c13fd2fe123d3b39f44ea70926f2');
+    // Kakao.Auth.createLoginButton({
+    //   container: '.hide-area',
+    //   size: 'large',
+    //   persistAccessToken: true,
+    //   success: function (authObj) {
+    //     console.log(authObj)
+    //     console.log("success")
+    //     Kakao.Auth.getStatus(function(statusObj) {
+    //       console.log(statusObj);
+    //       $('.no-login-div').toggleClass('hide');
+    //       $('.login-div').toggleClass('hide');
+    //       console.log(vueObj);
 
-          vueObj.thumbnailImage = statusObj.user.properties.thumbnail_image;
-          vueObj.userName = statusObj.user.properties.nickname;
-          vueObj.title = '프로필 설정';
-        });
-      },
-    });
-    setTimeout(()=>{
-      $('.hide-area iframe').width('100%');
-    },1000);
+    //       vueObj.thumbnailImage = statusObj.user.properties.thumbnail_image;
+    //       vueObj.userName = statusObj.user.properties.nickname;
+    //       vueObj.title = '프로필 설정';
+    //     });
+    //   },
+    // });
+    // setTimeout(()=>{
+    //   $('.hide-area iframe').width('100%');
+    // },1000);
   },
   methods: {
     kakaoLogout(){
@@ -154,8 +161,23 @@ export default {
       $('.login-div').toggleClass('hide');
     },
     onSuccess(data){
+      var vueObj = this;
+      console.log(data)
+      console.log("success")
+      // Kakao.init(data.access_token);
+      Kakao.Auth.getStatusInfo((statusObj)=>{
+        console.log(statusObj);
+        $('.no-login-div').toggleClass('hide');
+        $('.login-div').toggleClass('hide');
+        vueObj.thumbnailImage = statusObj.user.properties.thumbnail_image;
+        vueObj.userName = statusObj.user.properties.nickname;
+        vueObj.title = '프로필 설정';
+      });
     },
-    onFailure
+    onFailure(data){
+      console.log(data)
+      console.log("failure")
+    }
   },
   beforeUpdate () {
   },
@@ -222,17 +244,17 @@ export default {
   }
 
   .btn_sns_list{
-    .hide-area{
-      margin-left: 5px;
-      overflow: hidden;
-      position: absolute;
-      width: 100%;
-      opacity: 0.0001;
-      cursor: pointer;
-      iframe {
-        width:100% !important;
-      }
-    }
+    // .hide-area{
+    //   margin-left: 5px;
+    //   overflow: hidden;
+    //   position: absolute;
+    //   width: 100%;
+    //   opacity: 0.0001;
+    //   cursor: pointer;
+    //   iframe {
+    //     width:100% !important;
+    //   }
+    // }
   }
 }
 .login_page_wrap .naver-login-button{

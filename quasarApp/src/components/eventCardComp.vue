@@ -1,6 +1,6 @@
 <template>
   <div class="event_content">
-      <router-link :to="{path:'/eventDetails', query: {img:'back_img1.jpg',dis_title: '무상점검',dis_type: '100퍼 할인',dis_content: '오일류,패드류, 등 기본 정비 10개 항목'}}">
+      <router-link :to="{path:'/eventDetails', query: {img:'back_img1',dis_title: '무상점검',dis_type: '100퍼 할인',dis_content: '오일류,패드류, 등 기본 정비 10개 항목'}}">
         <div class="event1">
             <button class="event_img_wrap">
                 <img src="../assets/images/auto.png" alt="auto 이미지">
@@ -16,7 +16,7 @@
         <input type="hidden" name="dis_type" value="100% 할인">
         <input type="hidden" name="dis_content" value="오일류,패드류, 등 기본 정비 10개 항목">
       </router-link>
-      <router-link :to="{path:'/eventDetails', query: {img:'back_img2.jpg',dis_title: '엔진오일 할인권',dis_type: '200,000원',dis_content: 'ZIC 및 동급 엔진오일기준'}}">
+      <router-link :to="{path:'/eventDetails', query: {img:'back_img2',dis_title: '엔진오일 할인권',dis_type: '200,000원',dis_content: 'ZIC 및 동급 엔진오일기준'}}">
           <div class="event2">
               <button class="event_img_wrap">
                   <img src="../assets/images/auto.png" alt="auto 이미지">
@@ -90,8 +90,6 @@
         height: 200px;
       }
     }
-
-
     .event1 {
       background: url('../assets/images/back_img1.jpg') no-repeat;
       background-size: 100% 100%;
