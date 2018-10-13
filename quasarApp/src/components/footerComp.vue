@@ -5,7 +5,7 @@
         <li><router-link to="/main"><span><img src="../assets/images/home_off.png" alt="home 페이지로 이동"></span></router-link></li>
         <li><router-link to="/event"><span><img src="../assets/images/event_off.png" alt="event 페이지로 이동"></span></router-link></li>
         <li class="motores_li"><router-link to="/motores"><span><img src="../assets/images/estimate_off.png" alt="견적요청 페이지로 이동"></span></router-link></li>
-        <li><router-link to="/motor"><span><img src="../assets/images/service_center_off.png" alt="공업사 페이지로 이동"></span></router-link></li>
+        <li><router-link to="/estimate"><span><img src="../assets/images/service_center_off.png" alt="공업사 페이지로 이동"></span></router-link></li>
         <li class="my_li"><router-link to="/login"><span><img src="../assets/images/my_off.png" alt="마이 페이지로 이동"></span></router-link></li>
       </ul>
     </div>

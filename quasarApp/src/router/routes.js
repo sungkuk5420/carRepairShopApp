@@ -11,7 +11,7 @@ const routes = [
       { path: '/join', component: () => import('pages/JoinPage.vue') },
       { path: '/main', component: () => import('pages/MainPage.vue') },
       { path: '/event', component: () => import('pages/EventPage.vue') },
-      { path: '/motor', component: () => import('pages/MainPage.vue') },
+      { path: '/estimate', component: () => import('pages/EstimatePage.vue') },
       { path: '/motores', component: () => import('pages/MainPage.vue') },
       { path: '/eventDetails', component: () => import('pages/EventDetailsPage.vue') },
     ],
