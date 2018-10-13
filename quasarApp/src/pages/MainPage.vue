@@ -55,7 +55,9 @@
                     </div>
                 </div>
                 <div class="reservation_button_wrap">
-                    <div class="left_button">전화하기</div>
+                    <a href="tel:+81-70-4385-3533">
+                      <div class="left_button">전화하기</div>
+                    </a>
                     <div class="right_button">공업소 위치</div>
                 </div>
               </div>

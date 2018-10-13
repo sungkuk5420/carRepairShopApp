@@ -63,7 +63,7 @@
     },
     computed: {
       ...mapGetters({
-        userDatabase: 'getUserDataBase'
+        userDatabase: 'database/getUserDataBase'
       })
     },
     mounted () {
@@ -106,9 +106,6 @@
 <style lang="scss" scoped>
 
   .local_login_page_wrap{
-    position: fixed;
-    width: 100%;
-    height:100%;
     #main_container{
       max-width: 500px;
       margin: auto;

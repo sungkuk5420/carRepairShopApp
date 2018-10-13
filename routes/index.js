@@ -2,16 +2,16 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
-var bcrypt = require('bcrypt');
 var secret_config = require('../secret');
 var NaverStrategy = require('passport-naver').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var KakaoStrategy = require('passport-kakao').Strategy;
 const async = require('async');
 const Upload = require('../service/UploadService');
-var bodyParser = require('body-parser'); 
+var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var path = require('path');
 
 /*로그인 성공시 사용자 정보를 Session에 저장한다*/
 passport.serializeUser(function (user, done) {
@@ -72,10 +72,10 @@ passport.use(new FacebookStrategy({
     'updated_time', 'verified', 'displayName']
 }, function (accessToken, refreshToken, profile, done) {
   const _profile = profile._json;
-  
+
   console.log('Facebook login info');
   console.info(_profile);
-  
+
   loginByThirdparty({
     'auth_type': 'facebook',
     'auth_id': _profile.id,
@@ -93,30 +93,33 @@ passport.use(new NaverStrategy({
 },
 function (accessToken, refreshToken, profile, done) {
   const _profile = profile._json;
-  
+
   console.log('Naver login info');
   console.info(_profile);
-  
+
   loginByThirdparty({
     'auth_type': 'naver',
     'auth_id': _profile.id,
     'auth_name': _profile.nickname,
     'auth_email': _profile.email
   }, done);
-  
+
 }
 ));
 
-/* GET home page. */
-router.get('/',isAuthenticated, function(req, res, next) {
-  if (req.user !== undefined) {
-    res.redirect('/main')
-  } else {
-    res.render('login', {
-      title: 'login'
-    })
-  }
+router.get('/', function (req, res, next) {
+  res.sendFile(path.join(__dirname, '../quasarApp/dist/pwa-ios/', 'index.html'));
 });
+/* GET home page. */
+// router.get('/',isAuthenticated, function(req, res, next) {
+//   if (req.user !== undefined) {
+//     res.redirect('/main')
+//   } else {
+//     res.render('login', {
+//       title: 'login'
+//     })
+//   }
+// });
 
 router.get('/insertUser', function(req, res, next) {
   res.render('insertUser', { title: 'Express' });
@@ -215,7 +218,7 @@ function loginByThirdparty(info, done) {
   console.log('auth_email : ' + info.auth_email);
   console.log('profile_image : ' + info.profile_image);
   console.log('thumbnail_image : ' + info.thumbnail_image);
-  
+
   // TODO 신규 유저 가입 시켜야됨
   console.log("신규 유저 가입 시켜라!");
   done(null, {

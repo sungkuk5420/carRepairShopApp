@@ -29,6 +29,7 @@
     "passport-kakao": "0.0.5",
     "passport-local": "^1.0.0",
     "passport-naver": "^1.0.6",
+    "path": "^0.12.7",
     "quasar": "0.0.18",
     "serve-favicon": "^2.5.0"
   },

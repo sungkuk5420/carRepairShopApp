@@ -9,7 +9,7 @@
         <hr>
         <div class="event_content">
             <div class="event_detail">
-              <img v-bind:src="'../assets/images/'+img" alt="">
+              <img v-bind:src="imagePath(img)" alt="">
                 <div class="event_img_wrap">
                     <img src="../assets/images/auto.png" alt="auto 이미지">
                     <div>
@@ -70,7 +70,9 @@
       this.dis_content = this.$route.query.dis_content;
     },
     methods: {
-
+      imagePath(img){
+        return require('../assets/images/'+img+'.jpg');
+      }
     },
     beforeUpdate () {
 

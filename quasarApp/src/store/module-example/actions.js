@@ -1,4 +1,6 @@
 import firebase from 'firebase';
+import ajaxActions from './ajaxActions'
+
 var config = {
   databaseURL: 'https://carrepairshop-f398e.firebaseio.com',
 }
@@ -30,6 +32,36 @@ export function insertUser(_,pramas) {
     carKm: pramas.carKm,
     carRate: pramas.carRate
   });
+}
+
+
+export function kakaoLoginAjax(_,pramas) {
+  var state = this.state;
+  ajaxActions().kakaoLoginAjax(
+    state,
+    (results) => {
+      console.log('action / kakaoLoginAjax / success')
+      console.log('results= ', results)
+    },
+    (res) => {
+      console.log('action / kakaoLoginAjax / error', res)
+      console.log('err= ', res)
+      // commit(M.CHANGE_SEARCH_RESULTS)
+    }
+  )
+}
+
+export function setUsersInfo(_,pramas) {
+  console.log('setUsersInfo',pramas);
+  var thisObj = this;
+  thisObj.state.database.loginInfo = pramas;
+  thisObj.state.database.loginInfo.loginState = true;
+}
+
+export function logout() {
+  var thisObj = this;
+  Kakao.Auth.logout();
+  thisObj.state.database.loginInfo.loginState = false;
 }
 
 

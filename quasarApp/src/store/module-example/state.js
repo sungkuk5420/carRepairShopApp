@@ -1,3 +1,9 @@
 export default {
-  users:[]
+  users:[],
+  loginInfo:{
+    thumbnailImage:'',
+    profileImage:'',
+    userName:'',
+    loginState: false
+  }
 };

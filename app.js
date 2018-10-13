@@ -52,7 +52,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, './quasarApp/dist/pwa-ios')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -73,8 +74,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+app.listen(4000, function () {
+  console.log('Example app listening on port 4000!')
 });
 
 module.exports = app;
