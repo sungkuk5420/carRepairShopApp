@@ -63,7 +63,8 @@
     },
     computed: {
       ...mapGetters({
-        userDatabase: 'database/getUserDataBase'
+        userDatabase: 'database/getUserDataBase',
+        loginInfo: 'database/getLoginInfo'
       })
     },
     mounted () {
@@ -72,9 +73,10 @@
     },
     methods: {
       userCheck(){
-        var phone = this.$refs.phone.value;
-        var password = this.$refs.passwd.value;
-        var users = this.$store.getters["database/getUserDataBase"];
+        var vueObj  = this;
+        var phone = vueObj.$refs.phone.value;
+        var password = vueObj.$refs.passwd.value;
+        var users = vueObj.$store.getters["database/getUserDataBase"];
 
         var haveUser = users.filter(function(currentUser){
           return currentUser.info.phoneNumber == phone;
@@ -86,7 +88,14 @@
         }else if(haveUser[0].info.password != password){
           alert('password가 틀렸습니다.');
         }else{
-          this.$router.push({path:'main', query: {}});
+          vueObj.$store.dispatch('database/setUsersInfo',{
+            vueObj: vueObj,
+            thumbnailImage : statusObj.user.properties.thumbnail_image,
+            profileImage : statusObj.user.properties.profile_image,
+            userName : statusObj.user.properties.nickname,
+            loginState : true
+          });
+          vueObj.$router.push({path:'main', query: {}});
         }
       }
     },
@@ -101,11 +110,10 @@
 
 </script>
 
-
-
 <style lang="scss" scoped>
 
   .local_login_page_wrap{
+    height:100%;
     #main_container{
       max-width: 500px;
       margin: auto;

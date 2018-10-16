@@ -160,6 +160,7 @@ export default {
         // $('.no-login-div').toggleClass('hide');
         // $('.login-div').toggleClass('hide');
         vueObj.$store.dispatch('database/setUsersInfo',{
+          vueObj: vueObj,
           thumbnailImage : statusObj.user.properties.thumbnail_image,
           profileImage : statusObj.user.properties.profile_image,
           userName : statusObj.user.properties.nickname,

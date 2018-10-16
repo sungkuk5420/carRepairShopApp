@@ -292,6 +292,7 @@ $gray: gray;
 			.motorAddress,
       .motorPhonNumber {
         font-size: 0.7rem;
+
         font-weight: 600;
         margin-bottom: 5px;
 			}

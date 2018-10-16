@@ -34,28 +34,21 @@ export function insertUser(_,pramas) {
   });
 }
 
-
-export function kakaoLoginAjax(_,pramas) {
-  var state = this.state;
-  ajaxActions().kakaoLoginAjax(
-    state,
-    (results) => {
-      console.log('action / kakaoLoginAjax / success')
-      console.log('results= ', results)
-    },
-    (res) => {
-      console.log('action / kakaoLoginAjax / error', res)
-      console.log('err= ', res)
-      // commit(M.CHANGE_SEARCH_RESULTS)
-    }
-  )
-}
-
 export function setUsersInfo(_,pramas) {
   console.log('setUsersInfo',pramas);
   var thisObj = this;
-  thisObj.state.database.loginInfo = pramas;
+  if(pramas.thumbnailImage){
+    thisObj.state.database.loginInfo.thumbnailImage = pramas.thumbnailImage;
+  }
+  if(pramas.profileImage){
+    thisObj.state.database.loginInfo.profileImage = pramas.profileImage;
+  }
+  if(pramas.userName){
+    thisObj.state.database.loginInfo.userName = pramas.userName;
+  }
+
   thisObj.state.database.loginInfo.loginState = true;
+  pramas.vueObj.$session.set('loginInfo',thisObj.state.database.loginInfo);
 }
 
 export function logout() {
