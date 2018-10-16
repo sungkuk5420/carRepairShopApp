@@ -7,9 +7,15 @@ var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var path = require('path');
+var db = require('../db');
 
 router.get('/', function (req, res, next) {
   res.sendFile(path.join(__dirname, '../quasarApp/dist/pwa-ios/', 'index.html'));
+});
+
+router.post('/selectTable', function (req, res) {
+  //console.log(req.body);
+  db.seletTable(req.body,res);
 });
 
 router.get('/minimalzeImage', function(req, res, next) {
