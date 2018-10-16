@@ -6,7 +6,7 @@ yarn-error.log*
 service/*.png
 service/*.jpg
 service/*.jpeg
-./secret.js
+secret.js
 
 # Editor directories and files
 .idea
