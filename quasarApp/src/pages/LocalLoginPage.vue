@@ -103,8 +103,7 @@
 
     },
     created () {
-      this.$store.dispatch('database/setUsersRef');
-
+      this.$store.dispatch('database/selectTable');
     },
   };
 

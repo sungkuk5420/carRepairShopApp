@@ -1,23 +1,29 @@
 import firebase from 'firebase';
 import ajaxActions from './ajaxActions'
 
-var config = {
-  databaseURL: 'https://carrepairshop-f398e.firebaseio.com',
-}
-var firebaseApp = firebase.initializeApp(config)
-var db = firebaseApp.database()
-export function setUsersRef() {
+export function selectTable() {
     var thisObj = this;
-    db.ref('/user').on('value', function (data) {
-      var database = data.val();
-      var userDataRef = Object.keys(database).map(function(userData) {
-          return {
-              id : userData,
-              info :database[userData]
-          };
-      });
-      thisObj.state.database.users = userDataRef;
-    });
+    var tableName = 'users';
+    console.log('selectTable start');
+    console.log(ajaxActions);
+    ajaxActions().selectTable(
+      this.state,
+      tableName,
+      (results) => {
+        console.log('action / selectTable / success')
+        console.log('results= ', results)
+        // commit(M.CHANGE_USER_DATA, results)
+      },
+      (res) => {
+        console.log('action / selectTable / error', res)
+        if (res === 500) {
+          // thisObj.dispatch(M.SHOW_TOAST)
+        }
+        else {
+          // location.href = `${res}`
+        }
+      }
+    )
 }
 
 export function insertUser(_,pramas) {

@@ -13,11 +13,11 @@ client.query('USE ' + DATABASE);
 
 var mysqlUtil = module.exports = {
    seletTable : function (data, res) {
-       console.log("seletTable start " + data.tableName);
+        console.log("seletTable start " + JSON.stringify(data));
        client.query('SELECT * FROM '+data.tableName, function (error, result, fields) {
            if (error) {
                console.log(error);
-               console.log('쿼리 문장에 오류가 있습니다.');
+               res.end(JSON.stringify(error));
            } else {
                console.log(result);
                res.end(JSON.stringify(result));
