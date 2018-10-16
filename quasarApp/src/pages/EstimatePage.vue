@@ -262,7 +262,6 @@ $gray: gray;
 	.shopInfo {
     width:100%;
 		padding: 1rem;
-    height: 30%;
     display:table;
 		.leftSide {
 			text-align: center;
