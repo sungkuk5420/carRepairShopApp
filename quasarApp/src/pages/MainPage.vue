@@ -144,9 +144,7 @@
     padding-top:30px;
     .car_name {
       word-break: keep-all;
-      font-size: 1.3em;
-      font-weight: bold;
-      line-height: 1.2;
+      font-size: 0.8em;
       text-align: center;
       margin: 30px auto;
       margin-top: 0px;
@@ -157,7 +155,7 @@
   .car_info {
     width: 100%;
     padding: 20px 20px;
-    margin-top: 85px;
+    margin-top: 60px;
     margin-bottom: 10px;
     .carImage {
       position: absolute;
@@ -183,12 +181,12 @@
     }
   }
   .inline_block1, .inline_block2 {
-    font-size: 0.8em;
+    font-size: 0.5em;
     display: inline-block;
   }
   .inline_block1 {
     width: 30%;
-    font-size: 0.8em;
+    font-size: 0.5em;
     font-weight: bold;
   }
   .inline_block2 {
@@ -196,14 +194,12 @@
     width: 65%;
   }
   .car_info, .reservation_wrap, .event_wrap {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
   .reservation_wrap h1, .event_wrap h1 {
-    font-size: 1em;
+    font-size: 0.5em;
     color: #575eb9;
     margin-bottom: 15px;
-    margin-top: 0;
-    font-weight: bold;
   }
   .reservation_wrap .reservation_inner {
     width: 100%;
@@ -220,8 +216,7 @@
   }
   .reservation_wrap {
     .reservation_content {
-      height: 100px;
-      padding: 0;
+      height: 90px;
     }
     #reservation1::after {
       content: " ";
@@ -232,18 +227,18 @@
       .left_side {
         float: left;
         height: 100%;
-        width: 50%;
-        padding: 15px;
-        padding-right: 0;
+        width: 55%;
+        padding: 5px;
+        padding-top: 10px;
       }
       .right_side {
         float: right;
         height: 100%;
-        width: 50%;
+        width: 45%;
         text-align: center;
       }
       .row {
-        font-size: 0.8em;
+        font-size: 0.5em;
         margin-bottom: 7px;
       }
       .reservation_status {
@@ -252,13 +247,11 @@
         font-size: 0.7em;
         background: #575eb9;
         color: white;
-        font-weight: bold;
       }
       .reservation_car_name {
         display: inline-block;
         font-weight: bold;
         vertical-align: bottom;
-        margin-left:5px;
       }
       .reservation_status2 {
         font-size: 0.7em;
@@ -268,8 +261,7 @@
         font-size: 0.7em;
       }
       .reservation_car_image {
-        width: 100%;
-        height: auto;
+        height: 100%;
       }
     }
     .reservation_button_wrap {
@@ -280,7 +272,7 @@
     }
     .left_button, .right_button {
       text-align: center;
-      font-size: 0.8em;
+      font-size: 0.5em;
       line-height: 40px;
       color: #575eb9;
       width: 50%;
