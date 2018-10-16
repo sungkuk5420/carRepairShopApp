@@ -14,14 +14,18 @@ client.query('USE ' + DATABASE);
 var mysqlUtil = module.exports = {
    seletTable : function (data, res) {
         console.log("seletTable start " + JSON.stringify(data));
-       client.query('SELECT * FROM '+data.tableName, function (error, result, fields) {
-           if (error) {
-               console.log(error);
-               res.end(JSON.stringify(error));
-           } else {
-               console.log(result);
-               res.end(JSON.stringify(result));
-           }
-       })
-  }
+        var tableName = data.tableName;
+        var fields = data.fields;
+        var whereStr = data.whereStr != undefined ? data.whereStr : '';
+        console.log('SELECT * FROM '+data.tableName+whereStr,);
+        client.query(`SELECT ${fields} FROM ${tableName} ${whereStr}`, function (error, result, fields) {
+            if (error) {
+                console.log(error);
+                res.end(JSON.stringify(error));
+            } else {
+                console.log(result);
+                res.end(JSON.stringify(result));
+            }
+        })
+    }
 };

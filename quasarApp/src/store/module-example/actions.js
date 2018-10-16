@@ -1,17 +1,26 @@
 import firebase from 'firebase';
 import ajaxActions from './ajaxActions'
 
-export function selectTable() {
+export function selectTable(_,pramas) {
     var thisObj = this;
-    var tableName = 'users';
+    var tableName = pramas.tableName;
+    var fields = pramas.fields;
+    var whereStr = pramas.whereStr;
     console.log('selectTable start');
     console.log(ajaxActions);
     ajaxActions().selectTable(
       this.state,
       tableName,
+      fields,
+      whereStr,
       (results) => {
         console.log('action / selectTable / success')
-        console.log('results= ', results)
+        console.log('results= ', results);
+        if(results.data.length == 0){
+          alert('phone number, password를 확인해주세요.');
+        }else{
+          pramas.vueObj.$router.push({path:'main', query: {}});
+        }
         // commit(M.CHANGE_USER_DATA, results)
       },
       (res) => {

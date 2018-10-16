@@ -1,23 +1,21 @@
 import axios from 'axios'
 export default () => {
   return {
-    selectTable (state,tableName, cSuccess, cError) {
+    selectTable (state,tableName,fields,whereStr, cSuccess, cError) {
       var tableName = tableName;
-      var apiURL = `http://13.125.125.39:7000/selectTable`;
-      let api = axios.create({
-        tableName
-      })
+      var apiURL = `http://localhost:7000/selectTable`;
+      let api = axios.create()
       axios.post(apiURL, {
-        tableName
+        tableName,
+        fields,
+        whereStr
       }).then(
         (responses) => {
           console.log(responses);
-          let errors = responses.filter((res) => {
-            return res.status !== 200
-          })
-          if (errors.length < 1) {
-            console.log('200 response= ', responses[0])
-            cSuccess(responses[0])
+          let errors = responses.status != 200 ? true : false;
+          if (!errors) {
+            console.log('200 response= ', responses)
+            cSuccess(responses)
           }
           else {
             console.log(responses);

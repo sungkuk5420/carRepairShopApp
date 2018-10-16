@@ -73,37 +73,38 @@
     },
     methods: {
       userCheck(){
+
         var vueObj  = this;
         var phone = vueObj.$refs.phone.value;
         var password = vueObj.$refs.passwd.value;
-        var users = vueObj.$store.getters["database/getUserDataBase"];
+        // var users = vueObj.$store.getters["database/getUserDataBase"];
+        this.$store.dispatch('database/selectTable',{tableName:'users',fields:'user_name',whereStr:`where phone_number='${phone}' and password='${password}'`,vueObj});
 
-        var haveUser = users.filter(function(currentUser){
-          return currentUser.info.phoneNumber == phone;
-        });
+        // var haveUser = users.filter(function(currentUser){
+        //   return currentUser.info.phoneNumber == phone;
+        // });
 
 
-        if(haveUser.length == 0){
-          alert('ID를 확인해주세요.');
-        }else if(haveUser[0].info.password != password){
-          alert('password가 틀렸습니다.');
-        }else{
-          vueObj.$store.dispatch('database/setUsersInfo',{
-            vueObj: vueObj,
-            thumbnailImage : statusObj.user.properties.thumbnail_image,
-            profileImage : statusObj.user.properties.profile_image,
-            userName : statusObj.user.properties.nickname,
-            loginState : true
-          });
-          vueObj.$router.push({path:'main', query: {}});
-        }
+        // if(haveUser.length == 0){
+        //   alert('ID를 확인해주세요.');
+        // }else if(haveUser[0].info.password != password){
+        //   alert('password가 틀렸습니다.');
+        // }else{
+        //   vueObj.$store.dispatch('database/setUsersInfo',{
+        //     vueObj: vueObj,
+        //     thumbnailImage : statusObj.user.properties.thumbnail_image,
+        //     profileImage : statusObj.user.properties.profile_image,
+        //     userName : statusObj.user.properties.nickname,
+        //     loginState : true
+        //   });
+        //   vueObj.$router.push({path:'main', query: {}});
+        // }
       }
     },
     beforeUpdate () {
 
     },
     created () {
-      this.$store.dispatch('database/selectTable');
     },
   };
 
