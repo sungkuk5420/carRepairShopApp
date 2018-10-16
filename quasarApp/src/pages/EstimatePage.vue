@@ -298,8 +298,6 @@ $gray: gray;
 		}
 		.infoImage {
 			width: 100%;
-			min-width: 40px;
-			max-width: 110px;
 		}
 	}
 	.shopInfo::after {
