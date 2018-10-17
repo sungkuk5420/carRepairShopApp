@@ -15,9 +15,15 @@ var mysqlUtil = module.exports = {
    seletTable : function (data, res) {
         console.log("seletTable start " + JSON.stringify(data));
         var tableName = data.tableName;
-        var fields = data.fields;
+        var fields = data.fields != undefined ? data.fields : '*';
         var whereStr = data.whereStr != undefined ? data.whereStr : '';
-        console.log('SELECT * FROM '+data.tableName+whereStr,);
+        console.log(fields)
+        if((fields.indexOf('password') != -1) || ((fields.indexOf('*') != -1) && (tableName.indexOf('users') != -1))){
+            console.log('break');
+            res.end('error');
+            return false;
+        }
+        console.log(`SELECT query : SELECT ${fields} FROM ${tableName} ${whereStr}`);
         client.query(`SELECT ${fields} FROM ${tableName} ${whereStr}`, function (error, result, fields) {
             if (error) {
                 console.log(error);
