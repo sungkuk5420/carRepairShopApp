@@ -2,12 +2,12 @@
   <div class="join_page_wrap">
     <div id="main_container">
       <div class="main_inner_wrap">
-        <router-link to="/localLogin" class="backBtn">
-          ⇦
-        </router-link>
-
         <div class="outer">
           <div class="inner">
+            <router-link to="/localLogin" class="backBtn">
+              ⇦
+            </router-link>
+
             <!--기본정보 입력-->
             <div class="basicInformation">
               <b>회원가입</b>
@@ -59,12 +59,17 @@
             <div class="termsCheck">
               <q-checkbox id="btnChk" v-model="checked" label="개인정보 및 서비스 이용약관에 동의합니다." />
             </div>
+
+            <div class="bottom-btn-group" style="width:100%; font-size:0; margin-top:20px;">
+              <q-btn icon="exit_to_app" label="회원가입" class="bottomBtn insertBtn" id="insertBtn" @click="userJoin();" :loading="loginBtnProgressBl"/>
+            </div>
+
           </div>
         </div>
       </div>
     </div>
     <!--가입버튼-->
-    <div class="insertBtn" id="insertBtn" @click="userJoin();">
+    <div >
       <a>가입하기</a>
     </div>
   </div>
@@ -81,7 +86,8 @@
       return {
         phone:'',
         password:'',
-        checked:false
+        checked:false,
+        loginBtnProgressBl:false
       }
     },
     computed: {
@@ -103,6 +109,7 @@
         // var carRate = document.getElementById('carRate').value;
         var login_type = 'local';
         var haveUser = [];
+        this.loginBtnProgressBl = true;
         this.$store.dispatch('database/selectTable',{
           tableName:'users',
           fields:'user_name',
@@ -128,6 +135,7 @@
                   password,
                   login_type,
                   cb:(data)=>{
+                    this.loginBtnProgressBl = false;
                     if(data == 'success'){
                       alert('가입 되었습니다!');
                       vueObj.$router.push({path:'localLogin', query: { id: phone_number }});
@@ -172,102 +180,115 @@
 
 <style lang="scss" scoped>
 .join_page_wrap{
-  position: fixed;
-  width: 100%;
-  height:100%;
-  #main_container,
-  .main_inner_wrap{
     height:100%;
-  }
-  .backBtn{
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    text-decoration: unset;
-  }
-  .inner{
-    text-align: left;
-  }
-}
-.join_page_wrap .main_inner_wrap{
-    padding-left: 30px;
-    padding-right: 30px;
-}
+    #main_container{
+      max-width: 500px;
+      margin: auto;
+    }
+    .bottom-btn-group{
+      width: 100%;
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-around;
+    }
+    .backBtn{
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      text-decoration: unset;
+    }
 
-.join_page_wrap .basicInformation{
-    margin-top: -50px;
-    width: 100%;
-}
+    .joinBtn{
+      width:100%;
+      color:#000000;
+    }
 
-.join_page_wrap .basicInformation b{
-    font-size: 150%;
-}
-
-.join_page_wrap .btnChk b{
-    height: 25px;
-    line-height: 300%;
-    width: 25px;
-}
-
-.join_page_wrap .insertBtn {
-    background-color:gray;
-    color:black;
-    font-size: 40%;
-    line-height: 300%;
-    text-align: center;
-    width: 100%;
-}
-
-.join_page_wrap .red {
-    color: red;
-}
-
-.join_page_wrap .black {
-    color: black;
-}
-
-.join_page_wrap .termsCheck {
-    line-height: 300%;
-    font-size:50%;
-}
-
-.join_page_wrap .thema {
-    display: inline-block;
-    font-size:50%;
-}
-
-.join_page_wrap .themaInput {
-    margin-top: 5px;
-    font-size:40%;
-    line-height: 150%;
-    width: 100%;
-}
-
-.join_page_wrap .car_list{
-    display: block;
-    font-size: 0.7em;
-    line-height: 150%;
-    width: 100%;
-}
-
-.join_page_wrap .car_list option{
-    font-size: 0.5em;
-}
-
-.join_page_wrap .insertBtn{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    font-size:1rem;
-    background: white;
-
-    border: 1px solid #ddd;
-    display: inline-block;
-    text-align: center;
+    .bottomBtn{
+      width:100%;
+    }
   }
 
-.join_page_wrap #footer{
-    display: none;
- }
+  .local_login_page_wrap .main_inner_wrap .innser{
+    height:430px;
+  }
+
+  .join_page_wrap .main_inner_wrap{
+      padding-left: 30px;
+      padding-right: 30px;
+  }
+
+  .join_page_wrap .basicInformation{
+      margin-top: 30px;
+      width: 100%;
+  }
+
+  .join_page_wrap .basicInformation b{
+      font-size: 150%;
+  }
+
+  .join_page_wrap .btnChk b{
+      height: 25px;
+      line-height: 300%;
+      width: 25px;
+  }
+
+  .join_page_wrap .bottomBtn {
+      display:inline-block;
+  }
+
+  .join_page_wrap .red {
+      color: red;
+  }
+
+  .join_page_wrap .black {
+      color: black;
+  }
+
+  .join_page_wrap .termsCheck {
+      line-height: 300%;
+      font-size:50%;
+      text-align: left;
+      padding-top: 10px;
+  }
+
+  .join_page_wrap .thema {
+      display: inline-block;
+      font-size:50%;
+  }
+
+  .join_page_wrap .themaInput {
+      // padding:0px 10px;
+      // margin-top: 5px;
+      // font-size:40%;
+      // line-height: 250%;
+      // width: 100%;
+      // border: 1px solid #ddd;
+      // background: #ffffff !important;
+      // box-shadow: none;
+  }
+
+  .join_page_wrap .car_list{
+      display: block;
+      font-size: 0.7em;
+      line-height: 150%;
+      width: 100%;
+  }
+
+  .join_page_wrap .car_list option{
+      font-size: 0.5em;
+  }
+
+  .join_page_wrap .insertBnt{
+      width: 100%;
+      font-size:1rem;
+      background: white;
+      border: 1px solid #ddd;
+      display: block;
+      text-align: center;
+      margin-top:20px;
+    }
+
+  .join_page_wrap #footer{
+      display: none;
+  }
 </style>

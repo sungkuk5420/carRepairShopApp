@@ -154,6 +154,12 @@ export default {
 
 <style lang="scss" scoped>
 .login_page_wrap{
+  .backBtn{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    text-decoration: unset;
+  }
   #kakao-login-btn{
     display:none;
   }

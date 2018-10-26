@@ -135,7 +135,6 @@
     #main_container{
       max-width: 500px;
       margin: auto;
-      margin-bottom: 100px;
     }
     .bottom-btn-group{
       width: 100%;
@@ -158,6 +157,9 @@
     .bottomBtn{
       width:45%;
     }
+  }
+  .local_login_page_wrap .main_inner_wrap .innser{
+    height:500px;
   }
   .local_login_page_wrap .main_inner_wrap{
       padding-left: 30px;
