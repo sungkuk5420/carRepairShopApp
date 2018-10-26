@@ -18,6 +18,11 @@ router.post('/selectTable', function (req, res) {
   db.seletTable(req.body,res);
 });
 
+router.post('/insertUser', function (req, res) {
+  //console.log(req.body);
+  db.insertUser(req.body,res);
+});
+
 router.get('/minimalzeImage', function(req, res, next) {
     res.render('minimalzeImage', { title: '이미지 압축 페이지' });
 });

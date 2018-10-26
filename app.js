@@ -15,7 +15,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var cors = require('cors');
 
 var app = express();
- 
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json({ type: 'application/*+json' }))
@@ -74,7 +74,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(4000, function () {
+app.listen(7000, function () {
   console.log('Example app listening on port 4000!')
 });
 

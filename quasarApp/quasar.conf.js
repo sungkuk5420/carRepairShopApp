@@ -55,7 +55,8 @@ module.exports = function (ctx) {
         'QItem',
         'QItemMain',
         'QItemSide',
-        'QInput'
+        'QInput',
+        'QCheckbox'
       ],
       directives: [
         'Ripple'

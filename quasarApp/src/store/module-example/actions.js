@@ -7,24 +7,32 @@ export function selectTable(_,pramas) {
     var fields = pramas.fields;
     var whereStr = pramas.whereStr;
     console.log('selectTable start');
-    console.log(ajaxActions);
+    console.log(pramas);
     ajaxActions().selectTable(
       this.state,
       tableName,
       fields,
       whereStr,
       (results) => {
-        console.log('action / selectTable / success')
+        console.log('action / selectTable / success');
         console.log('results= ', results);
         if(results.data.length == 0){
-          alert('phone number, password를 확인해주세요.');
+          if(pramas.cb){
+            pramas.cb('no User');
+          }
         }else{
-          pramas.vueObj.$router.push({path:'main', query: {}});
+          if(pramas.cb){
+            pramas.cb(results.data);
+          }
         }
         // commit(M.CHANGE_USER_DATA, results)
       },
       (res) => {
         console.log('action / selectTable / error', res)
+
+        if(pramas.cb){
+          pramas.cb('error');
+        }
         if (res === 500) {
           // thisObj.dispatch(M.SHOW_TOAST)
         }
@@ -37,16 +45,38 @@ export function selectTable(_,pramas) {
 
 export function insertUser(_,pramas) {
   var thisObj = this;
-
-  // console.log(thisObj.state.database.users);
-  db.ref('user/').push({
-    phoneNumber: pramas.phone,
-    password: pramas.password,
-    carType: pramas.carType,
-    carYear: pramas.carYear,
-    carKm: pramas.carKm,
-    carRate: pramas.carRate
-  });
+  console.log(pramas);
+  ajaxActions().insertUser(
+    this.state,
+    pramas.phone_number,
+    pramas.password,
+    pramas.login_type,
+    (results) => {
+      console.log('action / insertUser / success')
+      console.log('results= ', results);
+      if(results.data.affectedRows != 0){
+        if(pramas.cb){
+          pramas.cb('success');
+        }
+      }else{
+        if(pramas.cb){
+          pramas.cb('error');
+        }
+      }
+      // commit(M.CHANGE_USER_DATA, results)
+    },
+    (res) => {
+      if(pramas.cb){
+        pramas.cb('error');
+      }
+      if (res === 500) {
+        // thisObj.dispatch(M.SHOW_TOAST)
+      }
+      else {
+        // location.href = `${res}`
+      }
+    }
+  )
 }
 
 export function setUsersInfo(_,pramas) {

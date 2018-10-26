@@ -33,7 +33,7 @@
                         <!-- :after="[{icon: 'done', condition: this.value.length >= 5, handler () {}}]" -->
                       </div>
                       <div class="bottom-btn-group" style="width:100%; font-size:0; margin-top:20px;">
-                        <q-btn icon="exit_to_app" label="로그인" class="bottomBtn" @click="userCheck()"/>
+                        <q-btn icon="exit_to_app" label="로그인" class="bottomBtn" :loading="loginBtnProgressBl" @click="userCheck()"/>
                         <router-link to="/join" class="bottomBtn">
                           <q-btn icon="person_add" label="회원가입" class="joinBtn" />
                         </router-link>
@@ -59,6 +59,7 @@
       return {
         phone:'',
         password:'',
+        loginBtnProgressBl:false
       }
     },
     computed: {
@@ -78,7 +79,24 @@
         var phone = vueObj.$refs.phone.value;
         var password = vueObj.$refs.passwd.value;
         // var users = vueObj.$store.getters["database/getUserDataBase"];
-        this.$store.dispatch('database/selectTable',{tableName:'users',fields:'user_name',whereStr:`where phone_number='${phone}' and password='${password}'`,vueObj});
+        this.loginBtnProgressBl = true;
+        this.$store.dispatch('database/selectTable',{
+          tableName:'users',
+          fields:'user_name',
+          whereStr:`where phone_number='${phone}' and password='${password}'`,
+          cb: function(data){
+            console.log(data);
+            vueObj.loginBtnProgressBl = false;
+            if(data == 'no User'){
+              alert('phone number, password를 확인해주세요.');
+            }else if(data == 'error'){
+              alert('error! ');
+            }else{
+              vueObj.$router.push({path:'main', query: {}});
+            }
+          }
+          }
+        );
 
         // var haveUser = users.filter(function(currentUser){
         //   return currentUser.info.phoneNumber == phone;

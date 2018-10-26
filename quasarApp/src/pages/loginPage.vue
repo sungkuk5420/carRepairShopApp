@@ -119,46 +119,17 @@ export default {
     })
   },
   mounted () {
-    // var vueObj = this;
-    // Kakao.init('38e6c13fd2fe123d3b39f44ea70926f2');
-    // Kakao.Auth.createLoginButton({
-    //   container: '.hide-area',
-    //   size: 'large',
-    //   persistAccessToken: true,
-    //   success: function (authObj) {
-    //     console.log(authObj)
-    //     console.log("success")
-    //     Kakao.Auth.getStatus(function(statusObj) {
-    //       console.log(statusObj);
-    //       $('.no-login-div').toggleClass('hide');
-    //       $('.login-div').toggleClass('hide');
-    //       console.log(vueObj);
-
-    //       vueObj.thumbnailImage = statusObj.user.properties.thumbnail_image;
-    //       vueObj.userName = statusObj.user.properties.nickname;
-    //       vueObj.title = '프로필 설정';
-    //     });
-    //   },
-    // });
-    // setTimeout(()=>{
-    //   $('.hide-area iframe').width('100%');
-    // },1000);
   },
   methods: {
     kakaoLogout(){
       this.$store.dispatch('database/logout');
-      // $('.no-login-div').toggleClass('hide');
-      // $('.login-div').toggleClass('hide');
     },
     onSuccess(data){
       var vueObj = this;
       console.log(data)
       console.log("success")
-      // Kakao.init(data.access_token);
       Kakao.Auth.getStatusInfo((statusObj)=>{
         console.log(statusObj);
-        // $('.no-login-div').toggleClass('hide');
-        // $('.login-div').toggleClass('hide');
         vueObj.$store.dispatch('database/setUsersInfo',{
           vueObj: vueObj,
           thumbnailImage : statusObj.user.properties.thumbnail_image,
@@ -180,8 +151,6 @@ export default {
 };
 
 </script>
-
-
 
 <style lang="scss" scoped>
 .login_page_wrap{

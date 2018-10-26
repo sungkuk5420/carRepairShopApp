@@ -10,59 +10,54 @@
           <div class="inner">
             <!--기본정보 입력-->
             <div class="basicInformation">
-              <b>기본정보 입력</b>
+              <b>회원가입</b>
             </div>
 
             <!--폰번호-->
             <div>
-              <div class="thema"><b>폰번호</b></div>
-              <div class="thema red">(필수)</div>
-              <input class="themaInput" type="text" id="phone" ref="phone">
+              <q-input v-model="phone" float-label="폰번호" id="phone" class="themaInput" ref="phone" name="username"  />
             </div>
 
             <!--비밀번호-->
             <div>
-              <div class="thema"><b>비밀번호</b></div>
-              <div class="thema red">(필수)</div>
-              <input class="themaInput" type="password" id="passwd" ref="passwd">
+              <q-input v-model="password" float-label="비밀번호" id="passwd" class="themaInput" ref="passwd" name="password"  />
             </div>
 
             <!--차종-->
-            <div>
+            <!-- <div>
               <div class="thema"><b>차종</b></div>
               <div class="thema red">(필수)</div>
               <select class="themaInput car_list" id="car_list" name="car_list">
                 <option value="all_new_k3" selected>all new k3</option>
                 <option value="BMW">BMW</option>
                 <option value="audi">audi</option>
-            </select>
-            </div>
+              </select>
+            </div> -->
 
             <!--연식-->
-            <div>
+            <!-- <div>
               <div class="thema"><b>연식</b></div>
               <div class="thema red">(필수)</div>
               <input class="themaInput" type="text" id="carYear">
-            </div>
+            </div> -->
 
             <!--키로수-->
-            <div>
+            <!-- <div>
               <div class="thema"><b>키로수</b></div>
               <div class="thema red">(필수)</div>
               <input class="themaInput" type="text" id="carKm">
-            </div>
+            </div> -->
 
             <!--등급-->
-            <div>
+            <!-- <div>
               <div class="thema"><b>등급</b></div>
               <div class="thema black">(선택)</div>
               <input class="themaInput" type="text" id="carRate">
-            </div>
+            </div> -->
 
             <!--동의 체크박스-->
             <div class="termsCheck">
-              <b>개인정보</b> 및 <b>서비스 이용약관</b> 동의합니다.
-              <input class="btnChk" type="checkbox" id="btnChk">
+              <q-checkbox id="btnChk" v-model="checked" label="개인정보 및 서비스 이용약관에 동의합니다." />
             </div>
           </div>
         </div>
@@ -83,7 +78,11 @@
     components: {
     },
     data () {
-      return {}
+      return {
+        phone:'',
+        password:'',
+        checked:false
+      }
     },
     computed: {
       ...mapGetters({
@@ -91,48 +90,73 @@
       })
     },
     mounted () {
+
     },
     methods: {
       userJoin(){
-        var phone = document.getElementById('phone').value;
-        var password = document.getElementById('passwd').value;
-        var carType = document.getElementById('car_list').value;
-        var carYear = document.getElementById('carYear').value;
-        var carKm = document.getElementById('carKm').value;
-        var carRate = document.getElementById('carRate').value;
-        var users = this.$store.getters["database/getUserDataBase"];
-        var haveUser = users.filter(function(currentUser){
-          return currentUser.info.phoneNumber == phone;
+        var vueObj = this;
+        var phone_number = vueObj.phone;
+        var password = vueObj.password;
+        // var car_type = document.getElementById('car_list').value;
+        // var car_year = document.getElementById('carYear').value;
+        // var car_km = document.getElementById('carKm').value;
+        // var carRate = document.getElementById('carRate').value;
+        var login_type = 'local';
+        var haveUser = [];
+        this.$store.dispatch('database/selectTable',{
+          tableName:'users',
+          fields:'user_name',
+          whereStr:`where phone_number='${phone_number}'`,
+          cb:(data)=>{
+            if(data == 'no User'){
+              insertUser();
+            }else if(data == 'error'){
+              alert('error! ');
+            }else{
+              haveUser.push(data);
+              alert('이미 가입되어 있는 ID입니다.');
+            }
+          }
+
         });
-        if(haveUser.length != 0){
-          alert('이미 가입되어 있는 ID입니다.');
-        }else{
-          if(document.getElementById('btnChk').checked == true) {
-            if(phone !== '' && passwd !== '' && carType !== '' && carYear !== '' && carKm !== '') {
-              this.$store.dispatch('database/insertUser',{phone,password,carType,carYear,carKm,carRate});
-              alert('가입 되었습니다!');
-              this.$router.push({path:'localLogin', query: { id: phone }});
+
+        var insertUser = () => {
+            if(vueObj.checked == true) {
+              if(phone !== '' && passwd !== '') {
+                vueObj.$store.dispatch('database/insertUser',{
+                  phone_number,
+                  password,
+                  login_type,
+                  cb:(data)=>{
+                    if(data == 'success'){
+                      alert('가입 되었습니다!');
+                      vueObj.$router.push({path:'localLogin', query: { id: phone_number }});
+                    }else{
+                      alert('error');
+                    }
+                  }
+                });
+              }else if(phone == ''){
+                alert('폰번호를 입력 해주세요.');
+              }
+              else if(passwd == ''){
+                alert('비밀번호를 입력 해주세요.');
+              }
+              else if(carType == ''){
+                alert('차종을 입력 해주세요.');
+              }
+              else if(carYear == ''){
+                alert('연식을 입력 해주세요.');
+              }
+              else if(carKm == ''){
+                alert('키로수를 입력 해주세요.');
+              }
             }
-            else if(phone == ''){
-              alert('폰번호를 입력 해주세요.');
+            else {
+              alert('이용약관에 동의해주세요');
             }
-            else if(passwd == ''){
-              alert('비밀번호를 입력 해주세요.');
-            }
-            else if(carType == ''){
-              alert('차종을 입력 해주세요.');
-            }
-            else if(carYear == ''){
-              alert('연식을 입력 해주세요.');
-            }
-            else if(carKm == ''){
-              alert('키로수를 입력 해주세요.');
-            }
-          }
-          else {
-            alert('이용약관에 동의해주세요');
-          }
-        }
+        };
+
       }
     },
     beforeUpdate () {
