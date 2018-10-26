@@ -82,7 +82,7 @@
         this.loginBtnProgressBl = true;
         this.$store.dispatch('database/selectTable',{
           tableName:'users',
-          fields:'user_name',
+          fields:'phone_number',
           whereStr:`where phone_number='${phone}' and password='${password}'`,
           cb: function(data){
             console.log(data);
@@ -92,7 +92,15 @@
             }else if(data == 'error'){
               alert('error! ');
             }else{
-              vueObj.$router.push({path:'main', query: {}});
+
+              vueObj.$store.dispatch('database/setUsersInfo',{
+                vueObj: vueObj,
+                thumbnailImage :'',
+                profileImage : '',
+                userName : data[0].phone_number,
+                loginState : true
+              });
+              vueObj.$router.push({path:'login', query: {}});
             }
           }
           }
@@ -135,6 +143,7 @@
     #main_container{
       max-width: 500px;
       margin: auto;
+      margin-bottom: 100px;
     }
     .bottom-btn-group{
       width: 100%;
@@ -156,10 +165,11 @@
 
     .bottomBtn{
       width:45%;
+      border: 1px solid #d5d5d5;
     }
   }
   .local_login_page_wrap .main_inner_wrap .innser{
-    height:500px;
+    height:430px;
   }
   .local_login_page_wrap .main_inner_wrap{
       padding-left: 30px;

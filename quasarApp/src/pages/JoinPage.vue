@@ -184,6 +184,7 @@
     #main_container{
       max-width: 500px;
       margin: auto;
+      margin-bottom: 50px;
     }
     .bottom-btn-group{
       width: 100%;
@@ -205,6 +206,7 @@
 
     .bottomBtn{
       width:100%;
+      border: 1px solid #d5d5d5;
     }
   }
 

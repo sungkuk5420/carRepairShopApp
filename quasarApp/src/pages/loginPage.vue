@@ -39,7 +39,7 @@
         <div class="login-div"  v-if="loginInfo.loginState == true">
           <div class="row justify-center">
             <div class="profile-img-div ">
-              <img v-bind:src="loginInfo.thumbnailImage" alt="profile-image" class="shadow-1 profile-img">
+              <img v-bind:src="loginInfo.thumbnailImage != '' ? loginInfo.thumbnailImage : defaultImage()" alt="profile-image" class="shadow-1 profile-img">
             </div>
           </div>
           <div class="row user-name-div">
@@ -142,6 +142,9 @@ export default {
     onFailure(data){
       console.log(data)
       console.log("failure")
+    },
+    defaultImage(){
+      return require('../assets/images/default-user-image.jpg');
     }
   },
   beforeUpdate () {
@@ -154,12 +157,6 @@ export default {
 
 <style lang="scss" scoped>
 .login_page_wrap{
-  .backBtn{
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    text-decoration: unset;
-  }
   #kakao-login-btn{
     display:none;
   }
