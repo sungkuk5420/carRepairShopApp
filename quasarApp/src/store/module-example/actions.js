@@ -93,13 +93,17 @@ export function setUsersInfo(_,pramas) {
   }
 
   thisObj.state.database.loginInfo.loginState = true;
-  pramas.vueObj.$session.set('loginInfo',thisObj.state.database.loginInfo);
 }
 
-export function logout() {
+export function setLocalStorage(_,vueObj) {
+  vueObj.$session.set('loginInfo',this.state.database.loginInfo);
+}
+
+export function logout(_,vueObj) {
   var thisObj = this;
   Kakao.Auth.logout();
   thisObj.state.database.loginInfo.loginState = false;
+  vueObj.$session.set('loginInfo',undefined);
 }
 
 

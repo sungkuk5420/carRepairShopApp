@@ -101,6 +101,7 @@
                 loginState : true
               });
               vueObj.$router.push({path:'login', query: {}});
+              vueObj.$store.dispatch('database/setLocalStorage',vueObj);
             }
           }
           }

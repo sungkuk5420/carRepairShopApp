@@ -6,6 +6,10 @@ module.exports = function (ctx) {
     plugins: [
       'axios'
     ],
+    js: [
+      'jquery-1.12.4min.js',
+      'kakao.min.js'
+    ],
     css: [
       'app.css'
     ],

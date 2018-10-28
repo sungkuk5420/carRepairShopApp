@@ -119,10 +119,21 @@ export default {
     })
   },
   mounted () {
+    var loginInfo = this.$session.get('loginInfo');
+    if(loginInfo != undefined){
+      this.$store.dispatch('database/setUsersInfo',{
+        vueObj: this,
+        thumbnailImage : loginInfo.thumbnailImage,
+        profileImage : loginInfo.profileImage,
+        userName : loginInfo.userName,
+        loginState : true
+      });
+    }
   },
   methods: {
     kakaoLogout(){
-      this.$store.dispatch('database/logout');
+      var vueObj = this;
+      vueObj.$store.dispatch('database/logout',vueObj);
     },
     onSuccess(data){
       var vueObj = this;
@@ -137,6 +148,8 @@ export default {
           userName : statusObj.user.properties.nickname,
           loginState : true
         });
+        // vueObj.$session.set('loginInfo','aaaa');
+        vueObj.$store.dispatch('database/setLocalStorage',vueObj);
       });
     },
     onFailure(data){
