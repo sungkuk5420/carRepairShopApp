@@ -18,7 +18,7 @@
 
                       <!--폰번호-->
                       <div style="text-align: left;">
-                        <q-input v-model="phone" float-label="차량번호" id="car_number" class="themaInput"  />
+                        <q-input v-model="carNumber" float-label="차량번호" id="car_number" class="themaInput"  />
                       </div>
 
                       <!--비밀번호-->
@@ -50,7 +50,7 @@
     },
     data () {
       return {
-        car_number:'',
+        carNumber:'',
         password:'',
         loginBtnProgressBl:false
       }
@@ -69,14 +69,14 @@
       userCheck(){
 
         var vueObj  = this;
-        var phone = vueObj.car_number;
+        var carNumber = vueObj.carNumber;
         var password = vueObj.password;
         // var users = vueObj.$store.getters["database/getUserDataBase"];
         this.loginBtnProgressBl = true;
         this.$store.dispatch('database/selectTable',{
           tableName:'users',
-          fields:'car_number',
-          whereStr:`where car_number='${phone}' and password='${password}'`,
+          fields:'car_number,phone_number,user_name,car_type,car_km,user_level,thumbnail_image,profile_image,login_type',
+          whereStr:`where car_number='${carNumber}' and password='${password}'`,
           cb: function(data){
             console.log(data);
             vueObj.loginBtnProgressBl = false;
@@ -85,12 +85,19 @@
             }else if(data == 'error'){
               alert('error! ');
             }else{
-
+              var loginInfo = data[0];
+              console.log(loginInfo);
               vueObj.$store.dispatch('database/setUsersInfo',{
                 vueObj: vueObj,
-                thumbnailImage :'',
-                profileImage : '',
-                userName : data[0].car_number,
+                carNumber:loginInfo.car_number,
+                phoneNumber:loginInfo.phone_number,
+                userName:loginInfo.user_name,
+                carType:loginInfo.car_type,
+                carKm:loginInfo.car_km,
+                userLevel:loginInfo.user_level,
+                thumbnailImage : loginInfo.thumbnail_image,
+                profileImage : loginInfo.profile_image,
+                loginType:loginInfo.login_type,
                 loginState : true
               });
               vueObj.$router.push({path:'login', query: {}});

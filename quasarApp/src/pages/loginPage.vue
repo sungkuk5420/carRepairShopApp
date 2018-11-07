@@ -52,35 +52,30 @@
 
           <div class="margin-div"></div>
           <div class="row menu-div">
-            <span class="label">상태메세지</span>
-            <span class="value">상태메세지를 입력하세요</span>
-          </div>
-          <div class="row menu-div">
-            <span class="label">프로필뱃지 / 음악</span>
-          </div>
-          <div class="row menu-div last-div">
-            <span class="label">프로필 콘</span>
-          </div>
-          <div class="margin-div"></div>
-          <div class="row menu-div">
             <span class="label">전화번호</span>
-            <span class="value">+81 70-4805-3533</span>
-          </div>
-          <div class="row menu-div">
-            <span class="label">이메일</span>
-            <span class="value">sungkuk@gmail.com</span>
+            <span class="value">{{loginInfo.phoneNumber}}</span>
           </div>
           <div class="row menu-div last-div">
-            <span class="label">계정관리</span>
+            <span class="label">자동차</span>
+            <span class="value">{{loginInfo.carType}}</span>
+          </div>
+          <div class="row menu-div">
+            <span class="label">차량번호</span>
+            <span class="value">{{loginInfo.carNumber}}</span>
           </div>
           <div class="margin-div"></div>
           <div class="row menu-div">
-            <span class="label">자동차</span>
-            <span class="value">제네시스</span>
+            <span class="label">주행거리</span>
+            <span class="value">{{loginInfo.carKm}}</span>
           </div>
+          <div class="row menu-div last-div">
+            <span class="label">로그인 타입</span>
+            <span class="value">{{loginInfo.loginType == 'local' ? '로컬' : ''}}</span>
+          </div>
+          <div class="margin-div"></div>
           <div class="row menu-div">
             <span class="label">회원등급</span>
-            <span class="value">일반</span>
+            <span class="value">{{loginInfo.userLevel}}</span>
           </div>
           <div class="row menu-div last-div" @click="kakaoLogout();">
             <span class="label">로그아웃</span>
@@ -120,12 +115,19 @@ export default {
   },
   mounted () {
     var loginInfo = this.$session.get('loginInfo');
+    console.log(loginInfo);
     if(loginInfo != undefined){
       this.$store.dispatch('database/setUsersInfo',{
         vueObj: this,
+        carNumber:loginInfo.carNumber,
+        phoneNumber:loginInfo.phoneNumber,
+        userName:loginInfo.userName,
+        carType:loginInfo.carType,
+        carKm:loginInfo.carKm,
+        userLevel:loginInfo.userLevel,
         thumbnailImage : loginInfo.thumbnailImage,
         profileImage : loginInfo.profileImage,
-        userName : loginInfo.userName,
+        loginType:loginInfo.loginType,
         loginState : true
       });
     }

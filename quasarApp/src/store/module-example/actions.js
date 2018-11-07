@@ -87,14 +87,33 @@ export function insertUser(_,pramas) {
 export function setUsersInfo(_,pramas) {
   console.log('setUsersInfo',pramas);
   var thisObj = this;
+
+  if(pramas.carNumber){
+    thisObj.state.database.loginInfo.carNumber = pramas.carNumber;
+  }
+  if(pramas.phoneNumber){
+    thisObj.state.database.loginInfo.phoneNumber = pramas.phoneNumber;
+  }
+  if(pramas.userName){
+    thisObj.state.database.loginInfo.userName = pramas.userName;
+  }
+  if(pramas.carType){
+    thisObj.state.database.loginInfo.carType = pramas.carType;
+  }
+  if(pramas.carKm){
+    thisObj.state.database.loginInfo.carKm = pramas.carKm;
+  }
+  if(pramas.userLevel){
+    thisObj.state.database.loginInfo.userLevel = pramas.userLevel;
+  }
   if(pramas.thumbnailImage){
     thisObj.state.database.loginInfo.thumbnailImage = pramas.thumbnailImage;
   }
   if(pramas.profileImage){
     thisObj.state.database.loginInfo.profileImage = pramas.profileImage;
   }
-  if(pramas.userName){
-    thisObj.state.database.loginInfo.userName = pramas.userName;
+  if(pramas.loginType){
+    thisObj.state.database.loginInfo.loginType = pramas.loginType;
   }
 
   thisObj.state.database.loginInfo.loginState = true;
