@@ -38,11 +38,16 @@ var mysqlUtil = module.exports = {
     },
 
     insertUser : function (data, res) {
-        console.log("seletTable start " + JSON.stringify(data));
-        var phone_number = data.phone_number;
+        console.log("insertUser start " + JSON.stringify(data));
+        var car_number = data.car_number;
         var password = data.password;
+        var phone_number = data.phone_number;
+        var user_name = data.user_name;
+        var car_type = data.car_type;
+        var car_km = data.car_km;
+        var user_level = data.user_level;
         var login_type = data.login_type;
-        var queryString = `INSERT INTO users (phone_number,password,login_type) VALUES('${phone_number}','${password}','${login_type}')`;
+        var queryString = `INSERT INTO users (car_number,password,phone_number,user_name,car_type,car_km,user_level,login_type) VALUES('${car_number}','${password}','${phone_number}','${user_name}','${car_type}','${car_km}','${user_level}','${login_type}')`;
         console.log(queryString);
         client.query(queryString, function (error, result, fields) {
             if (error) {

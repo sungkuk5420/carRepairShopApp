@@ -48,8 +48,13 @@ export function insertUser(_,pramas) {
   console.log(pramas);
   ajaxActions().insertUser(
     this.state,
-    pramas.phone_number,
+    pramas.car_number,
     pramas.password,
+    pramas.phone_number,
+    pramas.user_name,
+    pramas.car_type,
+    pramas.car_km,
+    pramas.user_level,
     pramas.login_type,
     (results) => {
       console.log('action / insertUser / success')

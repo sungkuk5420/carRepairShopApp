@@ -13,40 +13,40 @@
               <b>회원가입</b>
             </div>
 
-            <!--폰번호-->
+            <!--차량번호-->
             <div>
-              <q-input v-model="phone" float-label="폰번호" id="phone" class="themaInput" ref="phone" name="username"  />
+              <q-input v-model="carNumber" float-label="차량번호(Id)" class="themaInput" />
             </div>
 
             <!--비밀번호-->
             <div>
-              <q-input v-model="password" float-label="비밀번호" id="passwd" class="themaInput" ref="passwd" name="password"  />
+              <q-input v-model="password" float-label="비밀번호" class="themaInput" />
+            </div>
+
+            <!--폰번호-->
+            <div>
+              <q-input v-model="phone" float-label="폰번호 (선택)" class="themaInput" />
+            </div>
+
+            <!--폰번호-->
+            <div>
+              <q-input v-model="nickName" float-label="성함 (선택)" class="themaInput" />
             </div>
 
             <!--차종-->
-            <!-- <div>
-              <div class="thema"><b>차종</b></div>
-              <div class="thema red">(필수)</div>
-              <select class="themaInput car_list" id="car_list" name="car_list">
-                <option value="all_new_k3" selected>all new k3</option>
-                <option value="BMW">BMW</option>
-                <option value="audi">audi</option>
-              </select>
-            </div> -->
-
-            <!--연식-->
-            <!-- <div>
-              <div class="thema"><b>연식</b></div>
-              <div class="thema red">(필수)</div>
-              <input class="themaInput" type="text" id="carYear">
-            </div> -->
+            <div>
+              <q-select
+                v-model="selectedOption"
+                float-label="차종"
+                radio
+              :options="selectOptions"
+              />
+            </div>
 
             <!--키로수-->
-            <!-- <div>
-              <div class="thema"><b>키로수</b></div>
-              <div class="thema red">(필수)</div>
-              <input class="themaInput" type="text" id="carKm">
-            </div> -->
+            <div>
+              <q-input v-model="carKm" float-label="주행거리 (선택)" class="themaInput" />
+            </div>
 
             <!--등급-->
             <!-- <div>
@@ -84,8 +84,26 @@
     },
     data () {
       return {
-        phone:'',
+        carNumber:'',
         password:'',
+        phone:'',
+        nickName:'',
+        selectedOption:'',
+        selectOptions:[
+          {
+            label: 'all new k3',
+            value: 'all new k3'
+          },
+          {
+            label: 'BMW',
+            value: 'BMW'
+          },
+          {
+            label: 'audi',
+            value: 'audi'
+          }
+        ],
+        carKm:'',
         checked:false,
         loginBtnProgressBl:false
       }
@@ -101,68 +119,68 @@
     methods: {
       userJoin(){
         var vueObj = this;
-        var phone_number = vueObj.phone;
+        var car_number = vueObj.carNumber;
         var password = vueObj.password;
-        // var car_type = document.getElementById('car_list').value;
-        // var car_year = document.getElementById('carYear').value;
-        // var car_km = document.getElementById('carKm').value;
-        // var carRate = document.getElementById('carRate').value;
+        var phone_number = vueObj.phone;
+        var user_name = vueObj.nickName;
+        var car_type = vueObj.selectedOption;
+        var car_km = vueObj.carKm;
+        var user_level = 'public';
         var login_type = 'local';
         var haveUser = [];
         this.loginBtnProgressBl = true;
-        this.$store.dispatch('database/selectTable',{
-          tableName:'users',
-          fields:'user_name',
-          whereStr:`where phone_number='${phone_number}'`,
-          cb:(data)=>{
-            if(data == 'no User'){
-              insertUser();
-            }else if(data == 'error'){
-              alert('error! ');
-            }else{
-              haveUser.push(data);
-              alert('이미 가입되어 있는 ID입니다.');
-            }
-          }
+        if(vueObj.checked == true) {
+        console.log('aa');
+          if(car_number !== '' && password !== '') {
+            this.$store.dispatch('database/selectTable',{
+              tableName:'users',
+              fields:'user_name',
+              whereStr:`where car_number='${car_number}'`,
+              cb:(data)=>{
+                if(data == 'no User'){
+                  insertUser();
+                }else if(data == 'error'){
+                  alert('error! ');
+                }else{
+                  haveUser.push(data);
+                  this.loginBtnProgressBl = false;
+                  alert('이미 가입되어 있는 ID입니다.');
+                }
+              }
 
-        });
+            });
+          }else if(car_number == ''){
+            alert('차량번호를 입력 해주세요.');
+          }
+          else if(password == ''){
+            alert('비밀번호를 입력 해주세요.');
+          }
+        }
+        else {
+          alert('이용약관에 동의해주세요');
+        }
+        this.loginBtnProgressBl = false;
 
         var insertUser = () => {
-            if(vueObj.checked == true) {
-              if(phone !== '' && passwd !== '') {
-                vueObj.$store.dispatch('database/insertUser',{
-                  phone_number,
-                  password,
-                  login_type,
-                  cb:(data)=>{
-                    this.loginBtnProgressBl = false;
-                    if(data == 'success'){
-                      alert('가입 되었습니다!');
-                      vueObj.$router.push({path:'localLogin', query: { id: phone_number }});
-                    }else{
-                      alert('error');
-                    }
-                  }
-                });
-              }else if(phone == ''){
-                alert('폰번호를 입력 해주세요.');
-              }
-              else if(passwd == ''){
-                alert('비밀번호를 입력 해주세요.');
-              }
-              else if(carType == ''){
-                alert('차종을 입력 해주세요.');
-              }
-              else if(carYear == ''){
-                alert('연식을 입력 해주세요.');
-              }
-              else if(carKm == ''){
-                alert('키로수를 입력 해주세요.');
+          vueObj.$store.dispatch('database/insertUser',{
+            car_number,
+            password,
+            phone_number,
+            user_name,
+            car_type,
+            car_km,
+            user_level,
+            login_type,
+            cb:(data)=>{
+              this.loginBtnProgressBl = false;
+              if(data == 'success'){
+                alert('가입 되었습니다!');
+                vueObj.$router.push({path:'localLogin', query: { id: car_number }});
+              }else{
+                alert('error');
               }
             }
-            else {
-              alert('이용약관에 동의해주세요');
-            }
+          });
         };
 
       }
@@ -171,7 +189,6 @@
 
     },
     created () {
-      this.$store.dispatch('database/setUsersRef');
     },
   };
 

@@ -30,13 +30,29 @@ export default () => {
       )
     },
 
-    insertUser (state,phone_number,password,login_type, cSuccess, cError) {
+    insertUser (
+      state,
+      car_number,
+      password,
+      phone_number,
+      user_name,
+      car_type,
+      car_km,
+      user_level,
+      login_type,
+      cSuccess,
+      cError) {
       var tableName = tableName;
       var apiURL = `${apiServer}insertUser`;
       let api = axios.create()
       axios.post(apiURL, {
-        phone_number,
+        car_number,
         password,
+        phone_number,
+        user_name,
+        car_type,
+        car_km,
+        user_level,
         login_type
       }).then(
         (responses) => {
