@@ -119,12 +119,15 @@
     methods: {
       userJoin(){
         var vueObj = this;
+        var id = null;
         var car_number = vueObj.carNumber;
         var password = vueObj.password;
         var phone_number = vueObj.phone;
         var user_name = vueObj.nickName;
         var car_type = vueObj.selectedOption;
         var car_km = vueObj.carKm;
+        var thumbnail_image = null;
+        var profile_image = null;
         var user_level = 'public';
         var login_type = 'local';
         var haveUser = [];
@@ -163,12 +166,15 @@
 
         var insertUser = () => {
           vueObj.$store.dispatch('database/insertUser',{
+            id,
             car_number,
             password,
             phone_number,
             user_name,
             car_type,
             car_km,
+            thumbnail_image,
+            profile_image,
             user_level,
             login_type,
             cb:(data)=>{

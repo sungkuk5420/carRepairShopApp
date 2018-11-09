@@ -141,15 +141,98 @@ export default {
       var vueObj = this;
       console.log(data)
       console.log("success")
+      var id = '';
+      var car_number = '';
+      var password = '';
+      var phone_number = '';
+      var user_name = '';
+      var car_type = '';
+      var car_km = '';
+      var thumbnail_image = '';
+      var profile_image = '';
+      var user_level = '일반';
+      var login_type = 'kakao';
       Kakao.Auth.getStatusInfo((statusObj)=>{
         console.log(statusObj);
-        vueObj.$store.dispatch('database/setUsersInfo',{
-          vueObj: vueObj,
-          thumbnailImage : statusObj.user.properties.thumbnail_image,
-          profileImage : statusObj.user.properties.profile_image,
-          userName : statusObj.user.properties.nickname,
-          loginState : true
-        });
+        id = statusObj.user.id;
+        password = statusObj.user.id;
+        user_name = statusObj.user.properties.nickname;
+        profile_image = statusObj.user.properties.profile_image;
+        thumbnail_image = statusObj.user.properties.thumbnail_image;
+        this.$store.dispatch('database/selectTable',{
+            tableName:'users',
+            fields:'car_number,phone_number,user_name,car_type,car_km,user_level,thumbnail_image,profile_image,login_type',
+            whereStr:`where id='${id}'`,
+            cb: function(data){
+              console.log(data);
+              vueObj.loginBtnProgressBl = false;
+              if(data == 'no User'){
+                vueObj.$store.dispatch('database/insertUser',{
+                  id,
+                  car_number,
+                  password,
+                  phone_number,
+                  user_name,
+                  car_type,
+                  car_km,
+                  thumbnail_image,
+                  profile_image,
+                  user_level,
+                  login_type,
+                  cb:(data)=>{
+                    this.loginBtnProgressBl = false;
+                    if(data == 'success'){
+                      vueObj.$store.dispatch('database/setUsersInfo',{
+                        vueObj: vueObj,
+                        carNumber:car_number,
+                        phoneNumber:phone_number,
+                        userName:user_name,
+                        carType:car_type,
+                        carKm:car_km,
+                        userLevel:user_level,
+                        thumbnailImage : thumbnail_image,
+                        profileImage : profile_image,
+                        loginType:login_type,
+                        loginState : true
+                      });
+                      vueObj.$router.push({path:'login', query: {}});
+                      vueObj.$store.dispatch('database/setLocalStorage',vueObj);
+                    }else{
+                      alert('error');
+                    }
+                  }
+                });
+              }else if(data == 'error'){
+                alert('error! ');
+              }else{
+                var loginInfo = data[0];
+                console.log(loginInfo);
+                vueObj.$store.dispatch('database/setUsersInfo',{
+                  vueObj: vueObj,
+                  carNumber:loginInfo.car_number,
+                  phoneNumber:loginInfo.phone_number,
+                  userName:loginInfo.user_name,
+                  carType:loginInfo.car_type,
+                  carKm:loginInfo.car_km,
+                  userLevel:loginInfo.user_level,
+                  thumbnailImage : loginInfo.thumbnail_image,
+                  profileImage : loginInfo.profile_image,
+                  loginType:loginInfo.login_type,
+                  loginState : true
+                });
+                vueObj.$router.push({path:'login', query: {}});
+                vueObj.$store.dispatch('database/setLocalStorage',vueObj);
+              }
+            }
+          }
+        );
+        // vueObj.$store.dispatch('database/setUsersInfo',{
+        //   vueObj: vueObj,
+        //   thumbnailImage : statusObj.user.properties.thumbnail_image,
+        //   profileImage : statusObj.user.properties.profile_image,
+        //   userName : statusObj.user.properties.nickname,
+        //   loginState : true
+        // });
         // vueObj.$session.set('loginInfo','aaaa');
         vueObj.$store.dispatch('database/setLocalStorage',vueObj);
       });

@@ -39,16 +39,43 @@ var mysqlUtil = module.exports = {
 
     insertUser : function (data, res) {
         console.log("insertUser start " + JSON.stringify(data));
+        var id = data.id;
         var car_number = data.car_number;
         var password = data.password;
         var phone_number = data.phone_number;
         var user_name = data.user_name;
         var car_type = data.car_type;
         var car_km = data.car_km;
+        var thumbnail_image = data.thumbnail_image;
+        var profile_image = data.profile_image;
         var user_level = data.user_level;
         var login_type = data.login_type;
-        var queryString = `INSERT INTO users (car_number,password,phone_number,user_name,car_type,car_km,user_level,login_type) VALUES('${car_number}','${password}','${phone_number}','${user_name}','${car_type}','${car_km}','${user_level}','${login_type}')`;
-        console.log(queryString);
+        // var queryString = `INSERT INTO users (id, car_number,password,phone_number,user_name,car_type,car_km,thumbnail_image,profile_image,user_level,login_type) VALUES('${id}',${car_number}','${password}','${phone_number}','${user_name}','${car_type}','${car_km}','${thumbnail_image}','${profile_image}','${user_level}','${login_type}')`;
+        var queryString = 'INSERT INTO users (';
+        queryString += (id != null ? 'id,':'');
+        queryString += (car_number != null ? 'car_number,':'');
+        queryString += (password != null ? 'password,':'');
+        queryString += (phone_number != null ? 'phone_number,':'');
+        queryString += (user_name != null ? 'user_name,':'');
+        queryString += (car_type != null ? 'car_type,':'');
+        queryString += (car_km != null ? 'car_km,':'');
+        queryString += (thumbnail_image != null ? 'thumbnail_image,':'');
+        queryString += (profile_image != null ? 'profile_image,':'');
+        queryString += (user_level != null ? 'user_level,':'');
+        queryString += (login_type != null ? 'login_type':'');
+        queryString += ') VALUES(';
+        queryString += (id != null ? `'${id}',`:'');
+        queryString += (car_number != null ? `'${car_number}',`:'');
+        queryString += (password != null ? `'${password}',`:'');
+        queryString += (phone_number != null ? `'${phone_number}',`:'');
+        queryString += (user_name != null ? `'${user_name}',`:'');
+        queryString += (car_type != null ? `'${car_type}',`:'');
+        queryString += (car_km != null ? `'${car_km}',`:'');
+        queryString += (thumbnail_image != null ? `'${thumbnail_image}',`:'');
+        queryString += (profile_image != null ? `'${profile_image}',`:'');
+        queryString += (user_level != null ? `'${user_level}',`:'');
+        queryString += (login_type != null ? `'${login_type}')`:'');
+        console.log('queryString : ',queryString);
         client.query(queryString, function (error, result, fields) {
             if (error) {
                 console.log(error);

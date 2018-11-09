@@ -74,36 +74,36 @@
         // var users = vueObj.$store.getters["database/getUserDataBase"];
         this.loginBtnProgressBl = true;
         this.$store.dispatch('database/selectTable',{
-          tableName:'users',
-          fields:'car_number,phone_number,user_name,car_type,car_km,user_level,thumbnail_image,profile_image,login_type',
-          whereStr:`where car_number='${carNumber}' and password='${password}'`,
-          cb: function(data){
-            console.log(data);
-            vueObj.loginBtnProgressBl = false;
-            if(data == 'no User'){
-              alert('차량번호, 비밀번호를 확인해주세요.');
-            }else if(data == 'error'){
-              alert('error! ');
-            }else{
-              var loginInfo = data[0];
-              console.log(loginInfo);
-              vueObj.$store.dispatch('database/setUsersInfo',{
-                vueObj: vueObj,
-                carNumber:loginInfo.car_number,
-                phoneNumber:loginInfo.phone_number,
-                userName:loginInfo.user_name,
-                carType:loginInfo.car_type,
-                carKm:loginInfo.car_km,
-                userLevel:loginInfo.user_level,
-                thumbnailImage : loginInfo.thumbnail_image,
-                profileImage : loginInfo.profile_image,
-                loginType:loginInfo.login_type,
-                loginState : true
-              });
-              vueObj.$router.push({path:'login', query: {}});
-              vueObj.$store.dispatch('database/setLocalStorage',vueObj);
+            tableName:'users',
+            fields:'car_number,phone_number,user_name,car_type,car_km,user_level,thumbnail_image,profile_image,login_type',
+            whereStr:`where car_number='${carNumber}' and password='${password}'`,
+            cb: function(data){
+              console.log(data);
+              vueObj.loginBtnProgressBl = false;
+              if(data == 'no User'){
+                alert('차량번호, 비밀번호를 확인해주세요.');
+              }else if(data == 'error'){
+                alert('error! ');
+              }else{
+                var loginInfo = data[0];
+                console.log(loginInfo);
+                vueObj.$store.dispatch('database/setUsersInfo',{
+                  vueObj: vueObj,
+                  carNumber:loginInfo.car_number,
+                  phoneNumber:loginInfo.phone_number,
+                  userName:loginInfo.user_name,
+                  carType:loginInfo.car_type,
+                  carKm:loginInfo.car_km,
+                  userLevel:loginInfo.user_level,
+                  thumbnailImage : loginInfo.thumbnail_image,
+                  profileImage : loginInfo.profile_image,
+                  loginType:loginInfo.login_type,
+                  loginState : true
+                });
+                vueObj.$router.push({path:'login', query: {}});
+                vueObj.$store.dispatch('database/setLocalStorage',vueObj);
+              }
             }
-          }
           }
         );
 

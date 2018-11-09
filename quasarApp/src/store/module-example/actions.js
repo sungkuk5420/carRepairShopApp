@@ -48,12 +48,15 @@ export function insertUser(_,pramas) {
   console.log(pramas);
   ajaxActions().insertUser(
     this.state,
+    pramas.id,
     pramas.car_number,
     pramas.password,
     pramas.phone_number,
     pramas.user_name,
     pramas.car_type,
     pramas.car_km,
+    pramas.thumbnail_image,
+    pramas.profile_image,
     pramas.user_level,
     pramas.login_type,
     (results) => {
@@ -125,8 +128,21 @@ export function setLocalStorage(_,vueObj) {
 
 export function logout(_,vueObj) {
   var thisObj = this;
-  Kakao.Auth.logout();
-  thisObj.state.database.loginInfo.loginState = false;
+  if(this.state.database.loginInfo.loginType == "kakao"){
+    Kakao.Auth.logout();
+  }
+  thisObj.state.database.loginInfo = {
+    carNumber:'',
+    phoneNumber:'',
+    userName:'',
+    carType:'',
+    carKm:'',
+    userLevel:'',
+    thumbnailImage:'',
+    profileImage:'',
+    loginType:'',
+    loginState: false
+  };
   vueObj.$session.set('loginInfo',undefined);
 }
 

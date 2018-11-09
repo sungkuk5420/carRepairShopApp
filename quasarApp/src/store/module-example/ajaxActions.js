@@ -32,12 +32,15 @@ export default () => {
 
     insertUser (
       state,
+      id,
       car_number,
       password,
       phone_number,
       user_name,
       car_type,
       car_km,
+      thumbnail_image,
+      profile_image,
       user_level,
       login_type,
       cSuccess,
@@ -46,12 +49,15 @@ export default () => {
       var apiURL = `${apiServer}insertUser`;
       let api = axios.create()
       axios.post(apiURL, {
+        id,
         car_number,
         password,
         phone_number,
         user_name,
         car_type,
         car_km,
+        thumbnail_image,
+        profile_image,
         user_level,
         login_type
       }).then(
