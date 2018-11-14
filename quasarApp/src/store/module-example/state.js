@@ -1,5 +1,6 @@
 export default {
-  users:[],
+  users: [],
+  carList: [],
   loginInfo:{
     carNumber:'',
     phoneNumber:'',

@@ -1,5 +1,12 @@
 import firebase from 'firebase';
-import ajaxActions from './ajaxActions'
+import ajaxActions from './ajaxActions';
+import firebaseDataKey from '../../secret';
+console.log(firebaseDataKey);
+var config = {
+  databaseURL: firebaseDataKey.firebaseKey,
+}
+var firebaseApp = firebase.initializeApp(config);
+var db = firebaseApp.database();
 
 export function selectTable(_,pramas) {
     var thisObj = this;
@@ -146,4 +153,51 @@ export function logout(_,vueObj) {
   vueObj.$session.set('loginInfo',undefined);
 }
 
+export function getCarList(_,cb) {
+  console.log('getCarList');
+    var thisObj = this;
+    db.ref('/carList').on('value', function (data) {
+      var database = data.val();
+      console.log(database);
+      if(database == null){
+        thisObj.state.database.carList = [];
+        if(cb){
+          cb();
+        }
+        return false;
+      }
+      var carListDataRef = Object.keys(database).map(function(carListData) {
+          return {
+              id : carListData,
+              info :database[carListData]
+          };
+      });
+      thisObj.state.database.carList = carListDataRef;
+      if(cb){
+        cb();
+      }
+    });
+}
 
+export function addCarList(_,carName) {
+  console.log('addCarList');
+    var thisObj = this;
+    console.log(carName);
+    db.ref('carList/').push({
+      carName: carName,
+      addTime: Date.now()
+    });
+}
+
+export function removeCarList(_,originalData) {
+  console.log('addCarList');
+    var thisObj = this;
+    console.log(originalData);
+    db.ref(`carList/${originalData.id}/`).remove()
+    .then(function() {
+      console.log("Remove succeeded.")
+    })
+    .catch(function(error) {
+      console.log("Remove failed: " + error.message)
+    });
+}
