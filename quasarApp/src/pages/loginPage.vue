@@ -117,7 +117,7 @@ export default {
     var loginInfo = this.$session.get('loginInfo');
     console.log(loginInfo);
     if(loginInfo != undefined){
-      this.$store.dispatch('database/setUsersInfo',{
+      this.$store.dispatch('database/setUserInfo',{
         vueObj: this,
         carNumber:loginInfo.carNumber,
         phoneNumber:loginInfo.phoneNumber,
@@ -182,7 +182,7 @@ export default {
                   cb:(data)=>{
                     this.loginBtnProgressBl = false;
                     if(data == 'success'){
-                      vueObj.$store.dispatch('database/setUsersInfo',{
+                      vueObj.$store.dispatch('database/setUserInfo',{
                         vueObj: vueObj,
                         carNumber:car_number,
                         phoneNumber:phone_number,
@@ -207,7 +207,7 @@ export default {
               }else{
                 var loginInfo = data[0];
                 console.log(loginInfo);
-                vueObj.$store.dispatch('database/setUsersInfo',{
+                vueObj.$store.dispatch('database/setUserInfo',{
                   vueObj: vueObj,
                   carNumber:loginInfo.car_number,
                   phoneNumber:loginInfo.phone_number,
@@ -226,7 +226,7 @@ export default {
             }
           }
         );
-        // vueObj.$store.dispatch('database/setUsersInfo',{
+        // vueObj.$store.dispatch('database/setUserInfo',{
         //   vueObj: vueObj,
         //   thumbnailImage : statusObj.user.properties.thumbnail_image,
         //   profileImage : statusObj.user.properties.profile_image,

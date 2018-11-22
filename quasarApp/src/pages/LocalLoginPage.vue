@@ -87,7 +87,7 @@
               }else{
                 var loginInfo = data[0];
                 console.log(loginInfo);
-                vueObj.$store.dispatch('database/setUsersInfo',{
+                vueObj.$store.dispatch('database/setUserInfo',{
                   vueObj: vueObj,
                   carNumber:loginInfo.car_number,
                   phoneNumber:loginInfo.phone_number,
@@ -117,7 +117,7 @@
         // }else if(haveUser[0].info.password != password){
         //   alert('password가 틀렸습니다.');
         // }else{
-        //   vueObj.$store.dispatch('database/setUsersInfo',{
+        //   vueObj.$store.dispatch('database/setUserInfo',{
         //     vueObj: vueObj,
         //     thumbnailImage : statusObj.user.properties.thumbnail_image,
         //     profileImage : statusObj.user.properties.profile_image,

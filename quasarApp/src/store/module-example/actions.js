@@ -94,8 +94,8 @@ export function insertUser(_,pramas) {
   )
 }
 
-export function setUsersInfo(_,pramas) {
-  console.log('setUsersInfo',pramas);
+export function setUserInfo(_,pramas) {
+  console.log('setUserInfo',pramas);
   var thisObj = this;
 
   if(pramas.carNumber){
@@ -200,4 +200,9 @@ export function removeCarList(_,originalData) {
     .catch(function(error) {
       console.log("Remove failed: " + error.message)
     });
+}
+
+export function setUsers(_,pramas) {
+  console.log('setUsers',pramas);
+  this.state.database.users = pramas.users;
 }

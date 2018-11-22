@@ -40,7 +40,8 @@
       </a-layout-sider>
       <a-layout style="padding: 24px 24px">
         <a-layout-content :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }">
-          <admin-car-table-comp></admin-car-table-comp>
+          <!-- <admin-car-table-comp></admin-car-table-comp> -->
+          <admin-user-table-comp></admin-user-table-comp>
         </a-layout-content>
       </a-layout>
     </a-layout>
@@ -49,11 +50,13 @@
 <script>
   import { mapGetters } from 'vuex'
   import adminCarTableComp from '../components/adminCarTableComp.vue'
+  import adminUserTableComp from '../components/adminUserTableComp.vue'
 
   export default {
     name: 'AdminPage',
     components: {
-      adminCarTableComp
+      adminCarTableComp,
+      adminUserTableComp
     },
     data () {
       return {
