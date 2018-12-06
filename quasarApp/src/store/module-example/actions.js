@@ -206,3 +206,83 @@ export function setUsers(_,pramas) {
   console.log('setUsers',pramas);
   this.state.database.users = pramas.users;
 }
+
+export function updateUser(_,pramas) {
+  var thisObj = this;
+  console.log(pramas);
+  ajaxActions().updateUser(
+    this.state,
+    pramas.id,
+    pramas.car_number,
+    pramas.password,
+    pramas.phone_number,
+    pramas.user_name,
+    pramas.car_type,
+    pramas.car_km,
+    pramas.thumbnail_image,
+    pramas.profile_image,
+    pramas.user_level,
+    pramas.login_type,
+    (results) => {
+      console.log('action / updateUser / success')
+      console.log('results= ', results);
+      if(results.data.affectedRows != 0){
+        if(pramas.cb){
+          pramas.cb('success');
+        }
+      }else{
+        if(pramas.cb){
+          pramas.cb('error');
+        }
+      }
+      // commit(M.CHANGE_USER_DATA, results)
+    },
+    (res) => {
+      if(pramas.cb){
+        pramas.cb('error');
+      }
+      if (res === 500) {
+        // thisObj.dispatch(M.SHOW_TOAST)
+      }
+      else {
+        // location.href = `${res}`
+      }
+    }
+  )
+}
+
+
+
+export function deleteUser(_,pramas) {
+  var thisObj = this;
+  console.log(pramas);
+  ajaxActions().deleteUser(
+    this.state,
+    pramas.id,
+    (results) => {
+      console.log('action / deleteUser / success')
+      console.log('results= ', results);
+      if(results.data.affectedRows != 0){
+        if(pramas.cb){
+          pramas.cb('success');
+        }
+      }else{
+        if(pramas.cb){
+          pramas.cb('error');
+        }
+      }
+      // commit(M.CHANGE_USER_DATA, results)
+    },
+    (res) => {
+      if(pramas.cb){
+        pramas.cb('error');
+      }
+      if (res === 500) {
+        // thisObj.dispatch(M.SHOW_TOAST)
+      }
+      else {
+        // location.href = `${res}`
+      }
+    }
+  )
+}

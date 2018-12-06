@@ -23,6 +23,16 @@ router.post('/insertUser', function (req, res) {
   db.insertUser(req.body,res);
 });
 
+router.post('/updateUser', function (req, res) {
+  //console.log(req.body);
+  db.updateUser(req.body,res);
+});
+
+router.post('/deleteUser', function (req, res) {
+  //console.log(req.body);
+  db.deleteUser(req.body,res);
+});
+
 router.get('/minimalzeImage', function(req, res, next) {
     res.render('minimalzeImage', { title: '이미지 압축 페이지' });
 });
