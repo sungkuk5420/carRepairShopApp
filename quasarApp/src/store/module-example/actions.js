@@ -286,3 +286,13 @@ export function deleteUser(_,pramas) {
     }
   )
 }
+
+export function setAdminPageIndex(_,pramas) {
+  console.log(pramas.pageIndex);
+  this.state.database.adminPageInfo.pageIndex = pramas.pageIndex;
+}
+
+export function setAdminTabIndex(_,pramas) {
+  console.log(pramas.tabIndex);
+  this.state.database.adminPageInfo.tabIndex = pramas.tabIndex;
+}

@@ -62,3 +62,7 @@ export function getCarList(state) {
   }
   return sortList;
 }
+
+export function getAdminPageInfo(state) {
+  return state.adminPageInfo;
+}

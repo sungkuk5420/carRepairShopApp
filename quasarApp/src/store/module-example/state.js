@@ -12,5 +12,9 @@ export default {
     profileImage:'',
     loginType:'',
     loginState: false
+  },
+  adminPageInfo:{
+    pageIndex:1,
+    tabIndex:1
   }
 };

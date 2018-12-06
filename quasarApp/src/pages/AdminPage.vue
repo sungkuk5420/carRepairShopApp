@@ -8,9 +8,11 @@
         :defaultSelectedKeys="['1']"
         :style="{ lineHeight: '64px' }"
       >
-        <a-menu-item key="1">앱 관리</a-menu-item>
-        <a-menu-item key="2">유저 관리</a-menu-item>
-        <a-menu-item key="3">통계 화면</a-menu-item>
+        <a-menu-item key="1" @click="changePage(1)">앱 관리</a-menu-item>
+        <a-menu-item key="2" @click="changePage(2)">유저 관리</a-menu-item>
+        <a-menu-item key="3" @click="changePage(3)">쿠폰 관리</a-menu-item>
+        <a-menu-item key="4" @click="changePage(4)">예약 관리</a-menu-item>
+        <a-menu-item key="5" @click="changePage(5)">통계 화면</a-menu-item>
       </a-menu>
     </a-layout-header>
     <a-layout>
@@ -21,7 +23,10 @@
           :defaultOpenKeys="['sub1']"
           :style="{ height: '100%', borderRight: 0 }"
         >
-            <a-menu-item key="1"><a-icon type="car" />차량 목록 추가</a-menu-item>
+            <a-menu-item key="1" v-if="adminPageInfo.pageIndex===1" @click="changeTab(1)"><a-icon type="car" />차량 목록 추가</a-menu-item>
+            <a-menu-item key="2" v-if="adminPageInfo.pageIndex===1" @click="changeTab(2)"><a-icon type="car" />차량 목록 추가2</a-menu-item>
+            <a-menu-item key="3" v-if="adminPageInfo.pageIndex===2" @click="changeTab(1)"><a-icon type="user" />유저 정보 수정</a-menu-item>
+            <a-menu-item key="4" v-if="adminPageInfo.pageIndex===2" @click="changeTab(2)"><a-icon type="user" />유저 정보 수정2</a-menu-item>
           <!-- <a-sub-menu key="sub2">
             <span slot="title"><a-icon type="laptop" /> 메뉴 </span>
             <a-menu-item key="2">option2</a-menu-item>
@@ -40,8 +45,8 @@
       </a-layout-sider>
       <a-layout style="padding: 24px 24px">
         <a-layout-content :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }">
-          <!-- <admin-car-table-comp></admin-car-table-comp> -->
-          <admin-user-table-comp></admin-user-table-comp>
+          <admin-car-table-comp v-if="adminPageInfo.pageIndex===1"></admin-car-table-comp>
+          <admin-user-table-comp v-if="adminPageInfo.pageIndex===2"></admin-user-table-comp>
         </a-layout-content>
       </a-layout>
     </a-layout>
@@ -65,11 +70,24 @@
     },
     computed: {
       ...mapGetters({
+        adminPageInfo: 'database/getAdminPageInfo'
       })
     },
     mounted () {
     },
     methods: {
+      changePage (index) {
+        var pageIndex = index;
+        this.$store.dispatch('database/setAdminPageIndex',{
+          pageIndex
+        });
+      },
+      changeTab (index) {
+        var tabIndex = index;
+        this.$store.dispatch('database/setAdminTabIndex',{
+          tabIndex
+        });
+      }
 
     },
     beforeUpdate () {
