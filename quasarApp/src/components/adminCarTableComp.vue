@@ -71,12 +71,14 @@ export default {
         return false;
       }
       this.$store.dispatch('database/addCarList',this.inputVal);
+      this.$message.success(`추가 : ${this.inputVal}`);
       this.inputVal = '';
     },
     removeCar(index){
       var vueObj = this;
       console.log(vueObj.carList[index]);
       this.$store.dispatch('database/removeCarList',vueObj.carList[index]);
+      vueObj.$message.success(`삭제`);
     }
   }
 };
@@ -88,6 +90,7 @@ export default {
 
   .ant-input-search{
     margin-bottom: 20px;
+    width:100%;
   }
   .ant-table-tbody{
     display: none;
