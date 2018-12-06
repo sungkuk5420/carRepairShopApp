@@ -14,7 +14,7 @@ export function getUserDataBase(state) {
       thumbnail_image: currentUserInfo.thumbnail_image,
       user_level: currentUserInfo.user_level,
       user_name: currentUserInfo.user_name,
-      login_type: currentUserInfo.login_type
+      login_type: currentUserInfo.login_type == 'kakao' ? '카카오' : (currentUserInfo.login_type == 'local' ? '로컬' : currentUserInfo.login_type)
     }
   });
   var index = 1;
