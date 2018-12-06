@@ -36,48 +36,50 @@
         </div>
         <div class="content-div">
           <div v-if="changeUserInfo.login_type != 'kakao'" class="components-input-demo-presuffix">
+            <span class="label">차량 번호</span>
             <a-input placeholder="차량 번호" v-model="changeUserInfo.car_number" ref="userNameInput">
-              <a-icon slot="prefix" type="user" />
-              <a-icon slot="suffix" type="close-circle"/>
+              <a-icon slot="prefix" type="car" />
             </a-input>
           </div>
           <div v-if="changeUserInfo.login_type != 'kakao'" class="components-input-demo-presuffix">
+            <span class="label">비밀 번호</span>
             <a-input placeholder="비밀 번호" v-model="changeUserInfo.password" ref="userNameInput">
-              <a-icon slot="prefix" type="user" />
-              <a-icon slot="suffix" type="close-circle"/>
+              <a-icon slot="prefix" type="lock" />
             </a-input>
           </div>
           <div class="components-input-demo-presuffix">
+            <span class="label">폰 번호</span>
             <a-input placeholder="폰 번호" v-model="changeUserInfo.phone_number" ref="userNameInput">
-              <a-icon slot="prefix" type="user" />
-              <a-icon slot="suffix" type="close-circle"/>
+              <a-icon slot="prefix" type="phone" />
             </a-input>
           </div>
           <div class="components-input-demo-presuffix">
+            <span class="label">이름</span>
             <a-input placeholder="이름" v-model="changeUserInfo.user_name" ref="userNameInput">
-              <a-icon slot="prefix" type="user" />
-              <a-icon slot="suffix" type="close-circle"/>
+              <a-icon slot="prefix" type="idcard" />
             </a-input>
           </div>
           <div class="components-input-demo-presuffix">
-            <a-input placeholder="차종" v-model="changeUserInfo.car_type" ref="userNameInput">
-              <a-icon slot="prefix" type="user" />
-              <a-icon slot="suffix" type="close-circle"/>
-            </a-input>
+            <span class="label">차량 종류</span>
+            <a-select v-model="changeUserInfo.car_type" @change="changeCarType">
+                <a-select-option v-for="(currentCar, index) in carList" v-bind:key="index" v-model="currentCar.carName" >{{currentCar.carName}}</a-select-option>
+            </a-select>
           </div>
           <div class="components-input-demo-presuffix">
-            <a-input placeholder="주행 거리" v-model="changeUserInfo.car_km" ref="userNameInput">
-              <a-icon slot="prefix" type="user" />
-              <a-icon slot="suffix" type="close-circle"/>
-            </a-input>
+            <span class="label">주행 거리</span>
+            <a-input-number
+              :formatter="value => `${value}km`"
+              :parser="value => value.replace(/km/gi, '')"
+              v-model="changeUserInfo.car_km"
+            />
           </div>
           <div class="components-input-demo-presuffix">
             <span class="label">유저 등급</span>
-            <a-select v-model="changeUserInfo.user_level" defaultValue="public" style="width: 120px" @change="handleChange">
+            <a-select v-model="changeUserInfo.user_level" @change="changeUserLevel">
               <a-select-option value="일반">일반</a-select-option>
               <a-select-option value="실버">실버</a-select-option>
               <a-select-option value="골드">골드</a-select-option>
-              <a-select-option value="다이야">다이야</a-select-option>
+              <a-select-option value="다이아">다이아</a-select-option>
             </a-select>
           </div>
         </div>
@@ -168,7 +170,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-        userList: 'database/getUserDataBase'
+        userList: 'database/getUserDataBase',
+        carList: 'database/getCarList'
     })
   },
   methods: {
@@ -218,7 +221,7 @@ export default {
           'phone_number' :user.phone_number,
           'user_name' :user.user_name,
           'car_type' :user.car_type,
-          'car_km' :user.car_km,
+          'car_km' :user.car_km.replace('km',''),
           'user_level' :user.user_level,
           'thumbnail_image' :user.thumbnail_image,
           'profile_image' :user.profile_image,
@@ -227,9 +230,6 @@ export default {
       })[0];
       console.log('changeUserInfo',this.changeUserInfo);
       this.modalVisible = true;
-    },
-    handleChange () {
-      this.modalVisible = false;
     },
     handleCancel () {
       this.modalVisible = false;
@@ -270,7 +270,7 @@ export default {
               vueObj,
               users
             });
-            setTimeout(()=>{vueObj.modalVisible = false;},1000);
+            vueObj.modalVisible = false;
           }else{
             alert('error');
           }
@@ -297,7 +297,7 @@ export default {
               vueObj,
               users
             });
-            setTimeout(()=>{vueObj.modalVisible = false;},1000);
+            vueObj.modalVisible = false;
           }else{
             alert('error');
             this.$message.error('삭제 실패.');
@@ -359,20 +359,30 @@ export default {
     flex: 0 0 auto;
     align-items: center;
     .profile-div{
-      width: 30%;
+      width: 175px;
       img{
         width: 100%;
         height: auto;
       }
     }
     .content-div{
-      width: 70%;
+      width: 310px;
       padding: 0 10px;
     }
   }
 
   .ant-select-selection--single,
   .ant-select-dropdown{
+    width: 180px;
+  }
+
+  .components-input-demo-presuffix .label{
+    width: 75px;
+    display: inline-block;
+  }
+
+  .ant-input-affix-wrapper,
+  .ant-input-number{
     width: 180px;
   }
 </style>
