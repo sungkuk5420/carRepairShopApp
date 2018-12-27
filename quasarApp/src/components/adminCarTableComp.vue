@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-input-search placeholder="input search text" @search="addCarList" size="large" v-model="inputVal">
+    <a-input-search placeholder="input search text" @search="addCarList" size="large" v-model="inputVal" v-if="this.adminPageInfo.unlogin===false">
       <a-button slot="enterButton">추가</a-button>
     </a-input-search>
     <a-table :columns="columns"
@@ -51,6 +51,7 @@ export default {
   },
   computed: {
     ...mapGetters({
+        adminPageInfo: 'database/getAdminPageInfo',
         carList: 'database/getCarList'
     })
   },
@@ -59,6 +60,9 @@ export default {
       this.fetch();
     },
     fetch () {
+      if(this.adminPageInfo.unlogin === true){
+        return false;
+      }
       var vueObj = this;
       console.log(vueObj.carList);
       vueObj.loading = true;

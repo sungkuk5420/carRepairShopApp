@@ -47,6 +47,27 @@
         <a-layout-content :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }">
           <admin-car-table-comp v-if="adminPageInfo.pageIndex===1"></admin-car-table-comp>
           <admin-user-table-comp v-if="adminPageInfo.pageIndex===2"></admin-user-table-comp>
+          <a-modal
+            title="관리자 비밀번호"
+            v-model="openModalPopupState"
+          >
+            <template slot="footer">
+              <a-button key="back" @click="handleCancel">취소</a-button>
+              <a-button key="submit" type="primary" :loading="loading" @click="checkAdminPassword">
+                확인
+              </a-button>
+            </template>
+            <div class="row-div popup">
+              <div class="content-div">
+                <div class="components-input-demo-presuffix">
+                  <span class="label">비밀 번호</span>
+                  <a-input placeholder="비밀 번호" v-model="password" ref="userNameInput">
+                    <a-icon slot="prefix" type="lock" />
+                  </a-input>
+                </div>
+              </div>
+            </div>
+          </a-modal>
         </a-layout-content>
       </a-layout>
     </a-layout>
@@ -66,6 +87,8 @@
     data () {
       return {
         collapsed: false,
+        password: '',
+        openModalPopupState: true
       }
     },
     computed: {
@@ -87,7 +110,25 @@
         this.$store.dispatch('database/setAdminTabIndex',{
           tabIndex
         });
-      }
+      },
+      checkAdminPassword () {
+        var thisObj = this;
+        this.$store.dispatch('database/checkAdminPassword',{
+          password : thisObj.password,
+          cb : function(result){
+            if(result === 'success'){
+              thisObj.$message.success('로그인 성공.');
+              thisObj.openModalPopupState = false;
+            }else{
+              thisObj.$message.error('비밀번호를 확인해주세요.');
+              thisObj.openModalPopupState = true;
+            }
+          }
+        })
+      },
+      handleCancel () {
+        document.getElementsByClassName('ant-modal-close')[0].click();
+      },
 
     },
     beforeUpdate () {
@@ -104,6 +145,9 @@
 <style lang="scss">
   #q-app{
     max-width: initial !important;
+  }
+  .hide{
+    display: none;
   }
 </style>
 <style lang="scss" scoped>

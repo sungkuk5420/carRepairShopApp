@@ -296,3 +296,23 @@ export function setAdminTabIndex(_,pramas) {
   console.log(pramas.tabIndex);
   this.state.database.adminPageInfo.tabIndex = pramas.tabIndex;
 }
+export function checkAdminPassword(_,pramas) {
+  console.log('getCarList');
+  var thisObj = this;
+  var password = pramas.password;
+  db.ref('/admin/password').on('value', function (data) {
+    var adminPassword = data.val();
+    if(pramas.cb){
+      var result = adminPassword.toString() === password ? 'success' : 'failed';
+      console.log(result);
+      if(result === 'success'){
+        thisObj.state.database.adminPageInfo.unlogin = false;
+        thisObj.state.database.adminPageInfo.pageIndex = 1;
+        thisObj.state.database.adminPageInfo.tabIndex = 1;
+      }else{
+        thisObj.state.database.adminPageInfo.unlogin = true;
+      }
+      pramas.cb(result);
+    }
+  });
+}

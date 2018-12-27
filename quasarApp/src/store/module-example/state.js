@@ -14,7 +14,8 @@ export default {
     loginState: false
   },
   adminPageInfo:{
-    pageIndex:1,
-    tabIndex:1
+    pageIndex:0,
+    tabIndex:0,
+    unlogin:true
   }
 };

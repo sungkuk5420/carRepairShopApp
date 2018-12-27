@@ -5,7 +5,7 @@ const routes = [
     path: '/',
     component: () => import('layouts/MyLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/AdminPage.vue') },
+      { path: '', component: () => import('pages/MainPage.vue') },
       // { path: '', component: () => import('pages/MainPage.vue') },
       { path: '/login', component: () => import('pages/LoginPage.vue') },
       { path: '/localLogin', component: () => import('pages/LocalLoginPage.vue') },
@@ -15,6 +15,7 @@ const routes = [
       { path: '/estimate', component: () => import('pages/EstimatePage.vue') },
       { path: '/motores', component: () => import('pages/MotoresPage.vue') },
       { path: '/eventDetails', component: () => import('pages/EventDetailsPage.vue') },
+      { path: '/admin', component: () => import('pages/AdminPage.vue') },
     ],
   },
 ];

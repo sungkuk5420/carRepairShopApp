@@ -170,6 +170,7 @@ export default {
   },
   computed: {
     ...mapGetters({
+        adminPageInfo: 'database/getAdminPageInfo',
         userList: 'database/getUserDataBase',
         carList: 'database/getCarList'
     })
@@ -179,6 +180,10 @@ export default {
       this.fetch();
     },
     fetch () {
+      console.log(this.adminPageInfo.unlogin);
+      if(this.adminPageInfo.unlogin === true){
+        return false;
+      }
       var vueObj = this;
       console.log(vueObj.carList);
       vueObj.loading = true;
