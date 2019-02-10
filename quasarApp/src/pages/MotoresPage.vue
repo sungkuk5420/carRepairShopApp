@@ -20,7 +20,7 @@
         <div class="row-div">
           <div class="outer">
             <div class="inner">
-              <span class="text">현대</span>
+              <span class="text">로그인이 필요합니다.</span>
             </div>
           </div>
         </div>
@@ -35,7 +35,7 @@
         <div class="row-div">
           <div class="outer">
             <div class="inner">
-              <span class="text">김성국</span>
+              <span class="text">로그인이 필요합니다.</span>
             </div>
           </div>
         </div>
@@ -43,7 +43,7 @@
         <div class="row-div">
           <div class="outer">
             <div class="inner">
-              <span class="text">010-3533-4805</span>
+              <span class="text">로그인이 필요합니다.</span>
             </div>
           </div>
         </div>
@@ -58,7 +58,7 @@
         <div class="row-div">
           <div class="outer">
             <div class="inner">
-              <span class="text">보험수리</span>
+              <span class="text">로그인이 필요합니다.</span>
             </div>
           </div>
         </div>
@@ -110,7 +110,7 @@
         <div class="row-div">
           <div class="outer">
             <div class="inner">
-              <span class="text">LOTEMDS2</span>
+              <span class="text">로그인이 필요합니다.</span>
             </div>
           </div>
         </div>
@@ -125,7 +125,7 @@
         <div class="row-div">
           <div class="outer">
             <div class="inner">
-              <a-button type="primary" @click="showModal" class="q-btn writeBtn">견적 요청</a-button>
+              <a-button type="primary" @click="showModal" class="q-btn writeBtn disabled">견적 요청</a-button>
               <a-modal
                 title="예약 확인"
                 v-model="visible"
@@ -171,7 +171,9 @@ export default {
     };
   },
   computed: {
-    ...mapGetters({})
+    ...mapGetters({
+      loginInfo: "database/getLoginInfo"
+    })
   },
   mounted() {
     var monthAndYearRadioButtons = document.querySelectorAll(
@@ -190,6 +192,8 @@ export default {
         this.changeMonthSelectButtonToKoreanText();
       }, 0);
     });
+
+    console.dir(this.loginInfo);
   },
   methods: {
     changeMonthSelectButtonToKoreanText(monthDate) {
@@ -282,7 +286,6 @@ export default {
     onSelect(value) {
       this.value = value;
       this.selectedValue = value;
-      console.log("onSelect");
       this.appendSeletedDateText(this.selectedValue.format("YYYY-MM-DD"));
 
       setTimeout(() => {
@@ -299,11 +302,11 @@ export default {
       }, 0);
     },
     showModal() {
-      this.visible = true;
-      console.log(this);
+      if (!this.classList.contain("disabled")) {
+        this.visible = true;
+      }
     },
     handleOk(e) {
-      console.log(e);
       this.visible = false;
     },
     handleCancel(e) {
@@ -453,5 +456,10 @@ $basic-purple: #585abd;
   color: $white;
   background: $basic-purple;
   border: 0;
+  &.disabled {
+    color: rgba(0, 0, 0, 0.25);
+    background-color: #f5f5f5;
+    border-color: #d9d9d9;
+  }
 }
 </style>
