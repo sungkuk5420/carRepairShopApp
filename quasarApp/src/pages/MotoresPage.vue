@@ -1,13 +1,13 @@
 <template>
-<div class="motores_wrap page_wrap">
+  <div class="motores_wrap page_wrap">
     <div id="main_container" class="column no-wrap">
       <div class="main_inner_wrap">
         <!--공업사 메인 이미지-->
         <div class="motorTitleBar">
           <img class="mainImg" src="../assets/images/motorservicecenter.png">
           <div class="motorTitleBarContent">
-              <h1 class="Title">착한 자동차 공업사</h1>
-              <p class="SubTitle">부천시 원미구 원미동 777-30번지</p>
+            <h1 class="Title">착한 자동차 공업사</h1>
+            <p class="SubTitle">부천시 원미구 원미동 777-30번지</p>
           </div>
         </div>
         <div class="row-div title-div">
@@ -20,7 +20,7 @@
         <div class="row-div">
           <div class="outer">
             <div class="inner">
-              <span class="text">로그인이 필요합니다.</span>
+              <span class="text" id="carType">{{this.bookData.carType}}</span>
             </div>
           </div>
         </div>
@@ -35,7 +35,7 @@
         <div class="row-div">
           <div class="outer">
             <div class="inner">
-              <span class="text">로그인이 필요합니다.</span>
+              <span class="text" id="userName">{{this.bookData.userName}}</span>
             </div>
           </div>
         </div>
@@ -43,7 +43,7 @@
         <div class="row-div">
           <div class="outer">
             <div class="inner">
-              <span class="text">로그인이 필요합니다.</span>
+              <span class="text" id="phoneNumber">{{this.bookData.phoneNumber}}</span>
             </div>
           </div>
         </div>
@@ -58,7 +58,12 @@
         <div class="row-div">
           <div class="outer">
             <div class="inner">
-              <span class="text">로그인이 필요합니다.</span>
+              <a-select defaultValue="선택" style="width: 100%" @change="handleRequestChange">
+                <a-select-option value="견적만 부탁드립니다.">견적만 부탁드립니다.</a-select-option>
+                <a-select-option value="전화로 상담하고 싶습니다.">전화로 상담하고 싶습니다.</a-select-option>
+                <a-select-option value="방문해서 수리받고 싶습니다.">방문해서 수리받고 싶습니다.</a-select-option>
+                <a-select-option value="정비받고 싶습니다.">정비받고 싶습니다.</a-select-option>
+              </a-select>
             </div>
           </div>
         </div>
@@ -80,6 +85,7 @@
                 float-label="ex) 운전석 앞문이 찌그러졌습니다."
                 :max-height="100"
                 rows="7"
+                id="requestTextArea"
               />
             </div>
           </div>
@@ -94,8 +100,7 @@
         </div>
         <div class="row-div">
           <div :style="{ border: '1px solid #d9d9d9', borderRadius: '4px' }">
-            <a-calendar :fullscreen="false" @select="onSelect" @panelChange="onPanelChange" >  
-            </a-calendar>
+            <a-calendar :fullscreen="false" @select="onSelect" @panelChange="onPanelChange"></a-calendar>
           </div>
         </div>
         <div class="border-div"></div>
@@ -110,7 +115,7 @@
         <div class="row-div">
           <div class="outer">
             <div class="inner">
-              <span class="text">로그인이 필요합니다.</span>
+              <span class="text" id="promotionCode">{{this.bookData.promotionCode}}</span>
             </div>
           </div>
         </div>
@@ -121,26 +126,46 @@
               <q-checkbox id="btnChk" v-model="checked" label="개인정보 및 서비스 이용약관에 동의합니다." />
             </div>
           </div>
-        </div> -->
+        </div>-->
         <div class="row-div">
           <div class="outer">
             <div class="inner">
-              <a-button type="primary" @click="showModal" class="q-btn writeBtn disabled">견적 요청</a-button>
-              <a-modal
-                title="예약 확인"
-                v-model="visible"
-                @ok="handleOk"
-              >
-              <p>Some contents...</p>
-              <p>Some contents...</p>
-              <p>Some contents...</p>
-              <template slot="footer">
-                <a-button key="back" @click="handleCancel">취소</a-button>
-                <a-button key="submit" type="primary" :loading="loading" @click="handleOk">
-                  확인
-                </a-button>
-              </template>
-            </a-modal>
+              <a-button
+                type="primary"
+                @click="showModal"
+                class="q-btn writeBtn"
+                v-bind:class="{ disabled: !this.loginInfo.loginState}"
+              >견적 요청</a-button>
+              <a-modal title="예약 확인" v-model="visible" @ok="handleOk">
+                <p>
+                  차종 :
+                  <span class="carType">{{bookData.carType}}</span>
+                </p>
+                <p>
+                  성함 :
+                  <span class="userName">{{bookData.userName}}</span>
+                </p>
+                <p>
+                  전화번호 :
+                  <span class="phoneNumber">{{bookData.phoneNumber}}</span>
+                </p>
+                <p>
+                  선택 요청사항 :
+                  <span class="requestSelect">{{bookData.requestSelect}}</span>
+                </p>
+                <p>
+                  요구사항 :
+                  <span class="requestTextArea">{{bookData.requestTextArea}}</span>
+                </p>
+                <p>
+                  예약날짜 :
+                  <span class="fullcalenderDateText">{{bookData.date}}</span>
+                </p>
+                <template slot="footer">
+                  <a-button key="back" @click="handleCancel">취소</a-button>
+                  <a-button key="submit" type="primary" :loading="loading" @click="handleOk">확인</a-button>
+                </template>
+              </a-modal>
             </div>
           </div>
         </div>
@@ -167,7 +192,16 @@ export default {
       value1: moment("2017-01-25"),
       checked: false,
       visible: false,
-      areaVal: ""
+      loading: false,
+      areaVal: "",
+      bookData: {
+        carType: "로그인이 필요합니다.",
+        userName: "로그인이 필요합니다.",
+        requestSelect: "로그인이 필요합니다.",
+        phoneNumber: "로그인이 필요합니다.",
+        promotionCode: "로그인이 필요합니다.",
+        date: ""
+      }
     };
   },
   computed: {
@@ -176,6 +210,23 @@ export default {
     })
   },
   mounted() {
+    var loginInfo = this.$session.get("loginInfo");
+    console.log(loginInfo);
+    if (loginInfo != undefined) {
+      this.$store.dispatch("database/setUserInfo", {
+        vueObj: this,
+        carNumber: loginInfo.carNumber,
+        phoneNumber: loginInfo.phoneNumber,
+        userName: loginInfo.userName,
+        carType: loginInfo.carType,
+        carKm: loginInfo.carKm,
+        userLevel: loginInfo.userLevel,
+        thumbnailImage: loginInfo.thumbnailImage,
+        profileImage: loginInfo.profileImage,
+        loginType: loginInfo.loginType,
+        loginState: true
+      });
+    }
     var monthAndYearRadioButtons = document.querySelectorAll(
       ".ant-radio-button-wrapper>span:last-child"
     );
@@ -193,7 +244,7 @@ export default {
       }, 0);
     });
 
-    console.dir(this.loginInfo);
+    this.connetUserInfo();
   },
   methods: {
     changeMonthSelectButtonToKoreanText(monthDate) {
@@ -239,7 +290,6 @@ export default {
         ".ant-fullcalendar-table thead tr .ant-fullcalendar-column-header-inner"
       ); // 월간 달력에서 일월화수목금 영문글자돔
       var daysToKoeanText = ["일", "월", "화", "수", "목", "금", "토"];
-      console.log(calendarDays.length);
       for (let i = 0; i < calendarDays.length; i++) {
         const currentElement = calendarDays[i];
         currentElement.innerText = daysToKoeanText[i];
@@ -268,17 +318,51 @@ export default {
         currentElement.innerText = daysToKoeanText[i];
       }
     },
+    weekKoeanText(weekNumber) {
+      var returnText = "";
+      switch (weekNumber) {
+        case 1:
+          returnText = "( 월 )";
+          break;
+        case 2:
+          returnText = "( 화 )";
+          break;
+        case 3:
+          returnText = "( 수 )";
+          break;
+        case 4:
+          returnText = "( 목 )";
+          break;
+        case 5:
+          returnText = "( 금 )";
+          break;
+        case 6:
+          returnText = "( 토 )";
+          break;
+        case 7:
+          returnText = "( 일 )";
+          break;
+      }
+      return returnText;
+    },
     appendSeletedDateText(date) {
       var calendarDateTextDOM = document.querySelector(
         ".fullcalender-date-text"
       );
       if (calendarDateTextDOM) {
-        calendarDateTextDOM.innerText = date;
+        calendarDateTextDOM.innerText =
+          date + this.weekKoeanText(moment(date).days());
+        this.bookData.date = date + this.weekKoeanText(moment(date).days());
         return false;
       }
       var divDOM = document.createElement("div");
+      divDOM.id = "fullcalenderDateText";
       divDOM.classList.add("fullcalender-date-text");
-      divDOM.innerText = date ? date : moment().format("YYYY-MM-DD");
+      divDOM.innerText = date
+        ? date
+        : moment().format("YYYY-MM-DD") + this.weekKoeanText(moment().days());
+      this.bookData.date =
+        moment().format("YYYY-MM-DD") + this.weekKoeanText(moment().days());
 
       var appendParentDOM = document.querySelector(".ant-fullcalendar-header");
       appendParentDOM.insertBefore(divDOM, appendParentDOM.firstChild);
@@ -302,7 +386,7 @@ export default {
       }, 0);
     },
     showModal() {
-      if (!this.classList.contain("disabled")) {
+      if (!event.target.classList.contains("disabled")) {
         this.visible = true;
       }
     },
@@ -311,6 +395,18 @@ export default {
     },
     handleCancel(e) {
       this.visible = false;
+    },
+    connetUserInfo() {
+      var loginInfo = this.loginInfo;
+      if (loginInfo.loginState) {
+        this.bookData.carType = `${loginInfo.carType} ( ${loginInfo.carKm}KM )`;
+        this.bookData.userName = loginInfo.userName;
+        this.bookData.phoneNumber = loginInfo.phoneNumber;
+        this.bookData.promotionCode = "";
+      }
+    },
+    handleRequestChange(value) {
+      this.bookData.requestSelect = value;
     }
   },
   beforeUpdate() {},
@@ -366,7 +462,8 @@ export default {
   display: none;
 }
 
-.motores_wrap .ant-select-selection.ant-select-selection--single {
+.motores_wrap
+  .ant-select-selection.ant-select-selection--single:not(.ant-select-selection) {
   width: 75px;
 }
 
@@ -447,6 +544,7 @@ $basic-purple: #585abd;
 
 .sub-text {
   margin-left: 10px;
+  font-size: 0.8rem;
   color: $sub-text-color;
 }
 
