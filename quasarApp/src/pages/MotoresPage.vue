@@ -58,7 +58,7 @@
         <div class="row-div">
           <div class="outer">
             <div class="inner">
-              <a-select defaultValue="선택" style="width: 100%" @change="handleRequestChange">
+              <a-select defaultValue="선택" style="width: 100%" @change="handleRequestSelectChange">
                 <a-select-option value="견적만 부탁드립니다.">견적만 부탁드립니다.</a-select-option>
                 <a-select-option value="전화로 상담하고 싶습니다.">전화로 상담하고 싶습니다.</a-select-option>
                 <a-select-option value="방문해서 수리받고 싶습니다.">방문해서 수리받고 싶습니다.</a-select-option>
@@ -80,11 +80,12 @@
           <div class="outer">
             <div class="inner">
               <q-input
-                v-model="areaVal"
+                v-model="bookData.requestTextArea"
                 type="textarea"
                 float-label="ex) 운전석 앞문이 찌그러졌습니다."
                 :max-height="100"
                 rows="7"
+                model
                 id="requestTextArea"
               />
             </div>
@@ -193,11 +194,11 @@ export default {
       checked: false,
       visible: false,
       loading: false,
-      areaVal: "",
       bookData: {
         carType: "로그인이 필요합니다.",
         userName: "로그인이 필요합니다.",
         requestSelect: "로그인이 필요합니다.",
+        requestTextArea: "",
         phoneNumber: "로그인이 필요합니다.",
         promotionCode: "로그인이 필요합니다.",
         date: ""
@@ -215,6 +216,7 @@ export default {
     if (loginInfo != undefined) {
       this.$store.dispatch("database/setUserInfo", {
         vueObj: this,
+        id: loginInfo.id,
         carNumber: loginInfo.carNumber,
         phoneNumber: loginInfo.phoneNumber,
         userName: loginInfo.userName,
@@ -392,6 +394,20 @@ export default {
     },
     handleOk(e) {
       this.visible = false;
+      var bookData = this.bookData;
+
+      this.$store.dispatch("database/addEstimate", {
+        vueObj: this,
+        id: this.loginInfo.id,
+        carType: bookData.carType,
+        userName: bookData.userName,
+        requestSelect: bookData.requestSelect,
+        requestTextArea: bookData.requestTextArea,
+        phoneNumber: bookData.phoneNumber,
+        promotionCode: bookData.promotionCode,
+        date: bookData.date.substr(0, bookData.date.indexOf("("))
+      });
+      this.$message.success("예약 성공.");
     },
     handleCancel(e) {
       this.visible = false;
@@ -402,11 +418,15 @@ export default {
         this.bookData.carType = `${loginInfo.carType} ( ${loginInfo.carKm}KM )`;
         this.bookData.userName = loginInfo.userName;
         this.bookData.phoneNumber = loginInfo.phoneNumber;
+        this.bookData.requestSelect = "선택";
         this.bookData.promotionCode = "";
       }
     },
-    handleRequestChange(value) {
+    handleRequestSelectChange(value) {
       this.bookData.requestSelect = value;
+    },
+    handleRequestTextAreaChange(value, value2, value3) {
+      this.bookData.requestTextArea = value;
     }
   },
   beforeUpdate() {},

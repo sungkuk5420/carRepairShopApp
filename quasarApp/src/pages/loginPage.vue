@@ -142,6 +142,7 @@ export default {
     if (loginInfo != undefined) {
       this.$store.dispatch("database/setUserInfo", {
         vueObj: this,
+        id: loginInfo.id,
         carNumber: loginInfo.carNumber,
         phoneNumber: loginInfo.phoneNumber,
         userName: loginInfo.userName,
@@ -185,7 +186,7 @@ export default {
         this.$store.dispatch("database/selectTable", {
           tableName: "users",
           fields:
-            "car_number,phone_number,user_name,car_type,car_km,user_level,thumbnail_image,profile_image,login_type",
+            "id,car_number,phone_number,user_name,car_type,car_km,user_level,thumbnail_image,profile_image,login_type",
           whereStr: `where id='${id}'`,
           cb: function(data) {
             console.log(data);
@@ -208,6 +209,7 @@ export default {
                   if (data == "success") {
                     vueObj.$store.dispatch("database/setUserInfo", {
                       vueObj: vueObj,
+                      id: id,
                       carNumber: car_number,
                       phoneNumber: phone_number,
                       userName: user_name,
@@ -233,6 +235,7 @@ export default {
               console.log(loginInfo);
               vueObj.$store.dispatch("database/setUserInfo", {
                 vueObj: vueObj,
+                id: id,
                 carNumber: loginInfo.car_number,
                 phoneNumber: loginInfo.phone_number,
                 userName: loginInfo.user_name,

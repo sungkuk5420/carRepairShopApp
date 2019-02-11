@@ -1,6 +1,7 @@
 import firebase from "firebase";
 import ajaxActions from "./ajaxActions";
 import firebaseDataKey from "../../../../secret";
+import moment from "moment";
 console.log(firebaseDataKey);
 var config = {
   databaseURL: firebaseDataKey.firebaseKey
@@ -96,6 +97,9 @@ export function setUserInfo(_, pramas) {
   console.log("setUserInfo", pramas);
   var thisObj = this;
 
+  if (pramas.id) {
+    thisObj.state.database.loginInfo.id = pramas.id;
+  }
   if (pramas.carNumber) {
     thisObj.state.database.loginInfo.carNumber = pramas.carNumber;
   }
@@ -309,5 +313,20 @@ export function checkAdminPassword(_, pramas) {
       }
       pramas.cb(result);
     }
+  });
+}
+
+export function addEstimate(_, pramas) {
+  var thisObj = this;
+  db.ref("estimate/").push({
+    id: pramas.id,
+    carType: pramas.carType,
+    userName: pramas.userName,
+    requestSelect: pramas.requestSelect,
+    requestTextArea: pramas.requestTextArea,
+    phoneNumber: pramas.phoneNumber,
+    promotionCode: pramas.promotionCode,
+    date: pramas.date,
+    whiteDate: moment(Date.now()).format("YYYY-MM-DDTHH:MM")
   });
 }

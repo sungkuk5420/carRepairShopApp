@@ -2,6 +2,7 @@ export default {
   users: [],
   carList: [],
   loginInfo: {
+    id: "",
     carNumber: "",
     phoneNumber: "",
     userName: "",
