@@ -15,34 +15,34 @@ router.get('/', function (req, res, next) {
 
 router.post('/selectTable', function (req, res) {
   //console.log(req.body);
-  db.seletTable(req.body,res);
+  db.seletTable(req.body, res);
 });
 
 router.post('/insertUser', function (req, res) {
   //console.log(req.body);
-  db.insertUser(req.body,res);
+  db.insertUser(req.body, res);
 });
 
 router.post('/updateUser', function (req, res) {
   //console.log(req.body);
-  db.updateUser(req.body,res);
+  db.updateUser(req.body, res);
 });
 
 router.post('/deleteUser', function (req, res) {
   //console.log(req.body);
-  db.deleteUser(req.body,res);
+  db.deleteUser(req.body, res);
 });
 
-router.get('/minimalzeImage', function(req, res, next) {
-    res.render('minimalzeImage', { title: '이미지 압축 페이지' });
+router.get('/minimalzeImage', function (req, res, next) {
+  res.render('minimalzeImage', { title: '이미지 압축 페이지' });
 });
 
-router.post('/uploadResult', urlencodedParser, function(req, res, next) {
+router.post('/uploadResult', urlencodedParser, function (req, res, next) {
   console.log('car_list ' + JSON.stringify(req.body));
   let EstimateData = req.body;
-  res.render('uploadResult', { title: 'Express', EstimateData: EstimateData, len:Object.keys(req.body).length});
+  res.render('uploadResult', { title: 'Express', EstimateData: EstimateData, len: Object.keys(req.body).length });
 });
-router.post('/upload',  (req, res) => {
+router.post('/upload', (req, res) => {
   const tasks = [
     (callback) => {
       console.log('start formidable');
@@ -74,13 +74,13 @@ router.post('/upload',  (req, res) => {
       // res.render('uploadResult', { title: '업로드 성공', image: result });
       // res.json({success: true, msg: '업로드 성공'})
     } else {
-      res.json({success: false, msg: '업로드 실패'})
+      res.json({ success: false, msg: '업로드 실패' })
     }
   });
 });
 
 
-router.post('/minimalzeImage',  (req, res) => {
+router.post('/minimalzeImage', (req, res) => {
   const tasks = [
     (callback) => {
       console.log('start formidable');
@@ -108,11 +108,11 @@ router.post('/minimalzeImage',  (req, res) => {
     if (!err) {
       console.log(result);
       // res.json(result);
-      res.render('minimalzeResult', { title: '업로드 성공', image: result, len:Object.keys(result).length});
+      res.render('minimalzeResult', { title: '업로드 성공', image: result, len: Object.keys(result).length });
       res.end();
       // res.json({success: true, msg: '업로드 성공'})
     } else {
-      res.json({success: false, msg: '업로드 실패'})
+      res.json({ success: false, msg: '업로드 실패' })
     }
   });
 });

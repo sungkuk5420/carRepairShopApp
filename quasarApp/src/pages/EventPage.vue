@@ -14,36 +14,26 @@
   </div>
 </template>
 <script>
-
-  import { mapGetters } from 'vuex'
-  import footerComp from '../components/footerComp.vue'
-  import eventCardComp from '../components/eventCardComp.vue'
-  export default {
-    name: 'PageIndex',
-    components: {
-      footerComp,
-      eventCardComp
-    },
-    data () {
-      return {
-      }
-    },
-    computed: {
-      ...mapGetters({
-      })
-    },
-    mounted () {
-    },
-    methods: {
-
-    },
-    beforeUpdate () {
-
-    },
-    created () {
-    },
-  };
-
+import { mapGetters } from "vuex";
+import footerComp from "../components/footerComp.vue";
+import eventCardComp from "../components/eventCardComp.vue";
+export default {
+  name: "PageIndex",
+  components: {
+    footerComp,
+    eventCardComp
+  },
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapGetters({})
+  },
+  mounted() {},
+  methods: {},
+  beforeUpdate() {},
+  created() {}
+};
 </script>
 
 
@@ -63,22 +53,26 @@
   height: 100%;
 }
 
-.event_wrap hr, .event_detail_wrap hr {
+.event_wrap hr,
+.event_detail_wrap hr {
   margin: 0 0 1rem 0;
 }
 
-.event_wrap .inner_section, .event_detail_wrap .inner_section {
+.event_wrap .inner_section,
+.event_detail_wrap .inner_section {
   height: 100%;
   padding: 15px;
   overflow-y: auto;
 }
 
-.event_wrap{
-  .coupon_seach, .event_detail_wrap .coupon_seach {
+.event_wrap {
+  .coupon_seach,
+  .event_detail_wrap .coupon_seach {
     margin-bottom: 1rem;
   }
 }
-.event_wrap .coupon_seach input, .event_detail_wrap .coupon_seach input {
+.event_wrap .coupon_seach input,
+.event_detail_wrap .coupon_seach input {
   width: 80%;
   height: 30px;
   font-size: 13px;
@@ -86,11 +80,13 @@
   padding-left: 10px;
 }
 
-.event_wrap .coupon_seach input::placeholder, .event_detail_wrap .coupon_seach input::placeholder {
+.event_wrap .coupon_seach input::placeholder,
+.event_detail_wrap .coupon_seach input::placeholder {
   color: #ccc;
 }
 
-.event_wrap .coupon_seach button, .event_detail_wrap .coupon_seach button {
+.event_wrap .coupon_seach button,
+.event_detail_wrap .coupon_seach button {
   width: 17%;
   height: 30px;
   line-height: 30px;
@@ -102,7 +98,4 @@
   background: #431dad;
   margin-left: 10px;
 }
-
-
-
 </style>

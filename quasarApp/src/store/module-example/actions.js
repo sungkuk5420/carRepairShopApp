@@ -1,10 +1,10 @@
-import firebase from 'firebase';
-import ajaxActions from './ajaxActions';
-import firebaseDataKey from '../../../../secret';
+import firebase from "firebase";
+import ajaxActions from "./ajaxActions";
+import firebaseDataKey from "../../../../secret";
 console.log(firebaseDataKey);
 var config = {
-  databaseURL: firebaseDataKey.firebaseKey,
-}
+  databaseURL: firebaseDataKey.firebaseKey
+};
 var firebaseApp = firebase.initializeApp(config);
 var db = firebaseApp.database();
 
@@ -13,19 +13,19 @@ export function selectTable(_, pramas) {
   var tableName = pramas.tableName;
   var fields = pramas.fields;
   var whereStr = pramas.whereStr;
-  console.log('selectTable start');
+  console.log("selectTable start");
   console.log(pramas);
   ajaxActions().selectTable(
     this.state,
     tableName,
     fields,
     whereStr,
-    (results) => {
-      console.log('action / selectTable / success');
-      console.log('results= ', results);
+    results => {
+      console.log("action / selectTable / success");
+      console.log("results= ", results);
       if (results.data.length == 0) {
         if (pramas.cb) {
-          pramas.cb('no User');
+          pramas.cb("no User");
         }
       } else {
         if (pramas.cb) {
@@ -34,20 +34,19 @@ export function selectTable(_, pramas) {
       }
       // commit(M.CHANGE_USER_DATA, results)
     },
-    (res) => {
-      console.log('action / selectTable / error', res)
+    res => {
+      console.log("action / selectTable / error", res);
 
       if (pramas.cb) {
-        pramas.cb('error');
+        pramas.cb("error");
       }
       if (res === 500) {
         // thisObj.dispatch(M.SHOW_TOAST)
-      }
-      else {
+      } else {
         // location.href = `${res}`
       }
     }
-  )
+  );
 }
 
 export function insertUser(_, pramas) {
@@ -66,36 +65,35 @@ export function insertUser(_, pramas) {
     pramas.profile_image,
     pramas.user_level,
     pramas.login_type,
-    (results) => {
-      console.log('action / insertUser / success')
-      console.log('results= ', results);
+    results => {
+      console.log("action / insertUser / success");
+      console.log("results= ", results);
       if (results.data.affectedRows != 0) {
         if (pramas.cb) {
-          pramas.cb('success');
+          pramas.cb("success");
         }
       } else {
         if (pramas.cb) {
-          pramas.cb('error');
+          pramas.cb("error");
         }
       }
       // commit(M.CHANGE_USER_DATA, results)
     },
-    (res) => {
+    res => {
       if (pramas.cb) {
-        pramas.cb('error');
+        pramas.cb("error");
       }
       if (res === 500) {
         // thisObj.dispatch(M.SHOW_TOAST)
-      }
-      else {
+      } else {
         // location.href = `${res}`
       }
     }
-  )
+  );
 }
 
 export function setUserInfo(_, pramas) {
-  console.log('setUserInfo', pramas);
+  console.log("setUserInfo", pramas);
   var thisObj = this;
 
   if (pramas.carNumber) {
@@ -130,7 +128,7 @@ export function setUserInfo(_, pramas) {
 }
 
 export function setLocalStorage(_, vueObj) {
-  vueObj.$session.set('loginInfo', this.state.database.loginInfo);
+  vueObj.$session.set("loginInfo", this.state.database.loginInfo);
 }
 
 export function logout(_, vueObj) {
@@ -139,24 +137,24 @@ export function logout(_, vueObj) {
     Kakao.Auth.logout();
   }
   thisObj.state.database.loginInfo = {
-    carNumber: '',
-    phoneNumber: '',
-    userName: '',
-    carType: '',
-    carKm: '',
-    userLevel: '',
-    thumbnailImage: '',
-    profileImage: '',
-    loginType: '',
+    carNumber: "",
+    phoneNumber: "",
+    userName: "",
+    carType: "",
+    carKm: "",
+    userLevel: "",
+    thumbnailImage: "",
+    profileImage: "",
+    loginType: "",
     loginState: false
   };
-  vueObj.$session.set('loginInfo', undefined);
+  vueObj.$session.set("loginInfo", undefined);
 }
 
 export function getCarList(_, cb) {
-  console.log('getCarList');
+  console.log("getCarList");
   var thisObj = this;
-  db.ref('/carList').on('value', function (data) {
+  db.ref("/carList").on("value", function(data) {
     var database = data.val();
     console.log(database);
     if (database == null) {
@@ -166,7 +164,7 @@ export function getCarList(_, cb) {
       }
       return false;
     }
-    var carListDataRef = Object.keys(database).map(function (carListData) {
+    var carListDataRef = Object.keys(database).map(function(carListData) {
       return {
         id: carListData,
         info: database[carListData]
@@ -180,30 +178,31 @@ export function getCarList(_, cb) {
 }
 
 export function addCarList(_, carName) {
-  console.log('addCarList');
+  console.log("addCarList");
   var thisObj = this;
   console.log(carName);
-  db.ref('carList/').push({
+  db.ref("carList/").push({
     carName: carName,
     addTime: Date.now()
   });
 }
 
 export function removeCarList(_, originalData) {
-  console.log('addCarList');
+  console.log("addCarList");
   var thisObj = this;
   console.log(originalData);
-  db.ref(`carList/${originalData.id}/`).remove()
-    .then(function () {
-      console.log("Remove succeeded.")
+  db.ref(`carList/${originalData.id}/`)
+    .remove()
+    .then(function() {
+      console.log("Remove succeeded.");
     })
-    .catch(function (error) {
-      console.log("Remove failed: " + error.message)
+    .catch(function(error) {
+      console.log("Remove failed: " + error.message);
     });
 }
 
 export function setUsers(_, pramas) {
-  console.log('setUsers', pramas);
+  console.log("setUsers", pramas);
   this.state.database.users = pramas.users;
 }
 
@@ -223,35 +222,32 @@ export function updateUser(_, pramas) {
     pramas.profile_image,
     pramas.user_level,
     pramas.login_type,
-    (results) => {
-      console.log('action / updateUser / success')
-      console.log('results= ', results);
+    results => {
+      console.log("action / updateUser / success");
+      console.log("results= ", results);
       if (results.data.affectedRows != 0) {
         if (pramas.cb) {
-          pramas.cb('success');
+          pramas.cb("success");
         }
       } else {
         if (pramas.cb) {
-          pramas.cb('error');
+          pramas.cb("error");
         }
       }
       // commit(M.CHANGE_USER_DATA, results)
     },
-    (res) => {
+    res => {
       if (pramas.cb) {
-        pramas.cb('error');
+        pramas.cb("error");
       }
       if (res === 500) {
         // thisObj.dispatch(M.SHOW_TOAST)
-      }
-      else {
+      } else {
         // location.href = `${res}`
       }
     }
-  )
+  );
 }
-
-
 
 export function deleteUser(_, pramas) {
   var thisObj = this;
@@ -259,32 +255,31 @@ export function deleteUser(_, pramas) {
   ajaxActions().deleteUser(
     this.state,
     pramas.id,
-    (results) => {
-      console.log('action / deleteUser / success')
-      console.log('results= ', results);
+    results => {
+      console.log("action / deleteUser / success");
+      console.log("results= ", results);
       if (results.data.affectedRows != 0) {
         if (pramas.cb) {
-          pramas.cb('success');
+          pramas.cb("success");
         }
       } else {
         if (pramas.cb) {
-          pramas.cb('error');
+          pramas.cb("error");
         }
       }
       // commit(M.CHANGE_USER_DATA, results)
     },
-    (res) => {
+    res => {
       if (pramas.cb) {
-        pramas.cb('error');
+        pramas.cb("error");
       }
       if (res === 500) {
         // thisObj.dispatch(M.SHOW_TOAST)
-      }
-      else {
+      } else {
         // location.href = `${res}`
       }
     }
-  )
+  );
 }
 
 export function setAdminPageIndex(_, pramas) {
@@ -297,15 +292,15 @@ export function setAdminTabIndex(_, pramas) {
   this.state.database.adminPageInfo.tabIndex = pramas.tabIndex;
 }
 export function checkAdminPassword(_, pramas) {
-  console.log('getCarList');
+  console.log("getCarList");
   var thisObj = this;
   var password = pramas.password;
-  db.ref('/admin/password').on('value', function (data) {
+  db.ref("/admin/password").on("value", function(data) {
     var adminPassword = data.val();
     if (pramas.cb) {
-      var result = adminPassword.toString() === password ? 'success' : 'failed';
+      var result = adminPassword.toString() === password ? "success" : "failed";
       console.log(result);
-      if (result === 'success') {
+      if (result === "success") {
         thisObj.state.database.adminPageInfo.unlogin = false;
         thisObj.state.database.adminPageInfo.pageIndex = 1;
         thisObj.state.database.adminPageInfo.tabIndex = 1;

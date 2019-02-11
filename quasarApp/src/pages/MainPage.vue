@@ -1,10 +1,9 @@
 <template>
   <div class="main_page_wrap page_wrap">
     <div id="main_container" class="column no-wrap">
-      <div class="main_inner_wrap ">
-
+      <div class="main_inner_wrap">
         <div class="back_image_wrap">
-            <div class="back_image_content"></div>
+          <div class="back_image_content"></div>
         </div>
         <div class="main_content">
           <div class="car_name_wrap">
@@ -17,7 +16,6 @@
             </div>
             <div class="empty"></div>
 
-
             <div class="row">
               <div class="inline_block1" id="item1">연식</div>
               <div class="inline_block2">2018.05.05</div>
@@ -29,36 +27,39 @@
             </div>
           </div>
 
-
           <div class="reservation_wrap">
             <h1>예약현황</h1>
             <div class="reservation_inner">
               <div id="reservation1">
                 <div class="reservation_content">
-                    <div class="left_side">
-                      <div class="row">
-                        <div class="reservation_status">접수대기</div>
-                        <div class="reservation_car_name">모델명</div>
-                      </div>
-                      <div class="row">
-                          <div class="reservation_status2">보험접수</div>
-                      </div>
-                      <div class="row">
-                          <div class="reservation_text">보조석 문짝이 찌그러졌습니다.</div>
-                      </div>
-                      <div class="row">
-                          <div class="reservation_date">2018.09.10</div>
-                      </div>
+                  <div class="left_side">
+                    <div class="row">
+                      <div class="reservation_status">접수대기</div>
+                      <div class="reservation_car_name">모델명</div>
                     </div>
-                    <div class="right_side">
-                      <img class="reservation_car_image" src="../assets/images/car_image_sample.png" alt="">
+                    <div class="row">
+                      <div class="reservation_status2">보험접수</div>
                     </div>
+                    <div class="row">
+                      <div class="reservation_text">보조석 문짝이 찌그러졌습니다.</div>
+                    </div>
+                    <div class="row">
+                      <div class="reservation_date">2018.09.10</div>
+                    </div>
+                  </div>
+                  <div class="right_side">
+                    <img
+                      class="reservation_car_image"
+                      src="../assets/images/car_image_sample.png"
+                      alt
+                    >
+                  </div>
                 </div>
                 <div class="reservation_button_wrap">
-                    <a href="tel:+81-70-4385-3533">
-                      <div class="left_button">전화하기</div>
-                    </a>
-                    <div class="right_button">공업소 위치</div>
+                  <a href="tel:+81-70-4385-3533">
+                    <div class="left_button">전화하기</div>
+                  </a>
+                  <div class="right_button">공업소 위치</div>
                 </div>
               </div>
             </div>
@@ -75,43 +76,33 @@
   </div>
 </template>
 <script>
-
-  import { mapGetters } from 'vuex'
-  import footerComp from '../components/footerComp.vue'
-  import eventCardComp from '../components/eventCardComp.vue'
-  export default {
-    name: 'PageIndex',
-    components: {
-      footerComp,
-      eventCardComp
-    },
-    data () {
-      return {
-      }
-    },
-    computed: {
-      ...mapGetters({
-      })
-    },
-    mounted () {
-    },
-    methods: {
-
-    },
-    beforeUpdate () {
-
-    },
-    created () {
-    },
-  };
-
+import { mapGetters } from "vuex";
+import footerComp from "../components/footerComp.vue";
+import eventCardComp from "../components/eventCardComp.vue";
+export default {
+  name: "PageIndex",
+  components: {
+    footerComp,
+    eventCardComp
+  },
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapGetters({})
+  },
+  mounted() {},
+  methods: {},
+  beforeUpdate() {},
+  created() {}
+};
 </script>
 
 
 
 <style lang="scss" scoped>
 .main_page_wrap {
-  #main_container{
+  #main_container {
     .main_inner_wrap {
       background: #eee;
       .back_image_wrap {
@@ -127,7 +118,6 @@
         background: #575eb9;
       }
     }
-
   }
   .main_content {
     position: relative;
@@ -135,13 +125,15 @@
     padding-left: 1rem;
     padding-right: 1rem;
   }
-  .car_info, .reservation_inner, .event_inner {
+  .car_info,
+  .reservation_inner,
+  .event_inner {
     background-color: white;
   }
   .car_name_wrap {
     width: 100%;
     height: 40px;
-    padding-top:30px;
+    padding-top: 30px;
     .car_name {
       word-break: keep-all;
       font-size: 0.8em;
@@ -180,7 +172,8 @@
       height: 25px;
     }
   }
-  .inline_block1, .inline_block2 {
+  .inline_block1,
+  .inline_block2 {
     font-size: 0.5em;
     display: inline-block;
   }
@@ -193,10 +186,13 @@
     text-align: right;
     width: 65%;
   }
-  .car_info, .reservation_wrap, .event_wrap {
+  .car_info,
+  .reservation_wrap,
+  .event_wrap {
     margin-bottom: 30px;
   }
-  .reservation_wrap h1, .event_wrap h1 {
+  .reservation_wrap h1,
+  .event_wrap h1 {
     font-size: 0.5em;
     color: #575eb9;
     margin-bottom: 15px;
@@ -270,7 +266,8 @@
       background: white;
       border-top: 1px solid #eee;
     }
-    .left_button, .right_button {
+    .left_button,
+    .right_button {
       text-align: center;
       font-size: 0.5em;
       line-height: 40px;

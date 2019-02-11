@@ -1,8 +1,8 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import firebase from 'firebase';
-import database from './module-example';
-import VueSessionStorage from 'vue-sessionstorage';
+import Vue from "vue";
+import Vuex from "vuex";
+import firebase from "firebase";
+import database from "./module-example";
+import VueSessionStorage from "vue-sessionstorage";
 
 Vue.use(Vuex);
 Vue.use(VueSessionStorage);
@@ -11,11 +11,11 @@ Vue.use(VueSessionStorage);
  * directly export the Store instantiation
  */
 
-export default function (/* { ssrContext } */) {
+export default function(/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      database,
-    },
+      database
+    }
   });
 
   return Store;

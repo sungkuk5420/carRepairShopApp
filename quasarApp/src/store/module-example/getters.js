@@ -1,11 +1,14 @@
 export function getUserDataBase(state) {
-  console.log('getUsers!', state.users);
-  var users = state.users.map((currentUserInfo) => {
+  console.log("getUsers!", state.users);
+  var users = state.users.map(currentUserInfo => {
     console.log(currentUserInfo);
     return {
       id: currentUserInfo.id,
       password: currentUserInfo.password,
-      car_km: currentUserInfo.car_km > 1 ? currentUserInfo.car_km +'km' : currentUserInfo.car_km,
+      car_km:
+        currentUserInfo.car_km > 1
+          ? currentUserInfo.car_km + "km"
+          : currentUserInfo.car_km,
       car_number: currentUserInfo.car_number,
       car_type: currentUserInfo.car_type,
       login_type: currentUserInfo.login_type,
@@ -14,8 +17,13 @@ export function getUserDataBase(state) {
       thumbnail_image: currentUserInfo.thumbnail_image,
       user_level: currentUserInfo.user_level,
       user_name: currentUserInfo.user_name,
-      login_type: currentUserInfo.login_type == 'kakao' ? '카카오' : (currentUserInfo.login_type == 'local' ? '로컬' : currentUserInfo.login_type)
-    }
+      login_type:
+        currentUserInfo.login_type == "kakao"
+          ? "카카오"
+          : currentUserInfo.login_type == "local"
+          ? "로컬"
+          : currentUserInfo.login_type
+    };
   });
   var index = 1;
   for (let i = 0; i < users.length; i++) {
@@ -33,15 +41,15 @@ export function getCarList(state) {
   if (state.carList.length == 0) {
     return state.carList;
   }
-  var carList = state.carList.map((currentCarData) => {
+  var carList = state.carList.map(currentCarData => {
     return {
       id: currentCarData.id,
       index: currentCarData.info.index,
       carName: currentCarData.info.carName
-    }
+    };
   });
   var sortList = [];
-  sortList = carList.sort(function (first, second) {
+  sortList = carList.sort(function(first, second) {
     var a = first.addTime;
     var b = second.addTime;
 
