@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const apiServer = "http://localhost:7000/";
-// var apiServer = 'http://13.125.246.215:7000/';
+// const apiServer = "http://localhost:7000/";
+var apiServer = 'http://52.64.84.165:5000/';
 export default () => ({
   selectTable(state, tableName, fields, whereStr, cSuccess, cError) {
     var tableName = tableName;
