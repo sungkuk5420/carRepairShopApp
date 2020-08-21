@@ -1,13 +1,13 @@
-import firebase from "firebase";
+// import firebase from "firebase";
 import ajaxActions from "./ajaxActions";
-import firebaseDataKey from "../../../../secret";
+// import firebaseDataKey from "../../../../secret";
 import moment from "moment";
-console.log(firebaseDataKey);
+// console.log(firebaseDataKey);
 var config = {
-  databaseURL: firebaseDataKey.firebaseKey
+  // databaseURL: firebaseDataKey.firebaseKey
 };
-var firebaseApp = firebase.initializeApp(config);
-var db = firebaseApp.database();
+// var firebaseApp = firebase.initializeApp(config);
+// var db = firebaseApp.database();
 
 export function selectTable(_, pramas) {
   var thisObj = this;
@@ -158,7 +158,7 @@ export function logout(_, vueObj) {
 export function getCarList(_, cb) {
   console.log("getCarList");
   var thisObj = this;
-  db.ref("/carList").on("value", function(data) {
+  db.ref("/carList").on("value", function (data) {
     var database = data.val();
     console.log(database);
     if (database == null) {
@@ -168,7 +168,7 @@ export function getCarList(_, cb) {
       }
       return false;
     }
-    var carListDataRef = Object.keys(database).map(function(carListData) {
+    var carListDataRef = Object.keys(database).map(function (carListData) {
       return {
         id: carListData,
         info: database[carListData]
@@ -197,10 +197,10 @@ export function removeCarList(_, originalData) {
   console.log(originalData);
   db.ref(`carList/${originalData.id}/`)
     .remove()
-    .then(function() {
+    .then(function () {
       console.log("Remove succeeded.");
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.log("Remove failed: " + error.message);
     });
 }
@@ -299,7 +299,7 @@ export function checkAdminPassword(_, pramas) {
   console.log("getCarList");
   var thisObj = this;
   var password = pramas.password;
-  db.ref("/admin/password").on("value", function(data) {
+  db.ref("/admin/password").on("value", function (data) {
     var adminPassword = data.val();
     if (pramas.cb) {
       var result = adminPassword.toString() === password ? "success" : "failed";

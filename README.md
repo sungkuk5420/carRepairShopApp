@@ -19,3 +19,10 @@
 | index.js                  | heroku App에서 노드 프로세스 실행 파일 (리뷰용 앱에 사용) |
 | app.js                  | Node Express의 서버 |
 | package.json                  | Node Express의 npm설정 정보 |
+
+
+### quasar
+
+```
+npm i -g quasar-cli@0.17.15
+```
